@@ -1,0 +1,33 @@
+<?php
+$groupId = $this->getGroupId ();
+$pushPath = $this->getSkinUrl('menupro/pushnew/');
+$responsiveStyle = explode("-", $this->getData('responsive_style'));
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $pushPath ?>css/icons.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo $pushPath ?>css/component.css" />
+<script src="<?php echo $pushPath ?>js/modernizr.custom.js"></script>
+<div class="multi-level-push-menu">
+	<a href="#" id="trigger-<?php echo $groupId ?>" class="menu-trigger"><?php echo $this->__('Menu') ?></a>
+</div>
+<div class="mcp-pushnew-menu">
+	<div class="mp-pusher" id="mp-pusher">
+		<div id="mp-menu-<?php echo $groupId ?>" class="mp-menu">
+			<div class="mp-level">
+				<h2 class="mb-icon mb-icon-world"><?php echo $this->__('All Categories') ?></h2>
+				<?php if ($this->helper('menupro')->isDevelopMode()) : ?>
+					<?php echo $this->getPushnewMenuHtml($groupId) ?>
+				<?php else : ?>
+					<?php echo $this->getStaticHtml($groupId); ?>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="<?php echo $pushPath ?>js/classie.js"></script>
+<script src="<?php echo $pushPath ?>js/mlpushmenu.js"></script>
+<script>
+	new mlPushMenu( document.getElementById( 'mp-menu-<?php echo $groupId ?>' ), document.getElementById( 'trigger-<?php echo $groupId ?>' ), {
+		type : '<?php echo end($responsiveStyle) ?>'
+	} );
+	//new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+</script>

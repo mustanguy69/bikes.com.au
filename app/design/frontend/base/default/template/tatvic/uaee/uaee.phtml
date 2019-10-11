@@ -1,0 +1,1686 @@
+
+
+<?php if ($this->isActive()): 
+
+// <!-- Tatvic Enhanced eCommerce Section start -->
+
+	
+
+		?><script>var EnableUserId = false;</script><?php
+
+		
+
+		if($this->isUserIDEnable()):
+
+			?><script>EnableUserId = true;</script><?php
+
+		endif;
+
+	?>
+
+	 <script type="text/javascript">
+
+	
+
+	if (typeof(jQuery) == 'undefined') {
+
+	   document.write("<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js'></scr"+"ipt>");
+
+    }
+
+	</script> 
+
+	<!-- Google Tag Manager -->	
+
+	
+
+	<?php
+
+
+
+	
+
+		if(!Mage::getStoreConfigFlag('tatvic_uaee/general/tatvic_gtm')):
+
+		?>
+
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W5992F"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+
+})(window,document,'script','dataLayer','GTM-W5992F');</script>
+
+	<?php endif; ?>
+
+<!-- End Google Tag Manager -->
+
+	<script type="text/javascript">
+
+	
+
+        (function(i, s, o, g, r, a, m) {
+
+            i["GoogleAnalyticsObject"] = r;
+
+            i[r] = i[r] || function() {
+
+                (i[r].q = i[r].q || []).push(arguments)
+
+            }, i[r].l = 1 * new Date();
+
+            a = s.createElement(o),
+
+                    m = s.getElementsByTagName(o)[0];
+
+            a.async = 1;
+
+            a.src = g;
+
+            m.parentNode.insertBefore(a, m)
+
+        })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
+
+		
+
+		ga('create', '<?php echo $this->getAccountId(); ?>','<?php echo $this->getRequest()->getHttpHost() ?>');
+
+
+
+		if(EnableUserId){
+
+			<?php $customerID = Mage::getSingleton('customer/session')->getCustomer()->getId(); ?>
+
+			if('<?php echo $customerID; ?>' != ""){
+
+				    ga('set', '&uid', '<?php echo $customerID; ?>' );
+
+			        ga('send', 'event', 'userid', {"nonInteraction": 1});
+
+			}
+
+		}
+
+        ga("require", "displayfeatures");
+
+		ga(function(tracker) {
+
+		tvc_clientID = tracker.get('clientId');
+
+			ga("set", "dimension15", tvc_clientID);
+
+    	});
+
+		/* Set Anonymize ip */
+
+			
+
+			<?php
+
+			if($this->isAnon()){
+
+			?>
+
+				ga('set', 'anonymizeIp', true);
+
+		<?php } ?>
+
+
+
+		
+
+		/* Complete Anonymize ip*/		
+
+		ga('send', 'pageview');
+
+		ga("require", "ec", "ec.js");
+
+
+
+        var $t_jQuery = jQuery.noConflict(); 
+
+		
+
+		<?php // code start for 'brand' get from backend
+
+				if($this->getBrandAttr()  !== ''){
+
+					$brand_code = $this->getBrandAttr();
+
+				}
+
+				else{
+
+					$brand_code = '';
+
+				}
+
+					function t_getBrandValue($product,$t_brand_code){
+
+						
+
+							if($t_brand_code != ''){
+
+								
+
+								$t_brand = $product->getResource()->getAttribute($t_brand_code);
+
+								if($t_brand){
+
+									return addslashes(trim($t_brand ->getFrontend()->getValue($product)));
+
+								}
+
+								else{
+
+									return ;
+
+								}
+
+							}
+
+							else{
+
+								return ;
+
+							}
+
+					}
+
+					
+
+		
+
+			///complete brand code
+
+			
+
+			
+
+			
+
+			
+
+		?>
+
+		<?php
+
+			$action = Mage::app()->getRequest()->getActionName();
+
+			if($action == 'noRoute'):
+
+			   ?>
+
+			   	ga("send", "event", "404_error", "404", document.location.href, {"nonInteraction": 1});
+
+			   <?php
+
+			endif;
+
+		?>
+
+		
+
+			var cg_enable = false;
+
+			var groupIndexed="";
+
+		<?php // for setting up the content grouping 
+
+		
+
+		if($this->isContentGrouping()):
+
+			//$Cgindex = Mage::getStoreConfig('tatvic_uaee/support/Cgindex');
+
+			
+
+			?>cg_enable = true;
+
+				var groupIndexed = 'contentGroup5';
+
+				
+
+			<?php
+
+		endif;
+
+		
+
+		// here is setting of the basic setting of the page for filtering the result
+
+		
+
+	    $tvc_filteroptions = Mage::getBlockSingleton('catalog/product_list_toolbar');
+
+	    $currentpage = (int) ($this->getRequest()->getParam('p')) ? $this->getRequest()->getParam('p') : 1;
+
+
+
+		// Use Magento's session functionality to store the current page
+
+    	$tvc_setpage = Mage::getSingleton('core/session')->setcurrpage($currentpage);
+
+    	$tvc_getpage = Mage::getSingleton('core/session')->getcurrpage();
+
+	
+
+	
+
+		if($this->isPromoEnable()):
+
+		/*===================== Test Promotion =============*/
+
+
+
+	//	$block = Mage::getModel('cms/block')->load('DemoPromo');
+
+		 $promo = addslashes($this->getPromotions());
+
+		 $promo1 = array();
+
+		 $t_internal_promo_data_pipe=  explode("\r\n", $promo);
+
+		for($i=0;$i<sizeof($t_internal_promo_data_pipe);$i++){	
+
+			$temp_Arr=explode(',', $t_internal_promo_data_pipe[$i]);
+
+			
+
+			$t_internal_promo_data_temp=array($temp_Arr[0]=>array(
+
+               "id"=>$temp_Arr[1],
+
+               "name"=>$temp_Arr[2],
+
+               "creative"=>$temp_Arr[3],
+
+               "position"=>$temp_Arr[4])
+
+			   
+
+			   );?>
+
+			 <?php
+
+			   array_push($promo1,$t_internal_promo_data_temp);
+
+		}
+
+	?>
+
+	var t_internalpromo_json = <?php echo json_encode($promo1); ?>;
+
+	$t_jQuery("window").ready(function(){
+
+		exec_tvc_t_ipjson = true;
+
+	});
+
+	
+
+	
+
+	<?php
+
+		endif;
+
+		/*===================== Test Promotion =============*/
+
+		
+
+		
+
+		// here is a code for the home page
+
+		
+
+    $routeName = Mage::app()->getRequest()->getRouteName();
+
+    $identifier = Mage::getSingleton('cms/page')->getIdentifier();
+
+    if ($routeName == 'cms' && $identifier == 'home') :
+
+        $currentCategoryId = Mage::getModel('catalog/layer')->getCurrentCategory()->getId();
+
+		
+
+		?>
+
+		if(cg_enable){
+
+			ga('set', groupIndexed, 'Home Page'); 
+
+		}
+
+        
+
+		<?php
+
+		
+
+        if($this->getHomeId()!='')    : ?> 
+
+		    var tvc_fp = {};
+
+			
+
+        <?php
+
+		
+
+        $category = new Mage_Catalog_Model_Category();
+
+        $category->load($this->getHomeId());
+
+        $collection = $category->getProductCollection();
+
+        $collection->addAttributeToSelect('*')->addAttributeToSort($tvc_filteroptions->getCurrentOrder(),$tvc_filteroptions->getCurrentDirection())->setPageSize($tvc_filteroptions->getLimit())->setCurPage($tvc_getpage);
+
+		$products = $collection->getItems();
+
+        $catName = $category->getName();
+
+    	$catIds = "";
+
+		$position = 1;
+
+		$pos_instock = 0;
+
+		$from_email = Mage::getStoreConfig('trans_email/ident_general/email');
+
+		
+
+		foreach ($products as $_product) { // all product fetch as per feature product on home page.
+
+            $cats = $_product->getCategoryIds();
+
+								foreach ($cats as $category_id) {
+
+								   $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+
+								   $catIds.=$_cat->getName().","; 
+
+								   
+
+								   }
+
+								   if($this->getHomeId() !='2'){
+
+								   $myurl =  $_product->getProductUrl();
+
+								   $t_temp = explode('/', $myurl);
+
+								   $len = sizeof($t_temp);
+
+								   $ele=$t_temp[$len-1]; 
+
+								   $catName = str_replace(' ','-',$catName);
+
+								   $ele = strtolower($catName).'/'.$ele; 
+
+								   $t_temp[$len-1] = $ele; 
+
+								   $P_url = implode('/',$t_temp); 
+
+								   }
+
+								   else{
+
+									$P_url = $_product->getProductUrl();
+
+								   }
+
+								   
+
+								   $inStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getIsInStock();
+
+									if($inStock){
+
+										$t_ss = "In_Stock";
+
+										++$pos_instock;
+
+									}else{
+
+										$t_ss = "Out_of_Stock";
+
+										$pos_instock="";
+
+									}
+
+								   
+
+								   //if($_product->getVisibility() != 1  && $inStock != 0) :
+
+							
+
+								if($_product->getVisibility() != 1 ) :
+
+										$product_sku = $_product->getSku();
+
+										if($product_sku == ""):
+
+											$product_sku = $_product->getId();
+
+										endif;
+
+										
+
+										$t_prod_price = $_product->getPrice();
+
+										$t_final_price = $_product->getFinalPrice();
+
+										$t_prod_discount = 0;
+
+										if($t_final_price < $t_prod_price){
+
+											$t_prod_discount = round(100 - (($t_final_price/$t_prod_price)*100),2);
+
+										}							
+
+							?>	
+
+							t_product_url_2 = "<?php echo trim(Mage::getUrl($_product->getUrlPath()),'/') ?>";
+
+							tvc_fp['<?php echo $P_url; ?>'] = {'tvc_i': '<?php echo addslashes($product_sku); ?>',
+
+								'tvc_n': '<?php echo addslashes($_product->getName()); ?>',
+
+								'tvc_id': '<?php echo $_product->getId(); ?>',
+
+								'tvc_p': '<?php echo $_product->getFinalPrice(); ?>',
+
+								'tvc_c' : '<?php echo  addslashes(trim($catIds,",")); ?>',
+
+								'tvc_po':'<?php echo $position; ?>',
+
+								'tvc_pi':'<?php echo $pos_instock; ?>',
+
+								'tvc_b':'<?php echo t_getBrandValue($_product,$brand_code); ?>',
+
+								'url2':t_product_url_2,
+
+								'visibility':'<?php echo $_product->getVisibility(); ?>',
+
+								'tvc_ss':'<?php echo $t_ss; ?>',
+
+								'tvc_st':"<?php echo round(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product->getId())->getQty());?>",
+
+								'tvc_pd':'<?php echo $t_prod_discount."%"; ?>'
+
+							}
+
+						
+
+			
+
+        <?php  $catIds = "";  $position++; endif;}  $currentpage=1; ?>
+
+			exec_tvc_t_hi = true;
+
+			
+
+			
+
+
+
+    <?php endif; 
+
+    
+
+	endif; 
+
+    
+
+    
+
+		// code starts for the cart page where product remove from cart
+
+		
+
+	if (strpos($this->getRequest()->getPathInfo(), 'checkout/cart/') !== false) : ?>
+
+			
+
+            var tvc_cc = {};
+
+			if(cg_enable){
+
+				ga('set', groupIndexed, 'Cart Page'); 
+
+			}
+
+		
+
+        <?php
+
+        $cart = Mage::getModel('checkout/cart')->getQuote();
+
+		$catIds = "";
+
+        foreach ($cart->getAllItems() as $item) {
+
+		
+
+            $cats = $item->getProduct()->getCategoryIds();
+
+								foreach ($cats as $category_id) {
+
+								   $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+
+								   $catIds.=$_cat->getName().","; 
+
+								   
+
+								   }
+
+								   $_item = $item->getProduct()->getId();
+
+									$_resource = $item->getProduct()->getResource();
+
+									$optionValue = $_resource->getAttributeRawValue($_item, $this->getBrandAttr(), Mage::app()->getStore());
+
+									
+
+									$product_sku = $item->getProduct()->getSku();
+
+									if($product_sku == ""):
+
+										$product_sku = $_item;
+
+									endif;
+
+									
+
+									$inStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($item->getProduct())->getIsInStock();
+
+									if($inStock){
+
+										$t_ss = "In_Stock";
+
+									}else{
+
+										$t_ss = "Out_of_Stock";
+
+									}
+
+								
+
+										$t_prod_price = $item->getProduct()->getPrice();
+
+										$t_final_price = $item->getProduct()->getFinalPrice();
+
+										$t_prod_discount = 0;
+
+										if($t_final_price < $t_prod_price){
+
+											$t_prod_discount = round(100 - (($t_final_price/$t_prod_price)*100),2);
+
+										}
+
+									$productId = $item->getProduct()->getId();
+
+									$_product = Mage::getModel('catalog/product')->load($productId);
+
+			// creates json for cart page
+
+		?>
+
+	
+
+                tvc_cc['<?php echo $item->getProduct()->getProductUrl(); ?>'] = {'tvc_i': '<?php echo addslashes($item->getProduct()->getSku()); ?>',
+
+                    'tvc_n': '<?php echo addslashes($item->getProduct()->getName()); ?>',
+
+                    'tvc_id': '<?php echo $item->getProduct()->getId(); ?>',
+
+                    'tvc_q': '<?php echo $item->getQty(); ?>',
+
+                    'tvc_p': '<?php echo $item->getProduct()->getFinalPrice(); ?>',
+
+					'tvc_c':'<?php echo addslashes(trim($catIds,",")); ?>',
+
+					'tvc_b':'<?php echo addslashes(t_getBrandValue($_product,$brand_code)); ?>',
+
+					'tvc_pd':'<?php echo $t_prod_discount."%"; ?>',
+
+					'tvc_ss':'<?php echo $t_ss; ?>',
+
+					'tvc_st':"<?php echo round(Mage::getModel('cataloginventory/stock_item')->loadByProduct($item->getProduct()->getId())->getQty());?>"
+
+								
+
+                }
+
+		
+
+            <?php $catIds = "";
+
+        }
+
+        ?>
+
+           exec_tvc_t_dc = true;
+
+
+
+    <?php endif; 
+
+	
+
+		// code starts for category pages..
+
+	if (Mage::app()->getRequest()->getControllerName() === "category"): ?>
+
+			if(cg_enable){
+
+			 ga('set', groupIndexed, 'Category Page'); 
+
+			}
+
+            var tvc_pgc = {};		
+
+			
+
+          
+
+        <?php
+
+	
+
+		
+
+        $_helper = $this->helper('catalog/output');
+
+        $_category_detail = Mage::registry('current_category');
+
+        $catId = $_category_detail->getId();
+
+        $catName = $_category_detail->getName();
+
+        $category = Mage::getModel('catalog/category')->load($catId);
+
+        $collection = $category->getProductCollection()->addAttributeToSelect('*')->addAttributeToSort($tvc_filteroptions->getCurrentOrder(),$tvc_filteroptions->getCurrentDirection())->setPageSize($tvc_filteroptions->getLimit())->setCurPage($tvc_getpage);
+
+        $catIds = "";
+
+		$position = 1;
+
+		$pos_instock = 0;
+
+        $products = $collection->getItems();
+
+		
+
+        foreach ($products as $product) { // fetch all the data of the category
+
+				$cats = $product->getCategoryIds();
+
+								foreach ($cats as $category_id) {
+
+								   $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+
+								   $catIds.=$_cat->getName().","; 
+
+								   }
+
+								   $inStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($product)->getIsInStock();
+
+								   $product_sku = $product->getSku();
+
+									if($product_sku == ""):
+
+										$product_sku = $product->getId();
+
+									endif;
+
+						
+
+					//product filter
+
+					
+
+					//if($product->getVisibility() != 1  && $inStock != 0) :
+
+					if($product->getVisibility() != 1) :
+
+										$t_prod_price = $product->getPrice();
+
+										$t_final_price = $product->getFinalPrice();
+
+										$t_prod_discount = 0;
+
+										if($t_final_price < $t_prod_price){
+
+											$t_prod_discount = round(100 - (($t_final_price/$t_prod_price)*100),2);
+
+										}
+
+										if($inStock){
+
+											$t_ss = "In_Stock";
+
+											++$pos_instock;
+
+										}else{
+
+											$t_ss = "Out_of_Stock";
+
+											$pos_instock = "";
+
+										}
+
+										
+
+										// create json for thge category page
+
+					?>
+
+					
+
+               t_cat_url = "<?php echo $product->getProductUrl(); ?>";
+
+				t_product_url_2 = "<?php echo trim(Mage::getUrl($product->getUrlPath()),"/"); ?>";
+
+                tvc_pgc[t_cat_url] = {'tvc_i': '<?php echo addslashes($product_sku); ?>',
+
+                    'tvc_n': '<?php echo addslashes($product->getName()); ?>',
+
+                    'tvc_p': '<?php echo $product->getFinalPrice(); ?>',
+
+                    'tvc_id': '<?php echo $product->getId(); ?>',
+
+					'tvc_c':'<?php echo addslashes(trim($catIds,",")); ?>',
+
+					'tvc_po':'<?php echo $position; ?>',
+
+					'tvc_pi':'<?php echo $pos_instock; ?>',
+
+					'tvc_b':'<?php echo addslashes(t_getBrandValue($product,$brand_code)); ?>',
+
+					'url2':t_product_url_2,
+
+					'visibility':'<?php echo $product->getVisibility(); ?>',
+
+					'tvc_ss':'<?php echo $t_ss; ?>',
+
+					'tvc_st':"<?php echo round(Mage::getModel('cataloginventory/stock_item')->loadByProduct($product->getId())->getQty());?>",
+
+					'tvc_pd':'<?php echo $t_prod_discount."%"; ?>'
+
+								
+
+                }
+
+
+
+
+
+
+
+
+
+        <?php  $catIds = ""; $position++; $currentpage = 1; endif;} ?>
+
+			catName = "<?php echo $catName; ?>";
+
+			
+
+			exec_tvc_t_c = true;
+
+            
+
+		
+
+            
+
+        
+
+    <?php endif; 
+
+	
+
+	//code for the search page
+
+	
+
+    if (strpos($this->getRequest()->getPathInfo(), '/catalogsearch/result/') !== false):
+
+      
+
+		$_q = Mage::app()->getRequest()->getQuery('q');
+
+        ?>
+
+			if(cg_enable){
+
+				ga('set', groupIndexed, 'Search Page');
+
+			}
+
+            var tvc_sc = {};
+
+        
+
+        <?php
+
+		$position = 1;
+
+		$pos_instock = 0;
+
+        $_Products = Mage::getModel('catalog/product')
+
+                ->getCollection()
+
+                ->addAttributeToSelect('*')
+
+                ->addAttributeToFilter(
+
+                array(
+
+                    array('attribute' => 'name', 'like' => '%' . $_q . '%'),
+
+                    array('attribute' => 'price', 'like' => '%' . $_q . '%'),
+
+                    array('attribute' => 'description', 'like' => '%' . $_q . '%'),
+
+                    array('attribute' => 'url_key', 'like' => '%' . $_q . '%'),
+
+                    array('attribute' => 'sku', 'like' => '%' . $_q . '%'),
+
+                    array('attribute' => 'entity_id', 'like' => '%' . $_q . '%')
+
+                )
+
+        )->setPageSize($tvc_filteroptions->getLimit())->setCurPage($tvc_getpage);
+
+		
+
+			$catIds = "";
+
+	    foreach ($_Products as $_product) { // fetch the data as per search result and query
+
+					$cats = $_product->getCategoryIds();
+
+								foreach ($cats as $category_id) {
+
+								   $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+
+								   $catIds.=$_cat->getName().","; 
+
+							
+
+								   }
+
+								    $inStock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getIsInStock();
+
+					
+
+					//product filter
+
+				//if($_product->getVisibility() > 2  && $inStock != 0) :
+
+						if($_product->getVisibility() > 2 ) :
+
+								$product_sku = $_product->getSku();
+
+								if($product_sku == ""):
+
+									$product_sku = $_product->getId();
+
+								endif;
+
+								if($inStock != 0){
+
+									$t_ss = "In_Stock";
+
+									++$pos_instock;
+
+								}
+
+								else{
+
+									$t_ss = "Out_of_Stock";
+
+									$pos_instock = "";
+
+								}
+
+								$t_prod_price = $_product->getPrice();
+
+										$t_final_price = $_product->getFinalPrice();
+
+										$t_prod_discount = 0;
+
+										if($t_final_price < $t_prod_price){
+
+											$t_prod_discount = round(100 - (($t_final_price/$t_prod_price)*100),2);
+
+										}
+
+				?>	
+
+			
+
+					t_product_url_2 = "<?php echo trim(Mage::getUrl($_product->getUrlPath()),"/"); ?>";
+
+                tvc_sc['<?php echo $_product->getProductUrl(); ?>'] = {'tvc_i': '<?php echo addslashes($product_sku); ?>',
+
+                    'tvc_n': '<?php echo addslashes($_product->getName()); ?>',
+
+                    'tvc_p': '<?php echo $_product->getFinalPrice(); ?>',
+
+                    'tvc_id': '<?php echo $_product->getId(); ?>',
+
+					'tvc_c':'<?php echo addslashes(trim($catIds,",")); ?>',
+
+					'tvc_po':'<?php echo $position; ?>',
+
+					'tvc_pi':'<?php echo $pos_instock; ?>',
+
+					'tvc_b':'<?php echo t_getBrandValue($_product,$brand_code); ?>',
+
+					'url2':t_product_url_2,
+
+					'visibility':'<?php echo $_product->getVisibility(); ?>',
+
+					'tvc_ss':'<?php echo $t_ss; ?>',
+
+					'tvc_st':"<?php echo round(Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product->getId())->getQty());?>",
+
+					'tvc_pd':'<?php echo $t_prod_discount."%" ; ?>'
+
+                }
+
+				
+
+
+
+        <?php $catIds = ""; $position++;endif; } $currentpage = 1; ?>
+
+           exec_tvc_t_cs = true;
+
+           
+
+    <?php endif;
+
+    
+
+	// code for the product page
+
+	
+
+	if ($this->getProduct()): ?>
+
+			if(cg_enable){
+
+				ga('set', groupIndexed, 'Product Page');
+
+			}
+
+            var tvc_po = {};
+
+			     <?php
+
+		
+
+		
+
+		// get metadata,configuration of the user store based on cookie
+
+		
+
+		if(isset($_COOKIE['tvc_metadata'])){
+
+		
+
+		$tvc_metadata = array(
+
+							  'plugin_version'=>'v3.0.5',
+
+							  'current_pkg'=>Mage::getDesign()->getPackageName(),
+
+							  'current_theme'=>Mage::getDesign()->getTheme('frontend'),
+
+							  'Plugin_data'=>array('checkout_url'=>Mage::getStoreConfig('tatvic_uaee/ecommerce/checkout_url'),
+
+													'success_url'=>Mage::getStoreConfig('tatvic_uaee/ecommerce/success_url'),
+
+													'Homepage_ID'=>Mage::getStoreConfig('tatvic_uaee/ecommerce/home_id'),
+
+													'code_of_brand'=>Mage::getStoreConfig('tatvic_uaee/ecommerce/brand'),
+
+													'Uninstall_mail'=>Mage::getStoreConfig('tatvic_uaee/general/uninstallMail'),
+
+													'Install_mail'=>Mage::getStoreConfig('tatvic_uaee/general/installMail'),
+
+													'promo_data'=>Mage::getStoreConfig('tatvic_uaee/support/promotions')
+
+													));
+
+							  
+
+		//==============================
+
+		?>var tvc_metadata = <?php echo json_encode($tvc_metadata); ?>;
+
+		
+
+		<?php
+
+		
+
+		}//end cookie block
+
+	
+
+        
+
+		
+
+        $sku_id = $this->getProduct()->getId();
+
+        $product = Mage::getModel('catalog/product')->load($sku_id);
+
+        $sku = $product->getSku();
+
+		$catIds = "";
+
+		
+
+								$product_sku = $product->getSku();
+
+								if($product_sku == ""):
+
+									$product_sku = $sku_id;
+
+								endif;
+
+								
+
+								$t_prod_price = $this->getProduct()->getPrice();
+
+										$t_final_price = $this->getProduct()->getFinalPrice();
+
+										$t_prod_discount = 0;
+
+										if($t_final_price < $t_prod_price){
+
+											$t_prod_discount = round(100 - (($t_final_price/$t_prod_price)*100),2);
+
+										}
+
+			
+
+								
+
+					$cats = $this->getProduct()->getCategoryIds();
+
+								foreach ($cats as $category_id) {
+
+								   $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+
+								   $catIds.=$_cat->getName().","; 
+
+								   
+
+								   }
+
+								   
+
+								   // creates json for product page.
+
+								   ?>
+
+            tvc_po = {
+
+                'tvc_i': '<?php echo addslashes($product_sku); ?>',
+
+                'tvc_n': '<?php echo addslashes($this->getProduct()->getName()) ?>',
+
+                'tvc_p': '<?php echo $this->getProduct()->getFinalPrice() ?>',
+
+				'tvc_c':'<?php echo addslashes(trim($catIds,",")); ?>',
+
+				'tvc_b': '<?php echo t_getBrandValue($this->getProduct(),$brand_code); ?>',
+
+				'visibility':'<?php echo $this->getProduct()->getVisibility(); ?>',
+
+				'tvc_ss':"<?php echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($sku_id)->getIsInStock() ? 'In_Stock' : 'Out_of_Stock'; ?>",
+
+				'tvc_st':"<?php echo round(Mage::getModel('cataloginventory/stock_item')->loadByProduct($sku_id)->getQty());?>",
+
+				'tvc_pd':'<?php echo $t_prod_discount."%"; ?>'
+
+            }
+
+			ga('set', '&cu', '<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>');
+
+           
+
+           exec_tvc_t_ppv = true;
+
+
+
+            
+
+
+
+
+
+
+
+    <?php  $catIds = ""; endif; 
+
+
+
+	// code for the checkout page
+
+	
+
+	if ($this->isCheckout() && !$this->isEcommerce()): 
+
+		
+
+	?>		if(cg_enable){
+
+				ga('set', groupIndexed, 'Checkout Page');
+
+			 }
+
+			 
+
+            var tvc_oc = {};
+
+			
+
+			<?php
+
+			
+
+			if(Mage::getStoreConfigFlag('tatvic_uaee/support/FormTracking')): 
+
+			?>
+
+			
+
+				exec_tvc_t_fft = true;
+
+				
+
+			
+
+        <?php
+
+		
+
+			endif;
+
+		
+
+        $cart = Mage::getModel('checkout/cart')->getQuote();
+
+			
+
+		if ($this->helper('customer')->isLoggedIn()): ?>
+
+			var checkoutStep = 2;
+
+			var LoggedIn = true;
+
+			
+
+			<?php else : ?>
+
+			var checkoutStep = 1;
+
+			var LoggedIn = false;
+
+
+
+			<?php endif; 
+
+			
+
+			$catIds = "";
+
+			$items = $cart->getAllVisibleItems();
+
+        foreach ($items as $itemId=>$item) {
+
+
+
+            $productId = $item->getProduct()->getId();
+
+            $productPrice = $item->getProduct()->getFinalPrice();
+
+            $productSku = $item->getProduct()->getSku();
+
+            $productName = $item->getProduct()->getName();
+
+            $productQty = $item->getQty();
+
+			//$productBrand = $item->getData('brand');
+
+			
+
+			$_product = Mage::getModel('catalog/product')->load($productId);
+
+			 $cats = $item->getProduct()->getCategoryIds();
+
+								foreach ($cats as $category_id) {
+
+								   $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+
+								
+
+								   $catIds.=$_cat->getName().","; 
+
+								   
+
+								   }
+
+									$product_sku = $item->getProduct()->getSku();
+
+									if($product_sku == ""):
+
+										$product_sku = $_item;
+
+									endif;
+
+									
+
+									$t_prod_price = $item->getProduct()->getPrice();
+
+										$t_final_price = $item->getProduct()->getFinalPrice();
+
+										$t_prod_discount = 0;
+
+										if($t_final_price < $t_prod_price){
+
+											$t_prod_discount = round(100 - (($t_final_price/$t_prod_price)*100),2);
+
+									}
+
+					
+
+					// creates json for the checkout page
+
+			?>
+
+								
+
+                 tvc_oc['<?php echo $item->getProduct()->getProductUrl(); ?>'] = {
+
+                    'tvc_i': '<?php echo addslashes($product_sku) ?>',
+
+                    'tvc_n': '<?php echo addslashes($productName) ?>',
+
+                    'tvc_p': '<?php echo $productPrice ?>',
+
+                    'tvc_q': '<?php echo $productQty ?>',
+
+					'tvc_c':'<?php echo addslashes(trim($catIds,",")); ?>',
+
+					'tvc_b':'<?php echo addslashes(t_getBrandValue($_product,$brand_code)); ?>',
+
+					
+
+					'tvc_pd':'<?php echo $t_prod_discount."%"; ?>',
+
+					'tvc_ss':"<?php echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($item->getProduct())->getIsInStock() ?'In_Stock' : 'Out_of_stock'; ?>",
+
+					'tvc_st':"<?php echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($item->getProduct())->getQty();?>"
+
+					
+
+                }
+
+				
+
+        <?php $catIds=""; } 
+
+		
+
+		
+
+		?>
+
+            exec_tvc_t_cobj = true;
+
+		
+
+		
+
+    <?php endif; 
+
+	
+
+	//Code for Thank you page or Success page 
+
+	
+
+     if ($this->isEcommerce()): 
+
+
+
+        
+
+        $_order = $this->getOrder();
+
+        $order = Mage::getModel('sales/order')->load($_order->getData($this->getTransactionIdField()));
+
+        $items = $order->getAllVisibleItems();
+
+        $data = array();
+
+		
+
+		
+
+		$payment_method = $_order->getPayment()->getMethodInstance()->getTitle();
+
+		$customerID = Mage::getSingleton('customer/session')->getCustomer()->getId();
+
+		
+
+		$lastOrder = Mage::getModel('sales/order')->load(Mage::getSingleton('checkout/session')->getLastOrderId());
+
+		$billingAddress =$lastOrder->getBillingAddress();
+
+		
+
+		$billingCity = addslashes($billingAddress['city']);
+
+		
+
+		$billingCountry = addslashes($billingAddress['country_id']);
+
+		
+
+		$shippingAddress = $lastOrder->getShippingAddress();
+
+		$shippingCity = addslashes($shippingAddress['city']);
+
+		$shippingCountry = addslashes($shippingAddress['country_id']);
+
+		
+
+		if($customerID != ''){
+
+		?>var tvc_user_type = 'Registerd User';<?php
+
+		}else{
+
+		?>var tvc_user_type = 'Guest User';<?php
+
+		}
+
+		//customer type - new or repeater
+
+		?>
+
+		var t_cust_type = "";
+
+		<?php
+
+		if(Mage::getSingleton('customer/session')->getCustomer()->getId() != ''):
+
+			$customer = Mage::getSingleton('customer/session')->getCustomer();
+
+			
+
+			$orders = Mage::getResourceModel('sales/order_collection')
+
+				->addFieldToSelect('*')
+
+				->addFieldToFilter('customer_id', $customer->getId());
+
+			?>
+
+			
+
+			<?php
+
+		
+
+			if (!$orders->getSize())
+
+			{ 
+
+				// has never placed an order 
+
+			?>
+
+				t_cust_type = "New_Customer";
+
+			
+
+			<?php
+
+			}
+
+			else{
+
+				// if placed order
+
+			?>
+
+				t_cust_type = "Repeat_Customer";
+
+			<?php
+
+			}
+
+		
+
+		endif;
+
+		
+
+        $i = 0;
+
+        ?>
+
+			var t_billCity = "<?php echo $billingCity; ?>";
+
+			var t_billCountry = "<?php echo $billingCountry; ?>";
+
+			var t_shipCity = "<?php echo $shippingCity; ?>";
+
+			var t_shipCountry = "<?php echo $shippingCountry; ?>";
+
+			var tvc_pm = "<?php echo $payment_method; ?>";
+
+			
+
+			if(cg_enable){
+
+				ga('set', groupIndexed, 'Thankyou Page'); 
+
+			}
+
+            ga('set', '&cu', '<?php echo $_order->getOrderCurrencyCode(); ?>');
+
+            var tvc_ch = {};
+
+        <?php
+
+		$catIds = "";
+
+		
+
+        foreach ($items as $itemId => $item) {
+
+            ?>
+
+			<?php $cats = $item->getProduct()->getCategoryIds();
+
+								foreach ($cats as $category_id) {
+
+								   $_cat = Mage::getModel('catalog/category')->load($category_id) ;
+
+								   $catIds.=$_cat->getName().","; 
+
+								   
+
+								   }
+
+								   $product_sku = $item->getSku();
+
+									if($product_sku == ""):
+
+										$product_sku = $item->getId();
+
+									endif;
+
+									
+
+									$productId = $item->getProduct()->getId();
+
+									$_product = Mage::getModel('catalog/product')->load($productId);
+
+								
+
+										$t_prod_price = $item->getProduct()->getPrice();
+
+										$t_final_price = $item->getProduct()->getFinalPrice();
+
+										$t_prod_discount = 0;
+
+										if($t_final_price < $t_prod_price){
+
+											$t_prod_discount = round(100 - (($t_final_price/$t_prod_price)*100),2);
+
+										}
+
+								  
+
+						// creates json for the success page or thank you page
+
+									
+
+								  ?>
+								  
+				ga('ec:addProduct', {
+				  'id': '<?php echo $item->getProductId();?>',
+				  'name': '<?php echo $item->getName();?>',
+				  'sku': '<?php echo addslashes($item->getSku());?>',
+				  'category': '<?php echo $catIds;?>',
+				  'brand': '<?php echo addslashes(t_getBrandValue($_product,$brand_code)); ?>',
+				  'price': '<?php echo $item->getProduct()->getFinalPrice();?>',
+				  'quantity': <?php echo $item->getQtyOrdered();?>
+				});
+
+				tvc_ch['<?php echo $i ?>'] = {
+
+                    'tvc_i': '<?php echo addslashes($product_sku); ?>',
+
+                    'tvc_n': '<?php echo addslashes($item->getName()); ?>',
+
+                    'tvc_p': '<?php echo $item->getProduct()->getFinalPrice(); ?>',
+
+                    'tvc_q': '<?php echo $item->getQtyToInvoice(); ?>',
+
+                    'tvc_qq' : '<?php echo intVal($item->getQtyOrdered()); ?>',
+
+					'tvc_c':'<?php echo addslashes(trim($catIds,",")); ?>',
+
+					'tvc_b': '<?php echo addslashes(t_getBrandValue($_product,$brand_code)); ?>',
+
+					'tvc_pd':'<?php echo $t_prod_discount."%"; ?>',
+
+					'tvc_ss':"<?php echo Mage::getModel('cataloginventory/stock_item')->loadByProduct($item->getProduct())->getIsInStock() ?'In_Stock' : 'Out_of_stock'; ?>",
+
+					'tvc_st':"<?php echo round(Mage::getModel('cataloginventory/stock_item')->loadByProduct($item->getProduct())->getQty());?>"
+
+                }
+
+				
+
+            <?php $catIds="";
+
+            $data[$i]['name'] = $item->getName();
+
+        
+
+            $data[$i]['price'] = $item->getProduct()->getFinalPrice();
+
+        
+
+            $data[$i]['sku'] = $item->getSku();
+
+        
+
+            $data[$i]['id'] = $item->getProductId();
+
+        
+
+            $data[$i]['qty'] = $item->getQtyOrdered();
+
+			
+
+            $i++;
+			
+		?>
+		<?php 
+
+        }
+
+		$catIds = "";
+
+        ?>
+
+					var tvc_td = {};
+
+                    tvc_td = {
+
+                        'tvc_tid': '<?php echo $_order->getIncrementId() ?>',
+
+                        'tvc_sn': '<?php echo addslashes(Mage::app()->getStore()->getName()) ?>',
+
+                        'tvc_rev': '<?php echo $_order->getGrandTotal() ?>',
+
+                        'tvc_tt': '<?php echo $_order->getTaxAmount() ?>',
+
+                        'tvc_sc': '<?php echo $_order->getShippingInclTax() ?>',
+
+                        'tvc_dc': '<?php echo $_order->getCouponCode(); ?>'
+
+                    }
+
+					
+
+					exec_tvc_t_thnx = true;
+						
+					ga('ec:setAction', 'purchase', {
+					  'id': '<?php echo $_order->getIncrementId(); ?>',
+					  'affiliation': '<?php echo addslashes(Mage::app()->getStore()->getName()); ?>',
+					  'revenue': '<?php echo $_order->getGrandTotal(); ?>',
+					  'tax': '<?php echo $_order->getTaxAmount(); ?>',
+					  'shipping': '<?php echo $_order->getShippingInclTax(); ?>',
+					  'coupon': '<?php echo $_order->getCouponCode(); ?>'    // User added a coupon at checkout.
+					});
+					ga('send', 'pageview');     // Send transaction data with initial pageview.
+
+    <?php endif; ?>
+
+    </script>
+
+    
+
+    <!--Tatvic Enhanced eCommerce Section end -->
+
+<?php 
+
+
+
+endif; ?>

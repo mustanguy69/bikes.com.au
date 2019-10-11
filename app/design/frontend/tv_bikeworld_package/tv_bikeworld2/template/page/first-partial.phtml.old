@@ -1,0 +1,12 @@
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate("page/html/homecarousel.phtml")->toHtml(); ?> 
+
+		<!-- Brand Logo Slider -->
+		<section class="main-wrapper" style="padding-top:40px;">
+			<h2 style="display:none;">Brand Logo Slider</h2>
+            <div class="container">
+				<?php echo $this->getChildHtml('brand_logo') ?>
+            </div>
+        </section>
+		<!-- End of Brand Logo Slider -->
+        <?php echo $this->getChildHtml('footer') ?>
+

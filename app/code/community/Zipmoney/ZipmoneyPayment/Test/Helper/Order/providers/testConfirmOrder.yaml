@@ -1,0 +1,53 @@
+-   # product out of stock, cannot create order
+  - 1       # store id
+  - null    # customer id
+  - 101     # quote id
+  - flatrate_flatrate   # shipping method
+  - s:1943:"{"consumer":{"phone":"0884619343","email":"zipmoney+unittest@aligent.com.au","first_name":null,"last_name":null,"lifetime_sales_amount":0,"average_sale_value":0,"maximum_sale_value":0,"lifetime_sales_units":0,"lifetime_sales_refunded_amount":0,"declined_before":false,"chargeback_before":false},"shipping_address":{"first_name":"Fname","last_name":"Lname","email":"zipmoney+unittest@aligent.com.au","line1":"162 Flinders Street","line2":"","country":"AU","zip":"5000","city":"Adelaide","state":"SA","options":[{"name":"Flat Rate - Fixed","id":"flatrate_flatrate","value":5,"tax":0}],"selected_option_id":"flatrate_flatrate"},"billing_address":{"first_name":"Fname","last_name":"Lname","email":"zipmoney+unittest@aligent.com.au","line1":"162 Flinders Street","line2":"","country":"AU","zip":"5000","city":"Adelaide","state":"SA"},"order":{"id":"100000001","tax":0,"shipping_value":5,"shipping_tax":0,"total":55,"detail":[{"id":"1011","name":null,"sku":"testSkuProd101","description":false,"price":50,"quantity":1,"discount_percent":0,"discount_amount":0,"category":"","image_url":"http:\/\/local.zip.com\/media\/catalog\/product\/cache\/1\/thumbnail\/9df78eab33525d08d6e5fb8d27136e95\/images\/catalog\/product\/placeholder\/thumbnail.jpg"}]},"success_url":"http:\/\/local.zip.com\/zipmoney\/Express\/success\/?quote_id=101&token=6df228309ea11380cb6755365cb316ec","cart_url":"http:\/\/local.zip.com\/checkout\/cart\/","refer_url":"http:\/\/local.zip.com\/zipmoney\/Express\/underReview\/?quote_id=101&token=6df228309ea11380cb6755365cb316ec","cancel_url":"http:\/\/local.zip.com\/zipmoney\/Quote\/cancelQuote\/?quote_id=101&token=6df228309ea11380cb6755365cb316ec","error_url":"http:\/\/local.zip.com\/zipmoney\/Express\/error\/","decline_url":"http:\/\/local.zip.com\/zipmoney\/Quote\/decline\/?quote_id=101&token=6df228309ea11380cb6755365cb316ec","quote_id":"101","merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI="}";
+  - true    # exception
+  - out of stock    # error message
+
+-   # create order for a guest
+  - 1       # store id
+  - null    # customer id
+  - 102     # quote id
+  - flatrate_flatrate   # shipping method
+  - s:1943:"{"consumer":{"phone":"0884619343","email":"zipmoney+unittest@aligent.com.au","first_name":null,"last_name":null,"lifetime_sales_amount":0,"average_sale_value":0,"maximum_sale_value":0,"lifetime_sales_units":0,"lifetime_sales_refunded_amount":0,"declined_before":false,"chargeback_before":false},"shipping_address":{"first_name":"Fname","last_name":"Lname","email":"zipmoney+unittest@aligent.com.au","line1":"162 Flinders Street","line2":"","country":"AU","zip":"5000","city":"Adelaide","state":"SA","options":[{"name":"Flat Rate - Fixed","id":"flatrate_flatrate","value":5,"tax":0}],"selected_option_id":"flatrate_flatrate"},"billing_address":{"first_name":"Fname","last_name":"Lname","email":"zipmoney+unittest@aligent.com.au","line1":"162 Flinders Street","line2":"","country":"AU","zip":"5000","city":"Adelaide","state":"SA"},"order":{"id":"100000002","tax":0,"shipping_value":5,"shipping_tax":0,"total":55,"detail":[{"id":"1021","name":null,"sku":"testSkuProd102","description":false,"price":50,"quantity":1,"discount_percent":0,"discount_amount":0,"category":"","image_url":"http:\/\/local.zip.com\/media\/catalog\/product\/cache\/1\/thumbnail\/9df78eab33525d08d6e5fb8d27136e95\/images\/catalog\/product\/placeholder\/thumbnail.jpg"}]},"success_url":"http:\/\/local.zip.com\/zipmoney\/Express\/success\/?quote_id=102&token=6df228309ea11380cb6755365cb316ec","cart_url":"http:\/\/local.zip.com\/checkout\/cart\/","refer_url":"http:\/\/local.zip.com\/zipmoney\/Express\/underReview\/?quote_id=102&token=6df228309ea11380cb6755365cb316ec","cancel_url":"http:\/\/local.zip.com\/zipmoney\/Quote\/cancelQuote\/?quote_id=102&token=6df228309ea11380cb6755365cb316ec","error_url":"http:\/\/local.zip.com\/zipmoney\/Express\/error\/","decline_url":"http:\/\/local.zip.com\/zipmoney\/Quote\/decline\/?quote_id=102&token=6df228309ea11380cb6755365cb316ec","quote_id":"102","merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI="}";
+  - false   # exception
+  - null    # error message
+
+-   # create order and register customer
+  - 1       # store id
+  - null    # customer id
+  - 103     # quote id
+  - flatrate_flatrate   # shipping method
+  - s:1943:"{"consumer":{"phone":"0884619343","email":"zipmoney+unittest@aligent.com.au","first_name":null,"last_name":null,"lifetime_sales_amount":0,"average_sale_value":0,"maximum_sale_value":0,"lifetime_sales_units":0,"lifetime_sales_refunded_amount":0,"declined_before":false,"chargeback_before":false},"shipping_address":{"first_name":"Fname","last_name":"Lname","email":"zipmoney+unittest@aligent.com.au","line1":"162 Flinders Street","line2":"","country":"AU","zip":"5000","city":"Adelaide","state":"SA","options":[{"name":"Flat Rate - Fixed","id":"flatrate_flatrate","value":5,"tax":0}],"selected_option_id":"flatrate_flatrate"},"billing_address":{"first_name":"Fname","last_name":"Lname","email":"zipmoney+unittest@aligent.com.au","line1":"162 Flinders Street","line2":"","country":"AU","zip":"5000","city":"Adelaide","state":"SA"},"order":{"id":"100000003","tax":0,"shipping_value":5,"shipping_tax":0,"total":55,"detail":[{"id":"1031","name":null,"sku":"testSkuProd102","description":false,"price":50,"quantity":1,"discount_percent":0,"discount_amount":0,"category":"","image_url":"http:\/\/local.zip.com\/media\/catalog\/product\/cache\/1\/thumbnail\/9df78eab33525d08d6e5fb8d27136e95\/images\/catalog\/product\/placeholder\/thumbnail.jpg"}]},"success_url":"http:\/\/local.zip.com\/zipmoney\/Express\/success\/?quote_id=103&token=6df228309ea11380cb6755365cb316ec","cart_url":"http:\/\/local.zip.com\/checkout\/cart\/","refer_url":"http:\/\/local.zip.com\/zipmoney\/Express\/underReview\/?quote_id=103&token=6df228309ea11380cb6755365cb316ec","cancel_url":"http:\/\/local.zip.com\/zipmoney\/Quote\/cancelQuote\/?quote_id=103&token=6df228309ea11380cb6755365cb316ec","error_url":"http:\/\/local.zip.com\/zipmoney\/Express\/error\/","decline_url":"http:\/\/local.zip.com\/zipmoney\/Quote\/decline\/?quote_id=103&token=6df228309ea11380cb6755365cb316ec","quote_id":"103","merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI="}";
+  - false   # exception
+  - null    # error message
+
+-   # create order for logged in customer
+  - 1       # store id
+  - 2       # customer id
+  - 104     # quote id
+  - flatrate_flatrate   # shipping method
+  - s:1649:"{"shipping_address":{"first_name":"Fname","last_name":"Lname","email":"zipmoney+unittest@aligent.com.au","line1":"162 Flinders Street","line2":"","country":"AU","zip":"5000","city":"Adelaide","state":"SA","options":[{"name":"Flat Rate - Fixed","id":"flatrate_flatrate","value":5,"tax":0}],"selected_option_id":"flatrate_flatrate"},"billing_address":{"first_name":"Fname","last_name":"Lname","email":"zipmoney+unittest@aligent.com.au","line1":"162 Flinders Street","line2":"","country":"AU","zip":"5000","city":"Adelaide","state":"SA"},"order":{"id":"100000004","tax":0,"shipping_value":5,"shipping_tax":0,"total":55,"detail":[{"id":"1041","name":null,"sku":"testSkuProd102","description":false,"price":50,"quantity":1,"discount_percent":0,"discount_amount":0,"category":"","image_url":"http:\/\/local.zip.com\/media\/catalog\/product\/cache\/1\/thumbnail\/9df78eab33525d08d6e5fb8d27136e95\/images\/catalog\/product\/placeholder\/thumbnail.jpg"}]},"success_url":"http:\/\/local.zip.com\/zipmoney\/Express\/success\/?quote_id=104&token=6df228309ea11380cb6755365cb316ec","cart_url":"http:\/\/local.zip.com\/checkout\/cart\/","refer_url":"http:\/\/local.zip.com\/zipmoney\/Express\/underReview\/?quote_id=104&token=6df228309ea11380cb6755365cb316ec","cancel_url":"http:\/\/local.zip.com\/zipmoney\/Quote\/cancelQuote\/?quote_id=104&token=6df228309ea11380cb6755365cb316ec","error_url":"http:\/\/local.zip.com\/zipmoney\/Express\/error\/","decline_url":"http:\/\/local.zip.com\/zipmoney\/Quote\/decline\/?quote_id=104&token=6df228309ea11380cb6755365cb316ec","quote_id":"104","merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI="}";
+  - false   # exception
+  - null    # error message
+
+-   # incorrect quote id, cannot create order
+  - 1       # store id
+  - 2       # customer id
+  - 500     # quote id
+  - flatrate_flatrate   # shipping method
+  - null
+  - true    # exception
+  - Cannot find the quote.    # error message
+
+-   # incorrect quote state, cannot create order
+  - 1       # store id
+  - 2       # customer id
+  - 105     # quote id
+  - flatrate_flatrate   # shipping method
+  - s:1649:"{"shipping_address":{"first_name":"Fname","last_name":"Lname","email":"zipmoney+unittest@aligent.com.au","line1":"162 Flinders Street","line2":"","country":"AU","zip":"5000","city":"Adelaide","state":"SA","options":[{"name":"Flat Rate - Fixed","id":"flatrate_flatrate","value":5,"tax":0}],"selected_option_id":"flatrate_flatrate"},"billing_address":{"first_name":"Fname","last_name":"Lname","email":"zipmoney+unittest@aligent.com.au","line1":"162 Flinders Street","line2":"","country":"AU","zip":"5000","city":"Adelaide","state":"SA"},"order":{"id":"100000005","tax":0,"shipping_value":5,"shipping_tax":0,"total":55,"detail":[{"id":"1041","name":null,"sku":"testSkuProd102","description":false,"price":50,"quantity":1,"discount_percent":0,"discount_amount":0,"category":"","image_url":"http:\/\/local.zip.com\/media\/catalog\/product\/cache\/1\/thumbnail\/9df78eab33525d08d6e5fb8d27136e95\/images\/catalog\/product\/placeholder\/thumbnail.jpg"}]},"success_url":"http:\/\/local.zip.com\/zipmoney\/Express\/success\/?quote_id=104&token=6df228309ea11380cb6755365cb316ec","cart_url":"http:\/\/local.zip.com\/checkout\/cart\/","refer_url":"http:\/\/local.zip.com\/zipmoney\/Express\/underReview\/?quote_id=104&token=6df228309ea11380cb6755365cb316ec","cancel_url":"http:\/\/local.zip.com\/zipmoney\/Quote\/cancelQuote\/?quote_id=104&token=6df228309ea11380cb6755365cb316ec","error_url":"http:\/\/local.zip.com\/zipmoney\/Express\/error\/","decline_url":"http:\/\/local.zip.com\/zipmoney\/Quote\/decline\/?quote_id=105&token=6df228309ea11380cb6755365cb316ec","quote_id":"104","merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI="}";
+  - true    # exception
+  - The quote is not active.    # error message

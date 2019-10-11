@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+
+	<default>
+		<reference name="head">
+            <action method="addItem" ifconfig="newsletterpopup/general/enable"><type>js</type><name>plumrocket/jquery-1.12.4.min.js</name></action>
+            <action method="addItem" ifconfig="newsletterpopup/general/enable"><type>skin_js</type><name>js/plumrocket/newsletterpopup/popup.js</name></action>
+			<action method="addItem" ifconfig="newsletterpopup/general/enable"><type>skin_css</type><name>css/plumrocket/newsletterpopup/newsletterpopup.css</name></action>
+			<action method="addItem" ifconfig="newsletterpopup/general/enable"><type>skin_css</type><name>css/plumrocket/newsletterpopup/newsletterpopup-animation.css</name></action>
+			<action method="addItem" ifconfig="newsletterpopup/general/enable"><type>skin_css</type><name>css/plumrocket/newsletterpopup/newsletterpopup-additional.css</name></action>
+			<block type="newsletterpopup/js" template="newsletterpopup/js.phtml" name="newsletter.popup" />
+
+			<action method="addItem" ifconfig="newsletterpopup/general/enable">
+			    <type>skin_css</type>
+			    <name>css/plumrocket/newsletterpopup/newsletterpopup-ie8.css</name>
+			    <params/>
+			    <if>lt IE 9</if>
+			</action>
+        </reference>
+	</default>
+
+	<newsletterpopup_index_preview>
+		<update handle="cms_index_index" />
+
+		<reference name="head">
+			<action method="setRobots"><value>noindex,nofollow</value></action>
+
+			<action method="addItem"><type>js</type><name>plumrocket/jquery-1.12.4.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/popup.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/plumrocket/newsletterpopup/newsletterpopup.css</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/plumrocket/newsletterpopup/newsletterpopup-animation.css</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/plumrocket/newsletterpopup/newsletterpopup-additional.css</name></action>
+			<block type="newsletterpopup/preview_js" template="newsletterpopup/js.phtml" name="newsletter.popup" />
+
+			<action method="addItem">
+			    <type>skin_css</type>
+			    <name>css/plumrocket/newsletterpopup/newsletterpopup-ie8.css</name>
+			    <params/>
+			    <if>lt IE 9</if>
+			</action>
+        </reference>
+
+        <reference name="after_body_start">
+			<block type="newsletterpopup/preview_template" name="newsletterpopup.preview" template="newsletterpopup/popup.phtml" >
+				<block type="newsletterpopup/preview_popup" name="popup.body" />
+			</block>
+        </reference>
+	</newsletterpopup_index_preview>
+
+	<newsletterpopup_index_snapshot>
+		<block type="newsletterpopup/page_html" name="root" output="toHtml" template="page/empty.phtml">
+			<block type="newsletterpopup/page_html_head" name="head" as="head" template="newsletterpopup/page/html/head.phtml">
+				<action method="addItem"><type>skin_css</type><name>css/plumrocket/newsletterpopup/newsletterpopup.css</name></action>
+				<action method="addItem"><type>skin_css</type><name>css/plumrocket/newsletterpopup/newsletterpopup-additional.css</name></action>
+				<action method="addItem"><type>js</type><name>plumrocket/jquery-1.12.4.min.js</name></action>
+				<action method="setRobots"><value>noindex,nofollow</value></action>
+
+				<action method="addItem">
+				    <type>skin_css</type>
+				    <name>css/plumrocket/newsletterpopup/newsletterpopup-ie8.css</name>
+				    <params/>
+				    <if>lt IE 9</if>
+				</action>
+	        </block>
+
+	        <block type="core/text_list" name="content" as="content" translate="label">
+				<block type="newsletterpopup/preview_template" name="newsletterpopup.preview" template="newsletterpopup/snapshot.phtml">
+					<block type="newsletterpopup/preview_popup" name="popup.body">
+						<action method="noAnimation" />
+					</block>
+				</block>
+	        </block>
+	    </block>
+	</newsletterpopup_index_snapshot>
+
+	<signup_index_index>
+        <reference name="newsletter.popup">
+            <action method="disable" />
+        </reference>
+    </signup_index_index>
+
+    <privatesales_splashpage_login translate="label">
+        <reference name="newsletter.popup">
+            <action method="disable" />
+        </reference>
+    </privatesales_splashpage_login>
+</layout>

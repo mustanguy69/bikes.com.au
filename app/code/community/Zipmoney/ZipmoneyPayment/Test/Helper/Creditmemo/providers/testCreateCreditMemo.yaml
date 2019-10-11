@@ -1,0 +1,80 @@
+-   # partial amount refund
+  - '{"reason":"No reason","order_id":"100000001","status":"refunded","txn_id":"10112","refund_amount":8.00,"return_inventory":true}'
+  - false    # exception
+  -     # error message
+
+-   # full order refund, return items to stock
+  - '{"reason":"No reason","order_id":"100000001","status":"refunded","txn_id":"10113","refund_amount":15.00,"return_inventory":true}'
+  - false    # exception
+  -     # error message
+
+-   # full order refund, not return items to stock
+  - '{"reason":"No reason","order_id":"100000001","status":"refunded","txn_id":"10114","refund_amount":15.00,"return_inventory":false}'
+  - false    # exception
+  -     # error message
+
+-   # full order refund, not return items to stock
+  - '{"reason":"No reason","order_id":"100000002","status":"refunded","txn_id":"20112","refund_amount":5.00,"return_inventory":false}'
+  - false    # exception
+  -     # error message
+
+-   # full order refund, not return items to stock
+  - '{"reason":"No reason","order_id":"100000002","status":"refunded","txn_id":"20113","refund_amount":15.00,"return_inventory":true}'
+  - false    # exception
+  -     # error message
+
+-   # full order refund, not return items to stock
+  - '{"reason":"No reason","order_id":"100000002","status":"refunded","txn_id":"20114","refund_amount":15.00,"return_inventory":false}'
+  - false    # exception
+  -     # error message
+
+-   # not paid order, can not refund for the order
+  - '{"reason":"No reason","order_id":"100000005","status":"refunded","txn_id":"50112","refund_amount":15.00,"return_inventory":false}'
+  - true    # exception
+  - can not be refunded    # error message
+
+-   # incorrect order id
+  - '{"reason":"No reason","order_id":"200000005","status":"refunded","txn_id":"20050112","refund_amount":15.00,"return_inventory":false}'
+  - true    # exception
+  - Can not load the order    # error message
+
+-   # authorized but not paid order, can not refund
+  - '{"reason":"No reason","order_id":"100000006","status":"refunded","txn_id":"60112","refund_amount":15.00,"return_inventory":false}'
+  - true    # exception
+  - can not be refunded    # error message
+
+-   # full order refund, not return items to stock
+  - '{"reason":"No reason","order_id":"100000003","status":"refunded","txn_id":"30112","refund_amount":15.00,"return_inventory":false}'
+  - false    # exception
+  -     # error message
+
+-   # full order refund, not return items to stock
+  - '{"reason":"No reason","order_id":"100000003","status":"refunded","txn_id":"30113","refund_amount":75.00,"return_inventory":false}'
+  - false    # exception
+  -     # error message
+
+-   # full order refund, not return items to stock
+  - '{"reason":"No reason","order_id":"100000003","status":"refunded","txn_id":"30114","refund_amount":75.00,"return_inventory":true}'
+  - false    # exception
+  -     # error message
+
+-   # full order refund, not return items to stock
+  - '{"reason":"No reason","order_id":"100000004","status":"refunded","txn_id":"40112","refund_amount":15.00,"return_inventory":false}'
+  - true    # exception
+  - The requested Payment Method is not available    # error message
+
+-   # full order refund, not return items to stock
+  - '{"reason":"No reason","order_id":"100000004","status":"refunded","txn_id":"40113","refund_amount":75.00,"return_inventory":false}'
+  - true    # exception
+  - The requested Payment Method is not available    # error message
+
+
+
+
+
+
+
+
+
+
+

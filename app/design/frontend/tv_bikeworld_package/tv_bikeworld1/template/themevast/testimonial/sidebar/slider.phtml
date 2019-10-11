@@ -1,0 +1,57 @@
+<?php if( !Mage::getStoreConfig('testimonial/general/enable_sidebar') ) return ;?>
+<section>
+	<div class="testimonial-wrapper">
+		<div class="container">
+		<?php $latestTestimonial = $this->getTestimonialsLast()?>
+		<?php if(count($latestTestimonial) > 0):?>
+			<div class="testimonial-content">
+				<ul id="testimonialSidebar">			
+					<?php foreach($latestTestimonial as $_item):?>							
+						<li class="testimonial-list">
+							<?php if(Mage::getStoreConfig('testimonial/general/show_avatar')) : ?>
+					    <div class="testimonial-content-avatar">
+						<?php
+						    if($_item->getAvatarName() != ''){
+							$avatarLink = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) .'themevast/avatar/'.$_item->getAvatarName();
+							?><img src="<?php echo $avatarLink ?>" alt="test" height="106" width="106" /><?php
+						    }
+						?>
+					    </div>
+					<?php endif ?>								
+						<div class="testimonial-sidebar-content">
+							<div class="post-by">							
+								<h3 class="testimonial-author"><?php echo $_item->getName(); ?></h3>							
+								<span class="testimonial-date"><?php echo date('F d, Y', Mage::getModel('core/date')->gmtTimestamp($_item->getCreatedTime())); ?></span>						
+							</div>	
+							<div class="std">							
+								<a href="<?php echo $this->getUrl('testimonial')?>" title="">							    
+								<?php									
+									$_description = $_item->getTestimonial();									
+									$short_desc = $this->getContentTestimonialSidebar($_description, 200);									
+									echo $short_desc;							    ?>						   
+								</a>					
+							</div>						
+										
+						</div>				
+						</li>							
+					<?php endforeach;?>		
+				</ul>
+			</div>	
+		<?php endif ?>
+		</div>
+	</div>
+	<script type="text/javascript">		  
+	jQuery(document).ready(function($) {				
+		$('#testimonialSidebar').owlCarousel({					
+			autoplay: true,					
+			animateOut: 'fadeOut',				
+			autoplaySpeed: 1000,										
+			nav: false,						
+			dots: true				  
+		});			  
+	});	
+</script>
+</section>
+
+
+

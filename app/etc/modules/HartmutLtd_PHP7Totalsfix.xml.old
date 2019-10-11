@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <HartmutLtd_PHP7Totalsfix>
+            <active>false</active>
+            <codePool>community</codePool>
+            <version>1.0.0</version>
+        </HartmutLtd_PHP7Totalsfix>
+    </modules>
+</config>

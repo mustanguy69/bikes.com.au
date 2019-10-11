@@ -1,0 +1,73 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Cart
+ */
+?>
+<?php
+/** @var Amasty_Cart_Block_Dialog $this */
+$product = $this->getProduct();
+$helper = $this->helper('catalog/output');
+$name = $this->getName();
+$doubleDivClass = $this->displayChangeQty() ? 'displayed-qty' : '';
+?>
+
+<div class="amcart-dialog-container">
+    <div class="amcart-title">
+        <a href="<?php echo $product->getProductUrl() ?>"
+           title="<?php echo $this->stripTags($name, null, true); ?>">
+            <?php echo $name; ?>
+        </a>
+        <p class="amcart-text"> <?php echo $this->__('is added to cart.') ?></p>
+    </div>
+
+    <div class="amcart-center-block <?php echo $doubleDivClass;?>">
+        <div class="amcart-information-block child-block">
+            <?php if ($this->getAmcartHelper()->displayProductImage()) :?>
+                <a class="image-block" href="<?php echo $product->getProductUrl() ?>"
+                   title="<?php echo $this->stripTags($name, null, true); ?>">
+                    <?php
+                    $imageSrc = $this->getImageSrc();
+                    $img = '<img src="' . $imageSrc . '" title="'
+                        . $this->escapeHtml($this->getImageLabel()) . '" class="amcart-product-image"/>';
+
+                    echo $helper->productAttribute($product, $img, 'image');
+                    ?>
+                </a>
+				<div class="text-block">
+					<h3>
+						<a href="<?php echo $product->getProductUrl() ?>" title="<?php echo $this->stripTags($name, null, true); ?>">
+							<?php echo $product->getName() ?>
+						</a>
+					</h3>
+					<?php echo $this->getPriceHtml($product) ?>
+				</div>
+            <?php endif;?>
+        </div>
+
+        <?php if ($this->displayChangeQty()) :?>
+            <div class="amcart-qty-block child-block">
+                <script type="text/javascript">
+                    AmQtyObj = new AmQty(<?php echo $this->getProduct()->getStockItem()->getMinSaleQty();?>);
+                </script>
+
+                <div id="am-qty">
+                    <div id="am-qty-button-up" class="am-qty" onclick="AmQtyObj.increment()"></div>
+                    <div id="am-qty-input">
+                        <input class="input-text qty" id="am-input" maxlength="12" title="Qty" size="7"
+                               onclick="AmQtyObj.paint()" onkeydown="if (event.keyCode == 13) AmQtyObj.update()"
+                               value="<?php echo $this->getQty(); ?>"
+                               name="cart[<?php echo Mage::helper('amcart')->getItemId($this->getProduct()); ?>][qty]">
+                        <input type="hidden" name="form_key" id="am-form-key"
+                               value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>"/>
+                        <span id="am-qty-button-update" style="visibility: hidden;" onclick="AmQtyObj.update()"></span>
+                    </div>
+                    <div id="am-qty-button-down" class="am-qty"  onclick="AmQtyObj.decrement()"></div>
+                </div>
+
+
+            </div>
+        <?php endif;?>
+    </div>
+</div>

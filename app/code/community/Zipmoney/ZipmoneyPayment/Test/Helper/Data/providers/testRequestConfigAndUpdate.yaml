@@ -1,0 +1,143 @@
+-
+  - 100       #store_id
+  - {"Settings":{"capture_method":0,"log_enabled":true,"log_level":4,"timeout":60,"title":"zipMoney - Buy Now, Pay Later","checkout_title":"Pay Later with zipMoney","checkout_description":"Shop Interest Free - get a decision in seconds!"},"assets":[{"id":1,"type":"cartwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":2,"type":"productwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":3,"type":"termsdialog","content_type":"html","url":"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html","asset_values":null}],"asset_values":[{"key":"{CreditLimit}","value":"$1,000.00"},{"key":"{EstablishmentFee}","value":"$0.00"},{"key":"{MonthlyFee}","value":"$3.95"},{"key":"{InterestFreePeriod}","value":"3"},{"key":"{MinimumOrderValue}","value":"100.000000"}],"merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=","version":null}    #response json from ZipMoney
+  - 65        #merchant_id
+  - MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=  #merchant_key
+  - a:3:{i:0;a:5:{s:2:"id";i:1;s:4:"type";s:10:"cartwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:1;a:5:{s:2:"id";i:2;s:4:"type";s:13:"productwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:2;a:5:{s:2:"id";i:3;s:4:"type";s:11:"termsdialog";s:12:"content_type";s:4:"html";s:3:"url";s:87:"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html";s:12:"asset_values";N;}}      #assets
+  - a:5:{i:0;a:2:{s:3:"key";s:13:"{CreditLimit}";s:5:"value";s:9:"$1,000.00";}i:1;a:2:{s:3:"key";s:18:"{EstablishmentFee}";s:5:"value";s:5:"$0.00";}i:2;a:2:{s:3:"key";s:12:"{MonthlyFee}";s:5:"value";s:5:"$3.95";}i:3;a:2:{s:3:"key";s:20:"{InterestFreePeriod}";s:5:"value";s:1:"3";}i:4;a:2:{s:3:"key";s:19:"{MinimumOrderValue}";s:5:"value";s:10:"100.000000";}}    #asset_values
+  -     #Settings
+    capture_method: 0
+    log_enabled: true
+    log_level: 4
+    timeout: 60
+    title: zipMoney - Buy Now, Pay Later
+    checkout_title: Pay Later with zipMoney
+    checkout_description: Shop Interest Free - get a decision in seconds!
+
+-
+  - 100       #store_id
+  - {"Settings":{"capture_method":1,"log_enabled":false,"log_level":3,"timeout":120,"title":"zipMoney - Title test","checkout_title":"ZipMoney checkout title test","checkout_description":"ZipMoney checkout description test"},"assets":[{"id":1,"type":"cartwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":2,"type":"productwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":3,"type":"termsdialog","content_type":"html","url":"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html","asset_values":null}],"asset_values":[{"key":"{CreditLimit}","value":"$2,000.00"},{"key":"{EstablishmentFee}","value":"$0.00"},{"key":"{MonthlyFee}","value":"$4.95"},{"key":"{InterestFreePeriod}","value":"6"},{"key":"{MinimumOrderValue}","value":"200.000000"}],"merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=","version":null}    #response json from ZipMoney
+  - 65        #merchant_id
+  - MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=  #merchant_key
+  - a:3:{i:0;a:5:{s:2:"id";i:1;s:4:"type";s:10:"cartwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:1;a:5:{s:2:"id";i:2;s:4:"type";s:13:"productwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:2;a:5:{s:2:"id";i:3;s:4:"type";s:11:"termsdialog";s:12:"content_type";s:4:"html";s:3:"url";s:87:"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html";s:12:"asset_values";N;}}      #assets
+  - a:5:{i:0;a:2:{s:3:"key";s:13:"{CreditLimit}";s:5:"value";s:9:"$2,000.00";}i:1;a:2:{s:3:"key";s:18:"{EstablishmentFee}";s:5:"value";s:5:"$0.00";}i:2;a:2:{s:3:"key";s:12:"{MonthlyFee}";s:5:"value";s:5:"$4.95";}i:3;a:2:{s:3:"key";s:20:"{InterestFreePeriod}";s:5:"value";s:1:"6";}i:4;a:2:{s:3:"key";s:19:"{MinimumOrderValue}";s:5:"value";s:10:"200.000000";}}    #asset_values
+  -     #Settings
+    capture_method: 1
+    log_enabled: false
+    log_level: 3
+    timeout: 120
+    title: zipMoney - Title test
+    checkout_title: ZipMoney checkout title test
+    checkout_description: ZipMoney checkout description test
+
+-
+  - 100       #store_id
+  - {"Settings":{"capture_method":2,"log_enabled":true,"log_level":2,"timeout":180,"title":"zipMoney - title","checkout_title":"checkout title","checkout_description":"Shop Interest Free - test"},"assets":[{"id":1,"type":"cartwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":2,"type":"productwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":3,"type":"termsdialog","content_type":"html","url":"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html","asset_values":null}],"asset_values":[{"key":"{CreditLimit}","value":"$3,000.00"},{"key":"{EstablishmentFee}","value":"$0.00"},{"key":"{MonthlyFee}","value":"$5.95"},{"key":"{InterestFreePeriod}","value":"9"},{"key":"{MinimumOrderValue}","value":"300.000000"}],"merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=","version":null}    #response json from ZipMoney
+  - 65        #merchant_id
+  - MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=  #merchant_key
+  - a:3:{i:0;a:5:{s:2:"id";i:1;s:4:"type";s:10:"cartwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:1;a:5:{s:2:"id";i:2;s:4:"type";s:13:"productwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:2;a:5:{s:2:"id";i:3;s:4:"type";s:11:"termsdialog";s:12:"content_type";s:4:"html";s:3:"url";s:87:"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html";s:12:"asset_values";N;}}      #assets
+  - a:5:{i:0;a:2:{s:3:"key";s:13:"{CreditLimit}";s:5:"value";s:9:"$3,000.00";}i:1;a:2:{s:3:"key";s:18:"{EstablishmentFee}";s:5:"value";s:5:"$0.00";}i:2;a:2:{s:3:"key";s:12:"{MonthlyFee}";s:5:"value";s:5:"$5.95";}i:3;a:2:{s:3:"key";s:20:"{InterestFreePeriod}";s:5:"value";s:1:"9";}i:4;a:2:{s:3:"key";s:19:"{MinimumOrderValue}";s:5:"value";s:10:"300.000000";}}    #asset_values
+  -     #Settings
+    capture_method: 2
+    log_enabled: true
+    log_level: 2
+    timeout: 180
+    title: zipMoney - title
+    checkout_title: checkout title
+    checkout_description: Shop Interest Free - test
+
+-
+  - 101       #store_id
+  - {"Settings":{"capture_method":0,"log_enabled":true,"log_level":4,"timeout":60,"title":"zipMoney - Buy Now, Pay Later","checkout_title":"Pay Later with zipMoney","checkout_description":"Shop Interest Free - get a decision in seconds!"},"assets":[{"id":1,"type":"cartwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":2,"type":"productwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":3,"type":"termsdialog","content_type":"html","url":"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html","asset_values":null}],"asset_values":[{"key":"{CreditLimit}","value":"$1,000.00"},{"key":"{EstablishmentFee}","value":"$0.00"},{"key":"{MonthlyFee}","value":"$3.95"},{"key":"{InterestFreePeriod}","value":"3"},{"key":"{MinimumOrderValue}","value":"100.000000"}],"merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=","version":null}    #response json from ZipMoney
+  - 65        #merchant_id
+  - MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=  #merchant_key
+  - a:3:{i:0;a:5:{s:2:"id";i:1;s:4:"type";s:10:"cartwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:1;a:5:{s:2:"id";i:2;s:4:"type";s:13:"productwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:2;a:5:{s:2:"id";i:3;s:4:"type";s:11:"termsdialog";s:12:"content_type";s:4:"html";s:3:"url";s:87:"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html";s:12:"asset_values";N;}}      #assets
+  - a:5:{i:0;a:2:{s:3:"key";s:13:"{CreditLimit}";s:5:"value";s:9:"$1,000.00";}i:1;a:2:{s:3:"key";s:18:"{EstablishmentFee}";s:5:"value";s:5:"$0.00";}i:2;a:2:{s:3:"key";s:12:"{MonthlyFee}";s:5:"value";s:5:"$3.95";}i:3;a:2:{s:3:"key";s:20:"{InterestFreePeriod}";s:5:"value";s:1:"3";}i:4;a:2:{s:3:"key";s:19:"{MinimumOrderValue}";s:5:"value";s:10:"100.000000";}}    #asset_values
+  -     #Settings
+    capture_method: 0
+    log_enabled: true
+    log_level: 4
+    timeout: 60
+    title: zipMoney - Buy Now, Pay Later
+    checkout_title: Pay Later with zipMoney
+    checkout_description: Shop Interest Free - get a decision in seconds!
+
+-
+  - 101       #store_id
+  - {"Settings":{"capture_method":1,"log_enabled":false,"log_level":3,"timeout":120,"title":"zipMoney - Title test","checkout_title":"ZipMoney checkout title test","checkout_description":"ZipMoney checkout description test"},"assets":[{"id":1,"type":"cartwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":2,"type":"productwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":3,"type":"termsdialog","content_type":"html","url":"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html","asset_values":null}],"asset_values":[{"key":"{CreditLimit}","value":"$2,000.00"},{"key":"{EstablishmentFee}","value":"$0.00"},{"key":"{MonthlyFee}","value":"$4.95"},{"key":"{InterestFreePeriod}","value":"6"},{"key":"{MinimumOrderValue}","value":"200.000000"}],"merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=","version":null}    #response json from ZipMoney
+  - 65        #merchant_id
+  - MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=  #merchant_key
+  - a:3:{i:0;a:5:{s:2:"id";i:1;s:4:"type";s:10:"cartwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:1;a:5:{s:2:"id";i:2;s:4:"type";s:13:"productwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:2;a:5:{s:2:"id";i:3;s:4:"type";s:11:"termsdialog";s:12:"content_type";s:4:"html";s:3:"url";s:87:"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html";s:12:"asset_values";N;}}      #assets
+  - a:5:{i:0;a:2:{s:3:"key";s:13:"{CreditLimit}";s:5:"value";s:9:"$2,000.00";}i:1;a:2:{s:3:"key";s:18:"{EstablishmentFee}";s:5:"value";s:5:"$0.00";}i:2;a:2:{s:3:"key";s:12:"{MonthlyFee}";s:5:"value";s:5:"$4.95";}i:3;a:2:{s:3:"key";s:20:"{InterestFreePeriod}";s:5:"value";s:1:"6";}i:4;a:2:{s:3:"key";s:19:"{MinimumOrderValue}";s:5:"value";s:10:"200.000000";}}    #asset_values
+  -     #Settings
+    capture_method: 1
+    log_enabled: false
+    log_level: 3
+    timeout: 120
+    title: zipMoney - Title test
+    checkout_title: ZipMoney checkout title test
+    checkout_description: ZipMoney checkout description test
+
+-
+  - 101       #store_id
+  - {"Settings":{"capture_method":2,"log_enabled":true,"log_level":2,"timeout":180,"title":"zipMoney - title","checkout_title":"checkout title","checkout_description":"Shop Interest Free - test"},"assets":[{"id":1,"type":"cartwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":2,"type":"productwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":3,"type":"termsdialog","content_type":"html","url":"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html","asset_values":null}],"asset_values":[{"key":"{CreditLimit}","value":"$3,000.00"},{"key":"{EstablishmentFee}","value":"$0.00"},{"key":"{MonthlyFee}","value":"$5.95"},{"key":"{InterestFreePeriod}","value":"9"},{"key":"{MinimumOrderValue}","value":"300.000000"}],"merchant_id":"65","merchant_key":"MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=","version":null}    #response json from ZipMoney
+  - 65        #merchant_id
+  - MEoi8gmJ5ZOgSXVg8imSxzu2jtnQpNvg1hIWDdUQDfI=  #merchant_key
+  - a:3:{i:0;a:5:{s:2:"id";i:1;s:4:"type";s:10:"cartwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:1;a:5:{s:2:"id";i:2;s:4:"type";s:13:"productwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:2;a:5:{s:2:"id";i:3;s:4:"type";s:11:"termsdialog";s:12:"content_type";s:4:"html";s:3:"url";s:87:"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html";s:12:"asset_values";N;}}      #assets
+  - a:5:{i:0;a:2:{s:3:"key";s:13:"{CreditLimit}";s:5:"value";s:9:"$3,000.00";}i:1;a:2:{s:3:"key";s:18:"{EstablishmentFee}";s:5:"value";s:5:"$0.00";}i:2;a:2:{s:3:"key";s:12:"{MonthlyFee}";s:5:"value";s:5:"$5.95";}i:3;a:2:{s:3:"key";s:20:"{InterestFreePeriod}";s:5:"value";s:1:"9";}i:4;a:2:{s:3:"key";s:19:"{MinimumOrderValue}";s:5:"value";s:10:"300.000000";}}    #asset_values
+  -     #Settings
+    capture_method: 2
+    log_enabled: true
+    log_level: 2
+    timeout: 180
+    title: zipMoney - title
+    checkout_title: checkout title
+    checkout_description: Shop Interest Free - test
+
+-
+  - 102       #store_id
+  - {"Settings":{"capture_method":0,"log_enabled":true,"log_level":4,"timeout":60,"title":"zipMoney - Buy Now, Pay Later","checkout_title":"Pay Later with zipMoney","checkout_description":"Shop Interest Free - get a decision in seconds!"},"assets":[{"id":1,"type":"cartwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":2,"type":"productwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":3,"type":"termsdialog","content_type":"html","url":"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html","asset_values":null}],"asset_values":[{"key":"{CreditLimit}","value":"$1,000.00"},{"key":"{EstablishmentFee}","value":"$0.00"},{"key":"{MonthlyFee}","value":"$3.95"},{"key":"{InterestFreePeriod}","value":"3"},{"key":"{MinimumOrderValue}","value":"100.000000"}],"merchant_id":"64","merchant_key":"iTKnmy36rxn61siTYD4sZMPB5UY162T27WU3He0BQzU=","version":null}    #response json from ZipMoney
+  - 64        #merchant_id
+  - iTKnmy36rxn61siTYD4sZMPB5UY162T27WU3He0BQzU=  #merchant_key
+  - a:3:{i:0;a:5:{s:2:"id";i:1;s:4:"type";s:10:"cartwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:1;a:5:{s:2:"id";i:2;s:4:"type";s:13:"productwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:2;a:5:{s:2:"id";i:3;s:4:"type";s:11:"termsdialog";s:12:"content_type";s:4:"html";s:3:"url";s:87:"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html";s:12:"asset_values";N;}}      #assets
+  - a:5:{i:0;a:2:{s:3:"key";s:13:"{CreditLimit}";s:5:"value";s:9:"$1,000.00";}i:1;a:2:{s:3:"key";s:18:"{EstablishmentFee}";s:5:"value";s:5:"$0.00";}i:2;a:2:{s:3:"key";s:12:"{MonthlyFee}";s:5:"value";s:5:"$3.95";}i:3;a:2:{s:3:"key";s:20:"{InterestFreePeriod}";s:5:"value";s:1:"3";}i:4;a:2:{s:3:"key";s:19:"{MinimumOrderValue}";s:5:"value";s:10:"100.000000";}}    #asset_values
+  -     #Settings
+    capture_method: 0
+    log_enabled: true
+    log_level: 4
+    timeout: 60
+    title: zipMoney - Buy Now, Pay Later
+    checkout_title: Pay Later with zipMoney
+    checkout_description: Shop Interest Free - get a decision in seconds!
+
+-
+  - 102       #store_id
+  - {"Settings":{"capture_method":1,"log_enabled":false,"log_level":3,"timeout":120,"title":"zipMoney - Title test","checkout_title":"ZipMoney checkout title test","checkout_description":"ZipMoney checkout description test"},"assets":[{"id":1,"type":"cartwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":2,"type":"productwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":3,"type":"termsdialog","content_type":"html","url":"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html","asset_values":null}],"asset_values":[{"key":"{CreditLimit}","value":"$2,000.00"},{"key":"{EstablishmentFee}","value":"$0.00"},{"key":"{MonthlyFee}","value":"$4.95"},{"key":"{InterestFreePeriod}","value":"6"},{"key":"{MinimumOrderValue}","value":"200.000000"}],"merchant_id":"64","merchant_key":"iTKnmy36rxn61siTYD4sZMPB5UY162T27WU3He0BQzU=","version":null}    #response json from ZipMoney
+  - 64        #merchant_id
+  - iTKnmy36rxn61siTYD4sZMPB5UY162T27WU3He0BQzU=  #merchant_key
+  - a:3:{i:0;a:5:{s:2:"id";i:1;s:4:"type";s:10:"cartwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:1;a:5:{s:2:"id";i:2;s:4:"type";s:13:"productwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:2;a:5:{s:2:"id";i:3;s:4:"type";s:11:"termsdialog";s:12:"content_type";s:4:"html";s:3:"url";s:87:"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html";s:12:"asset_values";N;}}      #assets
+  - a:5:{i:0;a:2:{s:3:"key";s:13:"{CreditLimit}";s:5:"value";s:9:"$2,000.00";}i:1;a:2:{s:3:"key";s:18:"{EstablishmentFee}";s:5:"value";s:5:"$0.00";}i:2;a:2:{s:3:"key";s:12:"{MonthlyFee}";s:5:"value";s:5:"$4.95";}i:3;a:2:{s:3:"key";s:20:"{InterestFreePeriod}";s:5:"value";s:1:"6";}i:4;a:2:{s:3:"key";s:19:"{MinimumOrderValue}";s:5:"value";s:10:"200.000000";}}    #asset_values
+  -     #Settings
+    capture_method: 1
+    log_enabled: false
+    log_level: 3
+    timeout: 120
+    title: zipMoney - Title test
+    checkout_title: ZipMoney checkout title test
+    checkout_description: ZipMoney checkout description test
+
+-
+  - 102       #store_id
+  - {"Settings":{"capture_method":2,"log_enabled":true,"log_level":2,"timeout":180,"title":"zipMoney - title","checkout_title":"checkout title","checkout_description":"Shop Interest Free - test"},"assets":[{"id":1,"type":"cartwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":2,"type":"productwidget","content_type":"image","url":"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png","asset_values":null},{"id":3,"type":"termsdialog","content_type":"html","url":"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html","asset_values":null}],"asset_values":[{"key":"{CreditLimit}","value":"$3,000.00"},{"key":"{EstablishmentFee}","value":"$0.00"},{"key":"{MonthlyFee}","value":"$5.95"},{"key":"{InterestFreePeriod}","value":"9"},{"key":"{MinimumOrderValue}","value":"300.000000"}],"merchant_id":"64","merchant_key":"iTKnmy36rxn61siTYD4sZMPB5UY162T27WU3He0BQzU=","version":null}    #response json from ZipMoney
+  - 64        #merchant_id
+  - iTKnmy36rxn61siTYD4sZMPB5UY162T27WU3He0BQzU=  #merchant_key
+  - a:3:{i:0;a:5:{s:2:"id";i:1;s:4:"type";s:10:"cartwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:1;a:5:{s:2:"id";i:2;s:4:"type";s:13:"productwidget";s:12:"content_type";s:5:"image";s:3:"url";s:80:"https://d1mrld4ampwm2q.cloudfront.net/Reid-Cycles-Staging-24-500042/standard.png";s:12:"asset_values";N;}i:2;a:5:{s:2:"id";i:3;s:4:"type";s:11:"termsdialog";s:12:"content_type";s:4:"html";s:3:"url";s:87:"https://d1mrld4ampwm2q.cloudfront.net/standard-template/terms/terms_and_conditions.html";s:12:"asset_values";N;}}      #assets
+  - a:5:{i:0;a:2:{s:3:"key";s:13:"{CreditLimit}";s:5:"value";s:9:"$3,000.00";}i:1;a:2:{s:3:"key";s:18:"{EstablishmentFee}";s:5:"value";s:5:"$0.00";}i:2;a:2:{s:3:"key";s:12:"{MonthlyFee}";s:5:"value";s:5:"$5.95";}i:3;a:2:{s:3:"key";s:20:"{InterestFreePeriod}";s:5:"value";s:1:"9";}i:4;a:2:{s:3:"key";s:19:"{MinimumOrderValue}";s:5:"value";s:10:"300.000000";}}    #asset_values
+  -     #Settings
+    capture_method: 2
+    log_enabled: true
+    log_level: 2
+    timeout: 180
+    title: zipMoney - title
+    checkout_title: checkout title
+    checkout_description: Shop Interest Free - test

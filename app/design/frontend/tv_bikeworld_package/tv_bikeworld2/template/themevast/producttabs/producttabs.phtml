@@ -1,0 +1,93 @@
+<?php if(!$this->getProducttabsCfg('enabled')) return;
+
+$default = $this->getProductCfg('product_type');
+$_tabs = $this->getTabs();
+$rows = $this->getRows()?$this->getRows():$this->getProducttabsCfg('rows'); 
+if (Mage::app()->getStore()->isCurrentlySecure()) {
+	$url = $this->getUrl('producttabs/index/result', array('_secure'=>true));
+}else{
+	$url = $this->getUrl('producttabs/index/result');
+}
+
+if(count($_tabs)){
+?>
+
+<div class= "producttabs-container">
+	<div class="container">
+		<div class="producttab-contain clearfix">
+			<div  class="producttabs-title bx-title">
+				<ul id="tabs-title">		
+				<?php
+					foreach ($_tabs as $type =>$name) {
+						$active = (!isset($active)) ? 'active':'';
+						echo '<li class="item '.$active.'" data-type ="'.$type.'"><h3 class ="title">'.$name.'</h3></li>';
+					}
+				?>
+				</ul>
+			</div>
+			<div class="ajax_loading" style="display:none">
+				<i class="fa fa-spinner fa-spin"></i>
+			</div>
+			<div class="producttabs-products clearfix"></div>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_content')->toHtml() ?>
+			<script type="text/javascript">
+				jQuery( document ).ready(function($) {
+			
+					(function(selector){
+						$content = $(selector);
+						$nav	 = $('#tabs-title', $content);
+						$products= $('.producttabs-products', $content);
+						$loading = $(".ajax_loading", $content);
+						$items 	 = $('.item', $nav);
+						$items.click(function() {
+							var type = $(this).data('type');
+							if(type != "random" && $(this).hasClass('active')) return;
+							$items.removeClass('active');
+							$(this).addClass('active');
+							getProduct(type);
+						});
+						<?php if($this->getTypeDefault()) : ?>
+						    $(window).one('scroll',function(){
+							   <?php echo 'getProduct("'.$this->getTypeDefault().'");';?>
+							});
+						    setTimeout(function(){
+							   <?php echo 'getProduct("'.$this->getTypeDefault().'");';?>
+							},10000); // milliseconds
+						 <?php endif; ?>
+			
+						function getProduct(type) {
+							$loading.show();
+							$.ajax({
+								type:'post',
+								data:{ type: type, rows:<?php echo $rows ?>},
+								url:'<?php echo $url ?>',
+								success: function(data){
+									$loading.hide();
+									$products.html(data);		
+									$data = data;
+									$('.products-grid', $products).owlCarousel({
+										lazyLoad: true,
+										autoplay: false, 
+										nav: true, 
+										dots: false,
+										loop: <?php echo ($this->getProducttabsCfg('loop') == 1? "true": "false") ?>, 
+										responsive: {<?php echo ($this->getResponsive()?$this->getResponsive():$this->getProducttabsCfg('responsive')) ?>},
+										margin: <?php echo $this->getProducttabsCfg('margin') ?>,
+										//padding: 10
+									})
+
+								},
+							});		
+						}
+			
+					})('.producttabs-container');
+			
+					});
+			</script>
+		</div>		
+	</div>
+</div><!--<div class= "producttabs-container" style="background: #fff;">	<div class="container">		<div class="producttab-contain clearfix">				<?php /* echo $this->getLayout()->createBlock('cms/block')->setBlockId('banner_content')->toHtml() */ ?>				</div>	</div></div>-->
+<?php
+}
+?>
+

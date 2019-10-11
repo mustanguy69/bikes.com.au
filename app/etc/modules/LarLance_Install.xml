@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <LarLance_Install>
+      <active>true</active>
+      <codePool>local</codePool>
+      <version>0.0.9</version>
+    </LarLance_Install>
+  </modules>
+</config>

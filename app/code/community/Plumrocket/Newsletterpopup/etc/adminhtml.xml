@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<config>	
+	<menu>
+		<plumrocket>
+			<title>Plumrocket</title>
+			<sort_order>80</sort_order>
+			<children>
+				<newsletterpopup module="newsletterpopup" translate="title">
+					<title>Newsletter Popup</title>
+					<sort_order>320</sort_order>
+					<children>
+						<manage_popups module="newsletterpopup" translate="title">
+							<title>Manage Popups</title>
+							<sort_order>10</sort_order>
+							<action>adminhtml/newsletterpopup_popups/index</action>
+						</manage_popups>
+						<manage_templates module="newsletterpopup" translate="title">
+							<title>Manage Themes</title>
+							<sort_order>15</sort_order>
+							<action>adminhtml/newsletterpopup_templates/index</action>
+						</manage_templates>
+						<manage_history module="newsletterpopup" translate="title">
+							<title>History</title>
+							<sort_order>20</sort_order>
+							<action>adminhtml/newsletterpopup_history/index</action>
+						</manage_history>
+						<config module="newsletterpopup" translate="title">
+							<title>Configuration</title>
+							<sort_order>30</sort_order>
+							<action>adminhtml/system_config/edit/section/newsletterpopup</action>
+						</config>
+					</children>
+				</newsletterpopup>
+			</children>
+		</plumrocket>
+	</menu>
+	<acl>
+		<resources>
+			<all>
+			    <title>Allow Everything</title>
+			</all>
+			<admin>
+				<children>
+					<plumrocket>
+						<title>Plumrocket</title>
+						<sort_order>80</sort_order>
+						<children>
+							<newsletterpopup translate="title" module="newsletterpopup">
+								<title>Newsletter Popup</title>
+								<sort_order>350</sort_order>
+								<children>
+									<manage_popups translate="title">
+										<title>Manage Popups</title>
+									</manage_popups>
+									<manage_templates translate="title">
+										<title>Manage Themes</title>
+									</manage_templates>
+									<manage_history translate="title">
+										<title>History</title>
+									</manage_history>
+									<config translate="title">
+										<title>Configuration</title>
+									</config>
+								</children>
+							</newsletterpopup>
+						</children>
+					</plumrocket>
+					<system>
+						<children>
+							<config>
+								<children>
+									<newsletterpopup translate="title" module="newsletterpopup">
+                                        <title>Newsletter Popup Settings</title>
+                                    </newsletterpopup>
+								</children>
+							</config>
+						</children>
+					</system>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+</config>

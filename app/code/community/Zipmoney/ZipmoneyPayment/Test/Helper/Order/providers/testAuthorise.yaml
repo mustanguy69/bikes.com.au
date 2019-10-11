@@ -1,0 +1,36 @@
+-
+  - '100000001'
+  - 'testTxnId1'
+  - false
+  - null
+
+-
+  - '100000002'
+  - 'testTxnId2'
+  - true
+  - 'Invalid order state.'
+
+-
+  - '100000003'
+  - 'testTxnId3'
+  - true
+  - 'Invalid order state.'
+
+-
+  - '100000004'
+  - 'testTxnId4'
+  - true
+  - 'Incorrect order id.'
+
+-
+  - '100000010'
+  - 'testTxnId10'
+  - true
+  - 'The requested Payment Method is not available.'
+
+-
+  - '100000011'
+  - 'testTxnId11'
+  - true
+  - 'The payment transaction already exists.'
+

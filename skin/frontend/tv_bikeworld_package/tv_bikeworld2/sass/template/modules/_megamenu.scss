@@ -1,0 +1,255 @@
+
+/* Megamenu ===========================================================*/ 
+.nav-container {
+  position: relative;
+}
+.nav-megamenu {
+  background: #222222;
+  height: 80px;
+}
+
+.megamenu {
+   li.level0 {
+    float: left;
+    position: relative;
+    > a {
+      padding: 0 30px;
+      display: block;
+      height: 80px;
+      line-height: 80px;
+      font-family: $font-custom;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: #cccccc;
+    }
+    &.act,&.active {
+      > a {
+        background: $main-color2;
+        color: #333;
+      }
+    }
+    &:hover {
+      > a {
+        background: #000;
+      color: #fff;
+      }
+    }
+    ul.level0 {
+      min-width: 250px;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      z-index: 99;
+      display: none;
+      li {
+        position: relative;
+        a {
+          background: #111;
+          color: #cccccc;
+          display: block;
+          text-transform: uppercase;
+          font-size: 14px;
+          border-bottom: 1px solid #444;
+          height: 50px;
+          line-height: 50px;
+          padding: 0 30px;
+        }
+        ul {
+          min-width: 250px;
+          position: absolute;
+          top: 0;
+          left: 100%;
+          display: none;
+        }
+        &:hover {
+          > a {
+            background: $main-color2;
+            color: #000;
+          }
+          > ul {
+            display: block;
+          }
+        }
+      }
+    }
+    &:hover {
+      ul.level0 {
+        display: block;
+      }
+    }
+  }
+}
+
+/*----------- Mobile Menu -------------*/
+.nav-mobilemenu-container {
+  float: left;
+}
+
+#nav-mobilemenu {
+  height: auto;
+  display: none;
+  float: left;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  z-index: 99;
+  top: 80px;
+  background: #fff;
+  padding: 0 15px;
+}
+
+.navbar {
+
+}
+
+#navbar-inner {
+  &.navbar-inactive .mobilemenu {
+    display: none;
+  }
+  &.navbar-active .mobilemenu {
+    display: block;
+  }
+}
+
+.nav-collapse {
+  text-align: left;
+}
+
+.navbar .nav > li {
+  padding: 10px 30px 20px 0;
+}
+
+.nav-collapse.collapse {}
+
+.navbar-inner {
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0;
+}
+.menu-mobile {
+  margin-top: 15px;
+  margin-left: 15px;
+  .btn-navbar {
+    font-size: 30px;
+    color: #fff;
+  }
+}
+
+.mobilemenu > li.last a {}
+
+.navbar .brand {
+  color: #333;
+  text-transform: capitalize;
+  height: auto;
+  line-height: 20px;
+  text-shadow: none;
+  font-size: 20px;
+  padding: 15px 0;
+  float: left;
+  font-family: $font-custom;
+}
+
+.mobilemenu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.mobilemenu {
+  ul {
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: block;
+    width: 100%;
+  }
+  li {
+    cursor: pointer;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: block;
+    width: 100%;
+    position: relative;
+    div {
+      padding: 20px;
+      background: #aef;
+      display: block;
+      clear: both;
+      float: left;
+      width: 360px;
+    }
+  }
+  a {
+    text-decoration: none;
+    border-bottom: 1px solid #e0d8d8;
+    font-size: 14px;
+    line-height: 40px;
+    font-weight: normal;
+    color: #666;
+    margin: 0;
+    display: block;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+  li.blog a {
+    border: none;
+  }
+  ul a {
+    color: #262626;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  li {
+    ul li {
+      font-size: 0.9em;
+    }
+    &.active > ul {}
+  }
+  ul {
+    a {
+      padding-left: 25px;
+    }
+    ul {
+      a {
+        padding-left: 40px;
+      }
+      ul {
+        a {
+          padding-left: 55px;
+        }
+        ul {
+          a {
+            padding-left: 70px;
+          }
+          ul a {
+            padding-left: 85px;
+          }
+        }
+      }
+    }
+  }
+  span.head {
+    position: absolute;
+    top: 12px;
+    right: 9px;
+    a {
+      background: url(../images/menu_down.png) no-repeat 50% 50%;
+      color: #333333;
+      display: block;
+      height: 15px;
+      padding: 0;
+      width: 15px;
+      border: 0;
+    }
+  }
+  li {
+    &.active > span.head a, &.selected span.head a {
+      background: url(../images/menu_up.png) no-repeat 50% 50%;
+    }
+  }
+}
+

@@ -1,0 +1,159 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="form-add">
+    <h2><?php echo $this->__('Write Your Own Review') ?></h2>
+    <?php if ($this->getAllowWriteReviewFlag()): ?>
+    <form action="<?php echo $this->getAction() ?>" method="post" id="review-form">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+        <fieldset>
+            <?php echo $this->getChildHtml('form_fields_before')?>
+            <h3><?php echo $this->__("You're reviewing:"); ?> <span><?php echo $this->escapeHtml($this->getProductInfo()->getName()) ?></span></h3>
+            <?php if( $this->getRatings() && $this->getRatings()->getSize()): ?>
+                <h4><?php echo $this->__('How do you rate this product?') ?> <em class="required">*</em></h4>
+                <span id="input-message-box"></span>
+                <div id="product-review-table">
+                   
+                    <?php foreach ($this->getRatings() as $_rating): ?>
+                        <div class="item">
+                            <div class="rating-title"><?php echo $this->escapeHtml($_rating->getRatingCode()) ?>: <span class="rating-values"><span>0</span>/5</span></div>
+                            <div class="stars-wrapper clearfix">
+                                <span class="vote"><?php echo $this->__('Vote: ') ?></span>
+                        <?php $i=1; foreach ($_rating->getOptions() as $_option): ?>
+                            <div class="value">
+                            <i data-index="<?php echo $i++; ?>" class="fa fa-star"></i>
+                            <input style="display:none" type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio" /></div>
+                        <?php endforeach; ?>
+                        </div>
+                        </div>
+                    <?php endforeach; ?>
+                   
+                </div>
+                <input type="hidden" name="validate_rating" class="validate-rating" value="" />
+                <script type="text/javascript">decorateTable('product-review-table')</script>
+            <?php endif; ?>
+                <ul class="form-list">
+                    <li>
+                        <label for="nickname_field" class="required"><em>*</em><?php echo $this->__('Nickname') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
+                        </div>
+                    </li>
+                    <li>
+                        <label for="summary_field" class="required"><em>*</em><?php echo $this->__('Summary of Your Review') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
+                        </div>
+                    </li>
+                    <li>
+                        <label for="review_field" class="required"><em>*</em><?php echo $this->__('Review') ?></label>
+                        <div class="input-box">
+                            <textarea name="detail" id="review_field" cols="5" rows="3" class="required-entry"><?php echo $this->escapeHtml($data->getDetail()) ?></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </fieldset>
+            <div class="buttons-set">
+                <button type="submit" title="<?php echo $this->__('Submit Review') ?>" class="button"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+            </div>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('review-form');
+        Validation.addAllThese(
+        [
+               ['validate-rating', '<?php echo $this->__('Please select one of each of the ratings above') ?>', function(v) {
+                    var trs = $('product-review-table').select('tr');
+                    var inputs;
+                    var error = 1;
+
+                    for( var j=0; j < trs.length; j++ ) {
+                        var tr = trs[j];
+                        if( j > 0 ) {
+                            inputs = tr.select('input');
+
+                            for( i in inputs ) {
+                                if( inputs[i].checked == true ) {
+                                    error = 0;
+                                }
+                            }
+
+                            if( error == 1 ) {
+                                return false;
+                            } else {
+                                error = 1;
+                            }
+                        }
+                    }
+                    return true;
+                }]
+        ]
+        );
+    //]]>
+    function reviewMouse(){
+            jQuery('#product-review-table .value i').on('mouseover, mouseout', function(){
+                thisElement = jQuery(this);
+                if(thisElement.parents('.stars-wrapper').find('i.checked').length == 0){
+                    thisElement.parents('.stars-wrapper').find('i').removeClass('active');
+                } else {
+                    thisElement.parents('.stars-wrapper').find('i.checked').parent().prevAll().children('i').addClass('active');
+                    thisElement.parents('.stars-wrapper').find('i.checked').parent().nextAll().children('i').removeClass('active');
+                }
+            });
+        }
+        jQuery('#product-review-table .value i').hover(
+            function(){
+                reviewMouse();
+                thisElement = jQuery(this);
+                thisElement.addClass('active')
+                .parents('.value').prevAll('.value').children('i').addClass('active');
+            },
+            function(){
+                reviewMouse();
+                thisElement = jQuery(this);
+                thisElement.removeClass('active')
+                .parents('.value').nextAll('.value').children('i').removeClass('active');
+            }
+        );
+        jQuery('#product-review-table .value i').on('click', function(){
+            jQuery(this).parents('.stars-wrapper').find('input.radio').attr('checked', false);
+            jQuery(this).parents('.stars-wrapper').find('i').removeClass('checked');
+            jQuery(this).addClass('checked').next('input.radio').prop('checked', true)
+            .parent().prevAll().children('i').addClass('active');
+            thisIndex = jQuery(this).data('index');
+            jQuery(this).parents('.item').find('.rating-values span').text(thisIndex);
+        });
+        jQuery('#product-review-table .stars-wrapper').on('mouseout', function(){
+            thisElement = jQuery(this);
+            thisElement.find('i.checked').addClass('active').parent().prevAll().children('i').addClass('active');
+        });
+    </script>
+    <?php else: ?>
+    <p class="review-nologged" id="review-form">
+        <?php echo $this->__('Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?>
+    </p>
+    <?php endif ?>
+</div>

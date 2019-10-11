@@ -1,0 +1,34 @@
+<?php $posts = $this->getPosts(); ?>
+<div id="messages_product_view">
+    <?php Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('customer/session')->getMessages(true)); ?>
+    <?php echo Mage::app()->getLayout()->getMessagesBlock()->getGroupedHtml(); ?>
+</div>
+
+<?php echo $this->getChildHtml('blog_comments_toolbar'); ?>
+<div class="row">
+<?php foreach ($posts as $post): ?>
+    <div class="col-sm-6">
+        <div class="postWrapper">
+         <?php echo '<img  width="'.$image_width.'" height="'.$image_height.'" src="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA). $post->getImage().'" />'; ?> 
+            <div class="postTitle">
+                <h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>
+            </div>
+            <div class="postDetails">
+                <span class="date">
+                    <i class="fa fa-clock-o"></i><?php echo date("M, d, Y"); ?>
+                </span>
+                <span class="author">
+                    <i class="fa fa-user"></i>
+                    <?php echo $this->__("By"); ?> <?php echo $post->getUser(); ?>
+                </span>
+                <span class="comment">
+                    <i class="fa fa-comment-o"></i><?php echo $post->getCommentCount(); ?><a href="<?php echo $post->getAddress(); ?>#commentBox" > <?php echo Mage::helper('blog')->__('Comments'); ?></a>
+                </span>
+            </div>
+            
+            <div class="postContent"><?php echo $post->getPostContent(); ?></div>
+        </div>
+    </div>
+<?php endforeach; ?>
+</div>
+<?php echo $this->getChildHtml('blog_comments_toolbar'); ?>

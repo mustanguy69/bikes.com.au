@@ -1,0 +1,56 @@
+<?php
+$groupId = $this->getGroupId();
+$groupInfo = Mage::getModel('menupro/groupmenu')->load($groupId)->getData();
+
+$MCPHTML = $MCPRHTML = "";
+if ($this->helper('menupro')->isDevelopMode()) {
+
+    if ($this->isGroupResponsive($groupInfo['responsive'])) {
+        if ($this->detectDevice() != "desktop" && false) {
+            if ($groupInfo['responsive'] == "mcp-push-cover" || $groupInfo['responsive'] == "mcp-push-overlap") {
+                $MCPHTML = $this->getPushnewResponsiveHtml($groupId, $groupInfo['responsive']);
+            } else {
+                $MCPHTML = $this->getPushResponsiveHtml($groupId, $groupInfo['responsive']);
+            }
+        } else {
+            $MCPHTML = $this->getMenuHtml($groupId);
+            echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact-header')->toHtml();
+            echo "<div class='header-cart-mini'>
+				<div class='topcart-mini-container'>";
+            echo $this->getChildHtml('top_cart_mini');
+            echo "</div>
+			</div>";
+			echo '<ul class="quick-access"><li class="header-toplinks">'.$this->getLayout()->getBlock('top.links')->toHtml().'</li></ul>';
+
+        }
+    } else {
+        $MCPHTML = $this->getMenuHtml($groupId);
+    }
+
+} else {
+    if ($this->isGroupResponsive($groupInfo['responsive'])) {
+        if ($this->detectDevice() != "desktop"  && false) {
+            if ($groupInfo['responsive'] == "mcp-push-cover" || $groupInfo['responsive'] == "mcp-push-overlap") {
+                $MCPHTML = $this->getPushnewResponsiveHtml($groupId, $groupInfo['responsive']);
+            } else {
+                $MCPHTML = $this->getPushResponsiveHtml($groupId, $groupInfo['responsive']);
+            }
+        } else {
+
+            $MCPHTML = $this->getStaticHtml($groupId);
+            echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact-header')->toHtml();
+            echo "<div class='header-cart-mini'>
+				<div class='topcart-mini-container'>";
+            echo $this->getChildHtml('top_cart_mini');
+            echo "</div>
+			</div>";
+			echo '<ul class="quick-access"><li class="header-toplinks">'.$this->getLayout()->getBlock('top.links')->toHtml().'</li></ul>';
+
+        }
+    } else {
+        $MCPHTML = $this->getStaticHtml($groupId);
+    }
+}
+echo "<div class='mst mcp-wrapper'>";
+echo $MCPHTML;
+echo "</div>";

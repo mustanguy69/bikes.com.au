@@ -1,0 +1,16 @@
+<!--<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>themevast/themevast/css/cltool.css</stylesheet></action>
+            <action method="addJs"><script>themevast/jquery.min.js</script></action>         
+            <action method="addJs"><script>themevast/noconflict.js</script></action>  
+            <action method="addJs"><script>themevast/themevast.js</script></action>  
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="colortool" template="themevast/themevast/colortool.phtml" />
+        </reference>
+    </default>
+</layout> 
+
+-->

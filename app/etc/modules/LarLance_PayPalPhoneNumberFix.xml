@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <LarLance_PayPalPhoneNumberFix>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Paypal/>
+            </depends>
+            <version>0.1.0</version>
+        </LarLance_PayPalPhoneNumberFix>
+    </modules>
+</config>

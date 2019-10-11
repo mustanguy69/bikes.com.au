@@ -1,0 +1,20 @@
+<?php /* Not W3C friendly!!! Why render things when not shown up anyway!
+<?php if ($this->isShow()): ?>
+<div id="zipmoney-top-strip-banner-responsive" class="zipmoney-strip-banner-responsive-bottom">
+<?php echo $this->getChildHtml('zipmoneypayment.widget.banner.strip'); ?>
+</div>
+
+<script>
+    Event.observe(window, 'load', function () {
+        var verResponsive = '<?php echo $this->checkVersionResponsive()?>';
+        if (verResponsive == 'false' || $$('.skip-links').length <= 0) {
+            var ele = $('zipmoney-top-strip-banner-responsive');
+            if (ele != undefined) {
+                ele.removeClassName('zipmoney-strip-banner-responsive-bottom');
+                ele.style.display = 'none';
+            }
+        }
+    });
+</script>
+<?php endif; ?>
+*/ ?>

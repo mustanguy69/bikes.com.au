@@ -1,0 +1,14 @@
+<?php if ($this->isShow()): ?>
+<?php echo $this->getChildHtml('zipmoneypayment.widget.banner.strip'); ?>
+
+<script>
+    Event.observe(window, 'load', function () {
+        var verResponsive = '<?php echo $this->checkVersionResponsive()?>';
+        if (verResponsive == 'false' || $$('.skip-links').length <= 0) {
+            if($('zipmoney-top-strip-banner') && typeof $('zipmoney-top-strip-banner') != 'undefined') {
+                $('zipmoney-top-strip-banner').removeClassName('zipmoney-strip-banner-responsive-top');
+            }
+        }
+    });
+</script>
+<?php endif; ?>

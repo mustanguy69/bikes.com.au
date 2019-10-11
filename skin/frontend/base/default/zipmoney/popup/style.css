@@ -1,0 +1,132 @@
+/* CSS Document */
+
+/*----------------------------------
+      Pop up Css
+------------------------------------*/      
+
+.pop_content{}
+
+
+#close_popup { background: url("images/close.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);display: block; height: 28px;   position: absolute; right: 0; text-indent: -99999px; top: -5px; width: 28px;}
+
+
+
+
+.popup-link{ margin:150px auto; text-align:center; font-family:Arial, Helvetica, sans-serif; font-size:30px; color:#000;}
+
+
+
+
+
+
+
+.popup-right ul li.last-item {
+    margin: 24px 0 27px;
+    padding: 0 0 0 155px;
+}
+
+span.green{ color:#60a62e;}
+span.orange{ color:#ed6a13;}
+
+
+
+.available{ text-align:center; padding:1px 0;  width:293px; height:97px; background:url(images/available.png) no-repeat top left; clear:both; margin-left:20px;}
+.available p{font-family: 'hand_of_seanregular'; font-size:18px; color:#888;}
+#close_popup {
+    background: url("images/close.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 28px;
+    position: absolute;
+    right: -4px;
+    text-indent: -99999px;
+    top: -5px;
+    width: 28px; z-index:99;
+}
+
+
+
+
+
+
+
+
+#popup-container
+{
+	
+	height:auto;
+	margin:auto;
+     width:680px;
+	float:left;/*width:700px;	-webkit-border-radius: 5px;	-moz-border-radius: 5px;	border-radius: 5px;
+	background-color:#fff; box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);	*/
+}
+#shop_online{ width:98.99%;}
+#body
+{
+	width:640px;
+	height:auto;
+	margin:0px auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-style: normal; 
+	font-size:14px;
+	color:#000;
+	text-align:justify;
+}
+
+
+
+
+
+
+
+
+#close_popup {
+    background: url("images/close.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 28px;
+    position: absolute;
+    right: -4px;
+    text-indent: -99999px;
+    top: -5px;
+    width: 28px;
+    z-index: 99;
+}
+#shadow {position:fixed !important;top:0;right:0;bottom:0;left:0;}
+.popup_header .heading_pop{ width:100%; height:auto; overflow:hidden}
+.popup_header .heading_pop .green{font-size:24px;font-family: 'gotham-mediumgotham-medium'; margin-top:15px; float:left;}
+.popup_header .heading_pop .black{font-size:24px;font-family: 'gotham-mediumgotham-medium'; margin-top:15px; margin-left:10px;  float:left;}
+.popup_header .heading_pop .logo_img {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.top_article p {
+    color: #282828;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    margin:12px 0 10px;
+	line-height:20px;
+    padding: 0;
+}
+
+.content_quick{ width:100%; clear:both}
+.content_quick ul{ padding: 5px 0 0 0; margin:0;}
+.content_quick ul li{ display:block; clear:both; padding:5px 0 5px 63px;     color: #282828;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px; margin:5px 0; line-height:20px;}
+	
+.content_quick p a,
+.content_quick ul li a{ color:#60A62E; text-decoration:none;}
+.content_quick p a:hover,
+.content_quick ul li a:hover{ color:#60A62E; text-decoration:underline;}
+.content_quick ul li span{ font-size:18px; line-height:30px; display:block; color:#000;font-family: 'gotham-mediumgotham-medium';}
+.content_quick ul li.quick{ background:url("images/quick.jpg") no-repeat;}
+.content_quick ul li.intstant-credit{background:url("images/intstant-credit.jpg") no-repeat}
+.content_quick ul li.secure{background:url("images/secure.jpg") no-repeat}
+.content_quick p{font-family:Arial, Helvetica, sans-serif; color:#282828; font-size:13px; padding-bottom:6px;}
+
+.footer_text p{ font-family:Arial, Helvetica, sans-serif; color:#282828; font-size:11px; line-height:18px; margin:0px 0 8px 0;}
+
+/*----------------------------------
+      Pop up Css end
+------------------------------------*/  

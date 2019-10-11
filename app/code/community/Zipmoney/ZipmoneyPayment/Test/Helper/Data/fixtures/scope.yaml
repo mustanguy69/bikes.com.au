@@ -1,0 +1,61 @@
+scope:
+
+  website: # Initialize websites
+    - website_id: 100
+      code: zipsite0
+      name: ZipSite0
+      default_group_id: 100
+      is_default: 1
+
+    - website_id: 101
+      code: zipsite1
+      name: ZipSite1
+      default_group_id: 101
+      is_default: 0
+
+    - website_id: 102
+      code: zipsite2
+      name: ZipSite2
+      default_group_id: 102
+      is_default: 0
+
+  group: # Initializes store groups
+    - group_id: 100
+      website_id: 100
+      name: Group0
+      default_store_id: 100
+      root_category_id: 0 # Default Category
+
+    - group_id: 101
+      website_id: 101
+      name: Group1
+      default_store_id: 101
+      root_category_id: 3 # Default Category
+
+    - group_id: 102
+      website_id: 102
+      name: Group2
+      default_store_id: 102
+      root_category_id: 3 # Default Category
+
+  store: # Initializes store views
+    - store_id: 100
+      website_id: 100
+      group_id: 100
+      code: zipstore0
+      name: ZipStore0
+      is_active: 1
+
+    - store_id: 101
+      website_id: 101
+      group_id: 101
+      code: zipstore1
+      name: ZipStore1
+      is_active: 1
+
+    - store_id: 102
+      website_id: 102
+      group_id: 102
+      code: zipstore2
+      name: ZipStore2
+      is_active: 1

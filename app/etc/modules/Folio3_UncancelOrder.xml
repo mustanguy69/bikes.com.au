@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Folio3_UncancelOrder>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Folio3_UncancelOrder>
+    </modules>
+</config>

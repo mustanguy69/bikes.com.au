@@ -1,0 +1,59 @@
+<?xml version="1.0"?> 
+<config>
+	<menu>
+		<themevast translate="title">
+			<title>Themevast</title>
+			<sort_order>72</sort_order>               
+			<children>
+				<mostviewed translate="title" module="mostviewed">
+					<title>Most Viewed Products</title>
+					<sort_order>0</sort_order>
+					<children>
+						<configuration>
+							<title>Configuration</title>
+							<sort_order>1</sort_order>
+							<action>adminhtml/system_config/edit/section/mostviewed</action>
+						</configuration>
+					</children>
+				</mostviewed>
+			</children>
+		</themevast>
+	</menu>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<mostviewed>
+										<title>Most viewed Products</title>
+									</mostviewed>
+								</children>
+							</config>
+						</children>
+					</system>	
+					<themevast translate="title" module="mostviewed">
+						<title>Themevast</title>
+						<sort_order>71</sort_order>               
+						<children>
+							<mostviewed translate="title" module="mostviewed">
+								<title>Random Products</title>
+								<sort_order>0</sort_order>
+								<children>
+									<configuration>
+										<title>Configuration</title>
+										<sort_order>1</sort_order>
+										<action>adminhtml/system_config/edit/section/mostviewed</action>
+									</configuration>
+								</children>
+							</mostviewed>
+						</children>
+					</themevast>					
+				</children>
+			</admin>
+        </resources>
+	</acl>
+</config>
+

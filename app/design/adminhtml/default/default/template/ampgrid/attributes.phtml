@@ -1,0 +1,136 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2015 Amasty (https://www.amasty.com)
+ * @package Amasty_Pgrid
+ */
+?>
+<script type="text/javascript">
+    Event.observe(window, 'load', function(){
+        pAttribute = new amPattribute('<?php echo $this->__('Grid Columns'); ?>');
+    });
+</script>
+<?php
+/**
+ * @var Amasty_Pgrid_Block_Adminhtml_Catalog_Product_Grid_Attributes $this
+ * @var Amasty_Pgrid_Model_Columngroup $group
+ */
+$selected = $this->getSelectedAttributes();
+?>
+<div id="pAttribute_block" style="display: none;" >
+    <form id="form-pattribute" name="form-pattribute" action="<?php echo $this->getSaveUrl(); ?>" method="post">
+        <div id="new-template-popup" style="display: none;">
+            <div style="float: left;">
+                <div>
+                    <label style="display: block" for="new-template-name">New Template Name:
+                </div>
+                <input id="new-template-name" class="validate-new-template" onchange="$('template-name').value = this.value;"
+                       placeholder="New Template Name" /></label>
+            </div>
+            <div style="float: left;margin:17px 5px;">
+                <button class="scalable save" onclick="$('save-template').click();" type="submit"><span><?php echo $this->__('Save Template'); ?></span></button>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+
+        <input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+        <input type="hidden" name="backurl" value="<?php echo $this->getBackUrl(); ?>" />
+        <input type="hidden" id="template-name" name="template-name" />
+        <input type="hidden" id="is-new-template" name="is-new-template" />
+        <input type="hidden" id="change-template" name="change-template" />
+        <input type="hidden" name="attributesKey" id="attributesKey" value="<?php echo $this->getAttributesKey();?>"/>
+        <div class="columns-group">
+            <label for="column_group_id"><?php echo $this->__('Columns Template');?>:</label>
+            <select name="column_group_id" id="column-group-id" onchange="pAttribute.changeGroup(this)">
+                <?php foreach($this->getGroups() as $group):?>
+                    <option
+                        data-columns="<?php echo $group->getAttributes()?>"
+                        data-additional-columns="<?php echo $group->getAdditionalColumns()?>"
+                        value="<?php echo $group->getId()?>"
+                        <?php echo $group->isSelected() ? 'selected="selected"' : '';?>>
+                        <?php echo $this->__($this->escapeHtml($group->getTitle()))?>
+                    </option>
+                <?php endforeach;?>
+            </select>
+        </div>
+        <hr/>
+        <br/>
+        <a href="#" class="uncheck-all" onclick="pAttribute.unCheckAll()"><?php echo $this->__('Uncheck All')?></a>
+        <table cellpadding="4" cellspacing="1" border="0" width="100%">
+            <tr>
+                <th><?php echo $this->__('Show'); ?></th>
+                <th></th>
+                <th><?php echo $this->__('Attribute Code'); ?></th>
+                <th></th>
+                <th><?php echo $this->__('Attribute Label'); ?></th>
+            </tr>
+            <?php foreach ($this->getAttributes() as $attribute): ?>
+                <tr>
+                    <td align="center">
+                        <input
+                            class="pattribute"
+                            id="pattribute-<?php echo $attribute->getAttributeId()?>"
+                            type="checkbox"
+                            name="pattribute[<?php echo $attribute->getAttributeId(); ?>]"
+                            value="1"
+                            <?php echo in_array($attribute->getAttributeId(), $selected) ? 'checked="checked"' : ''?>/>
+                    </td>
+                    <td width="8"></td>
+                    <td>
+                        <label for='pattribute-<?php echo $attribute->getAttributeId()?>'>
+                            <?php echo $attribute->getAttributeCode(); ?>
+                        </label>
+                    </td>
+                    <td width="8"></td>
+                    <td><?php echo $attribute->getFrontendLabel(); ?></td>
+                </tr>
+            <?php endforeach; ?>
+            <tr>
+                <td colspan="5" height="20"></td>
+            </tr>
+            <tr>
+                <td colspan="5"><hr width="100%" /></td>
+            </tr>
+            
+            <tr>
+                <td colspan="5" height="8"></td>
+            </tr>
+            <tr>
+                <td align="center"><input id="category" class="category" type="checkbox" name="category" value="1"
+                    <?php print $this->isCategoryColumnEnabled() ? 'checked' : '';?> />
+                </td>
+                <td width="8"></td>
+                <td><label for="category"><?php echo $this->__('Display categories column'); ?></label></td>
+                <td width="8"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="5" height="8"></td>
+            </tr>
+            <tr>
+                <td colspan="5"><hr width="100%" /></td>
+            </tr>
+            
+            <tr>
+                <td colspan="5" height="8"></td>
+            </tr>
+            <tr>
+                <td colspan="5" align="center">
+                    <button style="" class="scalable save" id="save-template" type="submit"><span><?php echo $this->__('Save Template'); ?></span></button>
+                    &nbsp;
+                    <button style="" class="scalable" type="button" onclick="pAttribute.saveNewTemplate();"><span><?php echo $this->__('Save as New Template'); ?></span></button>
+                    &nbsp;
+                    <button style="" class="scalable cancel" type="button" onclick="javascript: pAttribute.closeConfig();"><span><?php echo $this->__('Cancel'); ?></span></button>
+                    &nbsp;
+                    <input type="hidden" value="0" name="preset" id="preset"/>
+                    <button style="" class="scalable reset" type="submit" onclick="$('preset').value = 1;"><span><?php echo $this->__('Reset'); ?></span></button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" height="8"></td>
+            </tr>
+        </table>
+
+
+    </form>
+</div>

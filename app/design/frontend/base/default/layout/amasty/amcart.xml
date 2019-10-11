@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Cart
+ */
+-->
+<layout>
+    <amcart_category_handle>
+        <reference name="head">
+            <action method="addItem" ifconfig="amcart/general/enable"><type>skin_js</type><name>js/amasty/plugins/jquery.confirm.js</name><params/></action>
+            <action method="addJs" ifconfig="amcart/general/enable"><script>varien/configurable.js</script></action>
+            <action method="addJs" ifconfig="amcart/general/enable"><script>prototype/validation.js</script></action>
+            <action method="addJs" ifconfig="amcart/check_version/show_options"><script>varien/product_options.js</script></action>
+            <action method="addItem"><type>skin_js</type><name>js/bundle.js</name></action>
+
+            <!-- compatibility with Amasty Gift Card -->
+            <action method="addItem" ifconfig="amgiftcard/general/active"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params/></action>
+            <action method="addItem" ifconfig="amgiftcard/general/active"><type>js</type><name>calendar/calendar.js</name></action>
+            <action method="addItem" ifconfig="amgiftcard/general/active"><type>js</type><name>calendar/calendar-setup.js</name></action>
+            <action method="addCss"  ifconfig="amgiftcard/general/active"><stylesheet>css/amasty/amgiftcard/product_view.css</stylesheet></action>
+            <action method="append" ifconfig="amgiftcard/general/active">
+                <block>head.calendar</block>
+            </action>
+        </reference>
+    </amcart_category_handle>
+
+    <cms_page>
+        <update handle="amcart_category_handle"/>
+    </cms_page>
+
+    <default>
+        <reference name="head">
+            <action method="addJs"   ifconfig="amcart/general/enable" ><script>varien/product.js</script></action>
+            <action method="addItem" ifconfig="amcart/general/enable"><type>skin_js</type><name>js/amasty/amcart/config.js</name><params/></action>
+            <action method="addItem" ifconfig="amcart/general/enable"><type>skin_js</type><name>js/amasty/amcart/amAjax.js</name><params/></action>
+            <action method="addItem" ifconfig="amcart/general/enable" ><type>skin_css</type><name>css/amasty/amcart/amcart.css</name><params/></action>
+            <action method="addItem" ifconfig="amcart/general/minicart"><type>skin_js</type><name>js/amasty/plugins/jquery.easing.1.3.js</name><params/></action>
+        </reference>
+        <reference name="content">
+            <block type="amcart/config" ifconfig="amcart/general/enable" name="amcart.config" before="-" />
+        </reference>
+    </default>
+
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addJs"   ifconfig="amcart/general/use_product_page" ><script>varien/configurable.js</script></action>
+            <action method="addItem" ifconfig="amcart/general/use_product_page"><type>skin_js</type><name>js/amasty/plugins/jquery.confirm.js</name><params/></action>
+            <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"/>
+        </reference>
+    </catalog_product_view>
+
+    <catalog_category_default>
+        <update handle="amcart_category_handle"/>
+    </catalog_category_default>
+
+    <catalog_category_view>
+        <update handle="amcart_category_handle"/>
+    </catalog_category_view>
+
+    <catalogsearch_result_index>
+        <update handle="amcart_category_handle"/>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <update handle="amcart_category_handle"/>
+    </catalogsearch_advanced_result>
+
+    <amshopby_index_index>
+        <update handle="amcart_category_handle"/>
+    </amshopby_index_index>
+
+    <amlanding_page_view>
+        <update handle="amcart_category_handle"/>
+    </amlanding_page_view>
+
+    <catalog_category_layered>
+        <update handle="amcart_category_handle"/>
+    </catalog_category_layered>
+
+    <checkout_cart_index>
+        <update handle="amcart_category_handle"/>
+    </checkout_cart_index>
+</layout>

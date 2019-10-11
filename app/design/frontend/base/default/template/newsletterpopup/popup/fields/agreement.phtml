@@ -1,0 +1,60 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Newsletterpopup
+ * @copyright   Copyright (c) 2018 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+
+ ?>
+
+<div class="field">
+    <div class="input-box agreement-hld">
+        <input type="checkbox" class="checkbox required-entry data-agreement" name="<?php echo $this->getFieldName() ?>" id="<?php echo $this->getFieldId() ?>" value="1" />
+        <label for="<?php echo $this->getFieldId() ?>" class="<?php echo $this->getFieldId() ?>_label data-agreement" style="display: block;"><?php echo $this->getLabel() ?></label>
+    </div>
+</div>
+
+<?php foreach ($this->getPageIdentifiers() as $identifier): ?>
+    <div id="<?php echo $this->getAgreementContentId($identifier) ?>" class="nl_agreement-content-wrapper" style="display:none;">
+        <div class="nl_agreement-content" style="height:640px; overflow-y:auto; padding-right:10px;">
+            <?php echo $this->getPageContent($identifier) ?>
+        </div>
+    </div>
+<?php endforeach ?>
+
+<?php if ($this->getPageIdentifiers()): ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('js/plumrocket/newsletterpopup/fancybox/jquery.fancybox.css') ?>" media="all" />
+    <script type="text/javascript" src="<?php echo $this->getSkinUrl('js/plumrocket/newsletterpopup/fancybox/jquery.fancybox.pack.js') ?>"></script>
+
+    <script type="text/javascript">
+        pjQuery_1_12_4(document).ready(function($) {
+            var contentIdPrefix = '<?php echo $this->getAgreementContentId('') ?>';
+            var $links = $(".<?php echo $this->getFieldId() ?>_label a");
+
+            $links.each(function() {
+                var href = $(this).attr('href');
+                if (0 === href.indexOf('#')) {
+                    var contentId = '#' + contentIdPrefix + href.replace('#', '');
+
+                    $(this).fancybox({
+                        maxWidth: 600,
+                        href: contentId,
+                        helpers:  {
+                            title:  null
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+<?php endif ?>

@@ -1,0 +1,103 @@
+<?php
+$helper = Mage::helper('zipmoneypayment');
+$helper->getAssets();
+$background = $helper->assets_object->getPromotionInfobox()->page1;
+$transaction_limit_min = $helper->assets_object->getPromotionInfobox()->TransactionLimitMin;
+$pid = $this->getRequest()->getParam('pid');
+$minimun_text = "your";
+if ($pid != '') {
+    $model = Mage::getModel('catalog/product');
+    $_product = $model->load($pid);
+    $price_spec = $_product->getSpecialPrice();
+    $price_regu = $_product->getPrice();
+    if ($price_spec != '') {
+        $price = $price_spec;
+    } else {
+        $price = $price_regu;
+    }
+
+    // $price = $_product->getSpecialPrice();
+    if ($price >= $transaction_limit_min) {
+        $months = $helper->assets_object->getPromotionInfobox()->InterestFreeMonths;
+        $totals = round($price, 2);
+    } else {
+        $minimun_text = 'a';
+        $months = $helper->assets_object->getPromotionInfobox()->InterestFreeMonths;
+        $totals = $transaction_limit_min;
+    }
+} else {
+    $quote = Mage::getModel('checkout/session')->getQuote();
+    $quoteData = $quote->getData();
+    $grandTotal = $quoteData['grand_total'];
+    if ($grandTotal >= $transaction_limit_min) {
+        $months = $helper->assets_object->getPromotionInfobox()->InterestFreeMonths;
+        $totals = round($grandTotal, 2);
+    } else {
+        $minimun_text = 'a';
+        $months = $helper->assets_object->getPromotionInfobox()->InterestFreeMonths;
+        $totals = $transaction_limit_min;
+    }
+}
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('zipmoney/font/font.css') ?>" media="all" />
+<script src="<?php echo $this->getSkinUrl('zipmoney/font/cufon-yui.js') ?>" type="text/javascript"></script>
+<script src="<?php echo $this->getSkinUrl('zipmoney/font/hand-of-sean.cufonfonts.js') ?>" type="text/javascript"></script>
+<script src="<?php echo $this->getSkinUrl('zipmoney/font/GothamBook_400.font.js') ?>" type="text/javascript"></script>
+<script type="text/javascript">
+    Cufon.replace('.hand-of-sean', {fontFamily: 'Hand Of Sean', hover: true});
+    Cufon.replace('.gothambook', {fontFamily: 'GothamBook', hover: true});
+</script>
+<div style="width: 693px; height: 424px;  background: url(<?php echo $background ?>); position: relative;">
+    <div style="position: absolute;
+         top: 109px;
+         width: 100%;"> 
+        <p class="gothambook" style="font-size: 17px;  color: #919090;  text-shadow: 1px 1px #e6e6e5; 
+           text-align: center;
+           -webkit-margin-before: 0em;
+           -webkit-margin-after: 0em;
+           padding: 0px;
+
+           ">
+            Here's how it works for <?php echo $minimun_text; ?> <span class="gothambook"  style="color: #ef8031;">$<?php echo number_format($totals) ?></span> purchase...
+        </p>
+
+    </div>
+    <?php
+    if ($minimun_text == 'a') {
+        ?>
+        <div style = "position: absolute;
+             top: 134px;
+             left: 409px;
+             width: 18px;">
+            <img src = "<?php echo $this->getSkinUrl('zipmoney/popup/images/arrow-final.png') ?>"/>
+        </div>
+
+        <div style = "position: absolute;
+             top: 132px;
+             left: 429px;
+             width: 50px;">
+            <p class = "hand-of-sean" style = "font-size: 11px;  color: #939391; 
+               text-align: left;
+               -webkit-margin-before: 0em;
+               -webkit-margin-after: 0em;
+               padding: 0px;
+               "> min order
+            </p>
+            <?php
+        }
+        ?>
+    </div>
+    <div style = "position: absolute;
+         top: 286px;
+         width: 100%; ">
+        <p class = "hand-of-sean" style = "
+           -webkit-margin-before: 0em;
+           -webkit-margin-after: 0em;
+           padding: 0px;
+           margin: 0px;
+           color: #919090;  padding-left: 434px; font-size: 16px; text-align: center; ">
+            Pay <span style = "color: #ef8031">$<?php echo round($totals / $months, 0)
+        ?></span> x <?php echo $months; ?>mths 
+        </p>
+    </div>
+</div>

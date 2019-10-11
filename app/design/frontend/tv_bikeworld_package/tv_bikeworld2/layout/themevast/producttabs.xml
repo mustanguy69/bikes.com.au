@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+
+    <default>
+
+    </default>
+
+    <cms_index_index>
+
+        <reference name="head">
+
+         <action method="addJs" ifconfig="producttabs/general/jquery"><script>themevast/jquery.min.js</script></action>
+
+         <action method="addJs" ifconfig="producttabs/general/enabled"><script>themevast/plugin/owl.carousel.min.js</script></action>               
+
+    </reference>
+
+  <!--  <reference name="products_tabs">
+
+        <block type="producttabs/producttabs" name="producttabs" template="themevast/producttabs/producttabs.phtml" /> 
+
+    </reference> -->
+
+
+
+</cms_index_index>
+
+
+
+<producttabs_index_result>  
+
+    <reference name="root">
+
+        <action method="setTemplate" ifconfig="producttabs/general/enabled"><template>themevast/producttabs/result.phtml</template></action>
+
+
+
+        <block type="producttabs/product_list" name="product_list" template="themevast/producttabs/product/grid.phtml" />
+
+    </reference>
+
+</producttabs_index_result>
+
+
+
+</layout> 

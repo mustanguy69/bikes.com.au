@@ -1,0 +1,102 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700|Lato:300,400,700|Material+Icons|Open+Sans:300,400,600,700,800|Oswald:400,300,700' rel='stylesheet' type='text/css'>
+
+<!-- Google Tag Manager (noscript) --
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NWHX3TW"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+!-- End Google Tag Manager (noscript) -->
+
+
+<header class="header-wrapper">
+    <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('promotion')->toHtml() ?>
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('promotion')->toHtml() ?>
+    <div class="header">
+        <div class="container-inner" style="padding:0 50px;">
+            <div class="page-header-content" style="padding:0;">
+                <div class="row">
+                    <div class="col-sm-12 col-md-2 col-lg-3 text-center"> <!-- Added H1 & H3 tags for SEO -->
+                        <?php if ($this->getIsHomePage()):?>
+                        <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" style="max-height:150px"/></a></h1>
+                        <?php else:?>
+                        <p class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" style="max-height:150px" /></a></p>
+                        <?php endif?>
+                    </div>
+                    <div class="col-md-4 col-lg-3 quick-access-holder hidden-sm hidden-xs" style="padding:40px 15px 0 15px;">
+                 <?php echo $this->getLayout()->createBlock('newsletter/subscribe')->setTemplate('newsletter/subscribe.phtml')->toHtml() ?>
+                      <?php /*  <ul class="quick-access">
+
+							$storeLanguage = $this->getChildHtml('store_language'); ?>
+							<?php if (!empty($storeLanguage)): ?>
+								<li class="language-currency">
+									<div class="header-language">
+										<?php echo $storeLanguage ?>
+									</div>
+									<div class="header-currency">
+										<?php echo $this->getChildHtml('currency_top') ?>
+									</div>
+								</li>
+							<?php endif ?>
+
+                            <li class="header-toplinks">
+                                <?php echo $this->getChildHtml('topLinks') ?>
+                            </li> 
+                        </ul> */ ?>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 mobile-search" style="padding:50px 0 15px 15px;">
+                        <?php echo $this->getChildHtml('topSearch') ?>
+                    </div>
+<!--                    <div class="hidden-lg hidden-md">-->
+<!--                        --><?php //echo $this->getChildHtml('topSearch') ?>
+<!---->
+<!--                    </div>-->
+                </div> 
+                
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('topContainer'); ?>
+    </div>
+
+</header>
+<?php //echo $this->getChildHtml('topMenu') ?>
+
+<!-- New menu pro -->
+        <nav class="nav-container">
+            <div class="nav-megamenu">
+                <div class="container-inner">
+                    <?php echo $this->getBlockHtml('menupro_dropdown'); ?>
+                </div>
+            </div>
+        </nav>
+<!--05ed9788dc46ceeb9f655f82dde56486-->

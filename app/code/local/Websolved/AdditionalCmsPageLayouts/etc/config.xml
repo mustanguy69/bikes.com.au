@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+        <page>
+            <layouts>
+                <home>
+                    <label>Home Page</label>
+                    <template>page/homepage.phtml</template>
+                </home>
+                <partial>
+                    <label>First Partial</label>
+                    <template>page/first-partial.phtml</template>
+                </partial>
+            </layouts>
+        </page>
+    </global>
+</config>

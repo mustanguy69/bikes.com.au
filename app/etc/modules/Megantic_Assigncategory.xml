@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Megantic_Assigncategory>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Megantic_Assigncategory>
+    </modules>
+</config> 

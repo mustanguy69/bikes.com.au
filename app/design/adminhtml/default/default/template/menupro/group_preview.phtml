@@ -1,0 +1,8 @@
+<?php
+$baseUrl =  Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
+$validUrl = Mage::helper('menupro')->getValidUrl($baseUrl, Mage::app()->getStore()->isCurrentlySecure());
+$baseUrl = $validUrl;
+$groupId = Mage::app()->getRequest()->getParam("id");
+?>
+<input type='hidden' id='baseurl' name='baseurl' value='<?php echo $baseUrl ?>'/>
+<input type='hidden' id='group_id' name='group_id' value='<?php echo $groupId ?>'/>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+**
+ * EaDesgin
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@eadesign.ro so we can send you a copy immediately.
+ *
+ * @category    Eadesigndev_Shipestimation
+ * @copyright   Copyright (c) 2008-2015 EaDesign by Eco Active S.R.L.
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+
+<layout version="0.1.0">
+    <catalog_product_view translate="label">
+        <reference name="product.info.addtocart">
+            <block type="core/template" name="ship.button" template="eadesigndev/shipestimation/shipestimation.phtml"/>
+        </reference>
+        <reference name="product.info.additional">
+            <block type="core/template" name="ship.button"
+                   template="eadesigndev/shipestimation/catalog/product/view/estimate.phtml"/>
+        </reference>
+    </catalog_product_view>
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>prototype/window.js</script></action>
+            <action method="addCss"><stylesheet>eadesigndev/shipestimation/css/default.css</stylesheet></action>
+        </reference>
+    </default>
+</layout>

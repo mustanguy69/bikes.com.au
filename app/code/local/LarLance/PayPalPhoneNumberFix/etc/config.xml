@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <LarLance_PayPalPhoneNumberFix>
+            <version>0.1.0</version>
+        </LarLance_PayPalPhoneNumberFix>
+    </modules>
+    <global>
+        <helpers>
+            <larLance_PayPalPhoneNumberFix>
+                <class>larLance_PayPalPhoneNumberFix_Helper</class>
+            </larLance_PayPalPhoneNumberFix>
+        </helpers>
+        <models>
+            <paypal_number_fix>
+                <class>LarLance_PayPalPhoneNumberFix_Model</class>
+            </paypal_number_fix>
+        </models>
+        <events>
+            <sales_order_save_before>
+                <observers>
+                    <larLance_PayPalPhoneNumberFix>
+                        <type>singleton</type>
+                        <class>paypal_number_fix/observer</class>
+                        <method>addPhoneToAddress</method>
+                    </larLance_PayPalPhoneNumberFix>
+                </observers>
+            </sales_order_save_before>
+        </events>
+    </global>
+</config>

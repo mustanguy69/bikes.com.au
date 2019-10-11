@@ -1,0 +1,41 @@
+-
+  - '100000001'
+  - 'testTxnId1_capture'
+  - false
+  - null
+
+-
+  - '100000002'
+  - 'testTxnId2_capture'
+  - true
+  - 'Invalid order state or status.'
+
+-
+  - '100000003'
+  - 'testTxnId3_capture'
+  - true
+  - 'Invalid order state or status.'
+
+-
+  - '100000004'
+  - 'testTxnId4_capture'
+  - true
+  - 'Incorrect order id.'
+
+-
+  - '100000010'
+  - 'testTxnId10_capture'
+  - true
+  - 'The requested Payment Method is not available.'
+
+-
+  - '100000011'
+  - 'testTxnId11_capture'
+  - true
+  - 'Cannot find payment authorization transaction.'
+
+-
+  - '100000012'
+  - 'testTxnId12_capture'
+  - true
+  - 'Cannot find payment authorization transaction.'

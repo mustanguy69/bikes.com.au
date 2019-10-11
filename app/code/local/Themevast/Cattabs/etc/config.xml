@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Themevast_Cattabs>
+            <version>0.1.0</version>
+        </Themevast_Cattabs>
+    </modules>
+    <frontend>
+        <routers>
+            <cattabs>
+                <use>standard</use>
+                <args>
+                    <module>Themevast_Cattabs</module>
+                    <frontName>cattabs</frontName>
+                </args>
+            </cattabs>
+        </routers>
+        <layout>
+            <updates>
+                <cattabs>
+                    <file>themevast/cattabs.xml</file>
+                </cattabs>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <blocks>
+            <cattabs>
+                <class>Themevast_Cattabs_Block</class>
+            </cattabs>
+        </blocks>
+        <helpers>
+            <cattabs>
+                <class>Themevast_Cattabs_Helper</class>
+            </cattabs>
+        </helpers>
+        <models>
+            <cattabs>
+                <class>Themevast_Cattabs_Model</class>
+            </cattabs>
+        </models>
+    </global>
+	<default>
+		<cattabs>
+            <general>
+                <enabled>1</enabled>
+                <slide>0</slide>
+                <title></title>
+                <auto>0</auto>
+                <controls>1</controls>
+                <pager>0</pager>
+                <speed>1800</speed>
+                <pause>200</pause>
+                <maxSlides>5</maxSlides>
+                <rows>1</rows>
+                <loop>1</loop>   
+                <responsive>0:{items:1},600:{items:3},1000:{items:4}</responsive>
+                <margin>30</margin>
+
+
+                <playDelay>500</playDelay>
+                <price>1</price>
+                <cart>1</cart>
+                <wishlist>1</wishlist>
+                <compare>1</compare>
+                <review>1</review>
+<!--                 <description>0</description>
+                <maxlength></maxlength> -->
+<!--                 <qty>15</qty>
+                <widthImage>135</widthImage>
+                <heightImage>135</heightImage> -->
+            </general>
+		</cattabs>
+	</default>
+</config>
+

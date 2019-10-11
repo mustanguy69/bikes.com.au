@@ -1,0 +1,145 @@
+#search_mini_form {
+  &:after {
+    display: table;
+    content: "";
+    clear: both;
+  }
+}
+.form-search {
+  background:  none;
+  border: 2px solid #444444;
+  position: relative;
+  z-index: 999;
+  margin: 0;
+  label {
+    font-weight: normal;
+    margin: 0;
+  }
+  #cat {
+    float: left;
+    width: auto !important;
+    border-right: 2px solid #444;
+    margin-top: 5px;
+  }
+  .dd-select {
+    background: none !important;
+    border: none;
+    margin-left: 15px;
+   width: 151px !important;
+  }
+  .dd-selected {
+    background: none;
+    border: none;
+    text-align: left;
+    box-shadow: none;
+    font-weight: normal;
+    color: #ccc;
+    line-height: 15px;
+    padding-right: 20px;
+   
+  }
+  input.input-text {
+    width:65%;
+    border: none;
+    font-size: 14px;
+    color: #ccc;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    line-height: 47px;
+    height: 45px;
+    padding: 0;
+    padding-left: 30px;
+    background: none;
+  }
+  button.button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    margin: 0;
+    span {
+      background: none;
+      color: #bcbcbc;
+      border: none;
+      line-height: 40px;
+      margin: 2px 15px 0 0;
+      padding: 0;
+      font-size: 26px;
+    }
+    &:hover {
+      span{
+        color: #fff;
+      }
+    }
+    .fa {
+      float: right;
+      margin-right: 10px;
+      margin-top: 10px;
+      font-size: 20px;
+      color: #666;
+      display: none;
+    }
+  }
+  .dd-pointer {
+    right: 15px;
+    color: #333;
+    border: solid 4px transparent;
+  }
+  #cat {
+    .dd-options {
+      border: 2px solid #444;
+      box-shadow: none;
+      height: 405px;
+      overflow: auto !important;
+      border-top: 0;
+      background: #333;
+      margin-top: 7px;
+      margin-left: -2px;
+    }
+    a.dd-option {
+      padding: 5px 10px;
+      background: none;
+      border-bottom: 1px solid #444;
+      color: #777;
+      font-size: 13px;
+      &:hover {
+        color: #fff;
+        background: #222;
+      }
+    }
+  }
+  .dd-pointer-down {
+    border-top: solid 4px #aaa !important;
+    &.dd-pointer-up {
+      border-bottom: solid 4px #aaa !important;
+      border-top: none !important;
+      margin-top: -4px;
+    }
+  }
+  #cat a.dd-option label {
+    font-weight: normal;
+  }
+  .search-autocomplete {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 10px;
+    ul li {
+      padding-left: 5px;
+      cursor: default;
+      &.selected {
+        background: #eee;
+      }
+    }
+  }
+}
+.search-keyword {
+  a {
+    color: #555;
+    font-weight: 500;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .title {
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,65 @@
+<?php if(!$this->getConfig('enabled')) return;
+$slider = $this->getBrandlogo();
+if(!count($slider)) return;
+$media = Mage::getBaseUrl('media');	
+?>
+<div class="brandlogo-wrapper">
+	<div class="brandlogo-contain">
+		
+			<!-- <div class="bx-title brand-title"><p><?php echo $this->__('Brand & Cliens') ?><p></div> -->
+			<ul class="bxslider">
+				<?php
+				$rows = $this->getConfig('rows');
+				$i= 0;
+				foreach($slider as $slide) :
+					$image  = $media;
+					$image .= $slide['image'];
+					
+				?>
+				<?php if($i++%$rows==0): ?>
+				<li class="item">
+				<?php endif; ?>
+				<?php if( $slide['link'] ) { ?>
+							<a href="<?php echo $slide['link']?>" title=""><img src="<?php echo $image;?>" alt="brand" /></a>												
+						<?php } else { ?>
+							<img src="<?php echo $image;?>" alt="brand" />
+						<?php } ?>																																	             
+				    <?php if( $this->getConfig('description')): ?>
+					<div class="st-des">
+					    <div class="st-des-title"><p><?php echo $slide['title'] ?></p></div>
+					    <div class="st-des-content"><?php echo $slide['description'] ?></div>
+					</div>
+				    <?php endif; ?>
+				<?php if ($i%$rows==0): ?>
+				</li>
+				<?php endif; ?>
+				<?php
+			    endforeach
+				?>
+		    </ul>
+		
+		<script type="text/javascript">
+	   //<![CDATA[
+		jQuery(document).ready(function($){
+		  $('.brandlogo-contain .bxslider').owlCarousel({
+						<?php if($this->getConfig('autoPlay') == 0): ?>
+						autoplay: false, 
+						<?php else: ?>
+						autoplay: true,
+						<?php endif; ?>
+						autoplaySpeed: <?php echo $this->getSlideSpeed()?$this->getSlideSpeed():$this->getConfig('slideSpeed'); ?>, 
+						nav: <?php echo ($this->getConfig('navigation') == 1? "true": "false"); ?>, 
+						dots: <?php echo ($this->getConfig('pagination') == 1? "true": "false"); ?>, 
+						loop: <?php echo ($this->getConfig('loop') == 1? "true": "false") ?>,
+						autoplayHoverPause: <?php echo ($this->getConfig('stopOnHover') == 1? "true": "false"); ?>,
+						responsive: {<?php echo ($this->getResponsive()?$this->getResponsive():$this->getConfig('responsive')) ?>},
+						margin: <?php echo $this->getConfig('margin') ?>,
+						//padding: 10
+					})
+		
+		});
+		//]]>
+	</script>
+	</div>
+</div>
+

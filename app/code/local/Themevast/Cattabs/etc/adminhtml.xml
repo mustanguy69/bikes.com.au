@@ -1,0 +1,59 @@
+<?xml version="1.0"?> 
+<config>
+	<menu>
+		<themevast translate="title">
+			<title>Themevast</title>
+			<sort_order>71</sort_order>               
+			<children>
+				<cattabs translate="title" module="cattabs">
+					<title>Category Tabs Products</title>
+					<sort_order>0</sort_order>
+					<children>
+						<configuration>
+							<title>Configuration</title>
+							<sort_order>1</sort_order>
+							<action>adminhtml/system_config/edit/section/cattabs</action>
+						</configuration>
+					</children>
+				</cattabs>
+			</children>
+		</themevast>
+	</menu>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<cattabs>
+										<title>Cattabs Products</title>
+									</cattabs>
+								</children>
+							</config>
+						</children>
+					</system>	
+					<themevast translate="title" module="cattabs">
+						<title>Themevast</title>
+						<sort_order>71</sort_order>               
+						<children>
+							<cattabs translate="title" module="cattabs">
+								<title>Cattabs Products</title>
+								<sort_order>0</sort_order>
+								<children>
+									<configuration>
+										<title>Configuration</title>
+										<sort_order>1</sort_order>
+										<action>adminhtml/system_config/edit/section/cattabs</action>
+									</configuration>
+								</children>
+							</cattabs>
+						</children>
+					</themevast>					
+				</children>
+			</admin>
+        </resources>
+	</acl>
+</config>
+

@@ -1,0 +1,55 @@
+<?php $buttonTitle = $this->__('zipMoney Express'); ?>
+<?php if($this->getProduct()->isSaleable()): ?>
+<div class="zipmoney-express-button-product-wrapper">
+    <a id="zipmoney-express-button" zm-asset="productbutton" zm-widget="inline" style="cursor: pointer;" title="<?php echo $buttonTitle; ?>"   
+    <?php if(!$this->_isIframeFlowEnabled()) echo "href='".htmlentities($this->getExpressPaymentUrl())."'" ?>></a>
+    <a id="zipmoney-express-learn-more" zm-asset="productbuttonlink" zm-widget="popup"  zm-popup-asset="termsdialog"  class="zip-hover zip-express-widget-link" style="font-family: Noto Sans; color: #808080; font-size: 9px;" ></a>
+    <input type="hidden" id="zip_checkout_url" name="return_url" value="" disabled/>
+</div>
+
+<script type="text/javascript">
+    Event.observe('zipmoney-express-button', 'click', function(event) {
+        var returnUrl = $('zip_checkout_url');
+        if (returnUrl == undefined) {
+            return;
+        }
+        returnUrl.value = this.href;
+        var button = $('zipmoney-express-button');
+        if (button == undefined) {
+            return;
+        }
+        /**
+         * If the iframe checkout is enabled, redirect to the same page and append additional param
+         */
+        var url = '<?php echo $this->getReturnUrl(); ?>';
+        if (url) {
+            returnUrl.value = url;
+        }
+        returnUrl.enable();
+        productAddToCartForm.submit(button);
+        event.stop();
+        returnUrl.value = '';
+        returnUrl.disable();
+        if (button.disabled) {
+            toggleExpressButton(false);
+        }
+    });
+</script>
+   
+<?php if($this->_isIframeFlowEnabled()): ?>
+<script type="text/javascript">
+    if (<?php echo $this->showIframeCheckout(); ?>) {
+        toggleExpressButton(false);
+    }
+
+    document.observe("dom:loaded", function() {
+        if (<?php echo $this->showIframeCheckout(); ?>) {
+            var vUrl = '<?php echo $this->getIframeRedirectUrl(); ?>';
+            var iframe = new iframeCheckout(vUrl, 'pdp', '<?php echo $this->__('Can not redirect to zipMoney.') ?>');
+            iframe.redirectToCheckout();
+        }
+    });
+</script>
+<?php endif; ?>
+
+<?php endif; ?>

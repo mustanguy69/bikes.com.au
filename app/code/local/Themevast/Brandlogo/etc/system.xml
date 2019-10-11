@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<themevast>
+			<label>Sunnytheme</label>
+			<sort_order>100</sort_order>
+		</themevast>
+	</tabs>
+	<sections>
+		<brandlogo translate="label" module="brandlogo">
+			<label>Brand Logo</label>
+			<tab>themevast</tab>
+			<sort_order>176</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<brandlogo translate="label">
+					<label>Brand Logo</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label comment">
+							<label>Enabled: </label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</enabled>
+						<autoPlay translate="label comment">
+							<label>Auto slide: </label>
+							<!-- <depends><slide>1</slide></depends> -->
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>							
+						</autoPlay>
+						<slideSpeed translate="label">
+							<label>Slideshow Speed: </label>
+							<frontend_type>text</frontend_type>
+							<sort_order>16></sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_store>1</show_in_store>
+							<show_in_website>1</show_in_website>
+						</slideSpeed>
+						<stopOnHover translate="label">
+							<label>Delay:</label>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>17</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_store>1</show_in_store>
+							<show_in_website>1</show_in_website>
+						</stopOnHover>					
+                        <items translate="label">
+                            <label>Number Items Show: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>26</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </items>
+						<rows translate="label">
+                            <label>Row of Item Slider: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>28</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </rows>	
+						<navigation translate="label">
+							<label>Show Next/Back control: </label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</navigation>
+						<pagination translate="label">
+							<label>Show navigation control: </label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>42</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</pagination>	
+						<loop translate="label comment">
+                            <label>Enable Infinite loop: </label>
+                            <!-- <depends><slide>1</slide></depends> -->
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>46</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </loop>
+                        <responsive translate="label comment">
+                            <label>Responsive option: </label>
+                            <!-- <depends><slide>1</slide></depends> -->
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>47</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<comment>For example: "0:{items:1},600:{items:3},1000:{items:4}"</comment>
+                        </responsive>
+                        <margin translate="label comment">
+                            <label>Item Slider Margin: </label>
+                            <!-- <depends><slide>1</slide></depends> -->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </margin>
+					</fields>
+				</brandlogo>						
+			</groups>
+		</brandlogo>
+	</sections>
+</config>
+
+

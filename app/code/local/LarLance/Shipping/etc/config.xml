@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <LarLance_Shipping>
+            <version>0.1.1</version>
+        </LarLance_Shipping>
+    </modules>
+    <global>
+        <blocks>
+            <larlance_shipping>
+                <class>LarLance_Shipping_Block</class>
+            </larlance_shipping>
+        </blocks>
+        <helpers>
+            <larlance_shipping>
+                <class>LarLance_Shipping_Helper</class>
+            </larlance_shipping>
+        </helpers>
+        <models>
+            <larlance_shipping>
+                <class>LarLance_Shipping_Model</class>
+            </larlance_shipping>
+        </models>
+        <resources>
+            <larlance_shipping_setup>
+                <setup>
+                    <module>LarLance_Shipping</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </larlance_shipping_setup>
+        </resources>
+
+    </global>
+</config>

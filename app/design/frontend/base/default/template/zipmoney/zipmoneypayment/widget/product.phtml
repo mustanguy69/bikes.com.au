@@ -1,0 +1,11 @@
+<?php
+if ($this->isShow()):
+?>
+    <?php
+    if (Mage::getModel('cms/block')->load('zipmoney-button-block')->getIsActive()) :
+        echo Mage::app()->getLayout()->createBlock('cms/block')->setBlockId('zipmoney-button-block')->toHtml();
+    endif;
+    ?>
+<?php
+endif;
+?>

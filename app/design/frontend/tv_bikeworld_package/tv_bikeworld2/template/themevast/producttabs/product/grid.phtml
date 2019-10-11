@@ -1,0 +1,160 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_productFirst=$this->getLoadedProductCollection()->getFirstItem();
+    //$_productFirst=Mage::getModel('catalog/product')->load($id)
+    $_helper = $this->helper('catalog/output');
+    $helpLabels = $this->helper('themevast/labels');
+    $widthImage = 300;
+    $heightImage = 300;
+    $rows        = $this->getRow();
+    $res=Mage::helper('producttabs')->getProducttabsCfg('responsive');
+    $cp=$rows*$res;
+    //if(Mage::getStoreConfig('producttabs/general/lazyload') == 1){
+    $lazyload = true;
+    //}
+?>
+<?php if(!$_productCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+    <div class="col-product col-lg-6 col-md-6">
+        <div class="item first-item">
+            <div class="item-inner">
+                <div class="box-images">
+                    <a href="<?php echo $_productFirst->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_productFirst, 'small_image'), null, true) ?>" class="product-image">
+                        <img height="585px" width="585px" class="gridlazy delay" data-src="<?php echo $this->helper('catalog/image')->init($_productFirst, 'small_image')->resize(585); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_productFirst, 'small_image'), null, true) ?>"  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="min-height:585px !important;"/>
+                    </a>
+                    <?php $actionCfg = $this->getProductCfg('product_action');
+                          if($actionCfg):   
+                          $actions = explode(',', $actionCfg);
+                        ?>
+                        <ul class="add-to-links">
+                            <?php if($_productFirst->isSaleable()): ?>
+                                <li><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_productFirst) ?>')"><span><span><?php //echo $this->__('Add to Cart') ?></span></span></button></li>
+                            <?php else: ?>
+                                <li><button title="<?php echo $this->__('Out of stock') ?>" class="button btn-cart availability out-of-stock"><span><span><?php //echo $this->__('Out of stock') ?></span></span></button></li>
+                            <?php endif; ?>
+                                <?php if(in_array("compare", $actions)):?>
+                                    <?php if($_compareUrl=$this->getAddToCompareUrl($_productFirst)): ?>
+                                        <li><a href="<?php echo $_compareUrl ?>" title="<?php echo $this->__('Add to Compare') ?>" class="link-compare"><i class="fa fa-bars"></i><?php //echo $this->__('Add to Compare') ?></a></li>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                 <?php if(in_array("wishlist", $actions)):?>
+                                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                        <li>
+                                            <a href="<?php echo $this->helper('wishlist')->getAddUrl($_productFirst) ?>" title="<?php echo $this->__('Add to Wishlist') ?>" class="link-wishlist"><i class="fa fa-heart-o"></i><?php //echo $this->__('Add to Wishlist') ?></i></a>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endif; ?>   
+                        </ul>
+                    <?php endif ?> 
+                </div>   
+                <div class="product-shop">
+                    <h2 class="product-name">
+                        <a href="<?php echo $_productFirst->getProductUrl() ?>" title="<?php echo $this->stripTags($_productFirst->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_productFirst, $_productFirst->getName(), 'name') ?></a>
+                    </h2>
+                    <?php //echo $this->getReviewsSummaryHtml($_productFirst, 'short') ?>
+                    <?php echo $this->getPriceHtml($_productFirst, true) ?>      
+                </div>
+                <div class="new-sale">
+                    <?php echo $helpLabels->getLabels($_productFirst); //Product labels ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-product col-lg-6 col-md-6">
+       <div class="products-grid">
+        <?php $i=0;$j=0; foreach ($_productCollection as $_product): ?>
+            <?php if($_product->getId()==$_productFirst->getId()){?>
+            <?php continue;}?>
+            <?php $_columnCount = 1; ?>
+            <?php if($j++%$rows==0 && !empty($_columnCount)): ?>
+            <div class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+            <?php endif; ?>
+            <div class="item-inner">
+                <div class="box-images">
+                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                    <?php /*
+                        <img <?php if(isset($layzyload)): ?>class="owl-lazy delay"<?php endif; ?> <?php if(isset($layzyload)): ?>data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($widthImage, $heightImage); ?>"<?php else: ?>src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($widthImage, $heightImage); ?>"<?php endif; ?> alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+						*/ ?>
+	 <img class="gridlazy delay"  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($widthImage, $heightImage); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                    </a>
+                    <?php $actionCfg = $this->getProductCfg('product_action');
+                      if($actionCfg):   
+                      $actions = explode(',', $actionCfg);
+                    ?>
+                    <ul class="add-to-links">
+                        <?php if($_product->isSaleable()): ?>
+                            <li><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php //echo $this->__('Add to Cart') ?></span></span></button></li>
+                        <?php else: ?>
+                            <li><button title="<?php echo $this->__('Out of stock') ?>" class="button btn-cart availability out-of-stock"><span><span><?php //echo $this->__('Out of stock') ?></span></span></button></li>
+                        <?php endif; ?>
+                            <?php if(in_array("compare", $actions)):?>
+                                <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                    <li><a href="<?php echo $_compareUrl ?>" title="<?php echo $this->__('Add to Compare') ?>" class="link-compare"><i class="fa fa-bars"></i><?php //echo $this->__('Add to Compare') ?></a></li>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                             <?php if(in_array("wishlist", $actions)):?>
+                                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                    <li>
+                                        <a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" title="<?php echo $this->__('Add to Wishlist') ?>" class="link-wishlist"><i class="fa fa-heart-o"></i><?php //echo $this->__('Add to Wishlist') ?></i></a>
+                                    </li>
+                                <?php endif; ?>
+                            <?php endif; ?>   
+                    </ul>
+                    <?php endif ?> 
+                    </div>
+				<div class="new-sale">
+					<?php echo $helpLabels->getLabels($_product); //Product labels ?>
+				</div>
+                    <div class="product-shop">
+                        <h2 class="product-name">
+                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+                        </h2>
+                        <?php //echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                        <?php echo $this->getPriceHtml($_product, true) ?>      
+                    </div>
+        </div>
+        <?php if ($j%$rows==0 || $j%$_productCollection->count()==0): ?>
+        </div>
+        <?php endif; ?>
+        <?php endforeach ?>
+        </div>
+    <div>
+    <script type="text/javascript">
+		decorateGeneric($$('ul.products-grid'), ['odd','even','first','last']);
+        jQuery('.gridlazy').lazy();
+    </script>
+<?php endif; ?>

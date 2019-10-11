@@ -1,0 +1,84 @@
+<?php
+$slide = Mage::helper('blog')->getSlideCfg();
+if(isset($slide['enabled']) && !$slide['enabled']) return;
+$slider = isset($slide['slide'])?$slide['slide']:'';
+$width = isset($slide['width']) ? $slide['width'] : '900';
+$column = isset($slide['numbercolumn']) ? $slide['numbercolumn'] : '1';
+$numberrow = isset($slide['numberrow']) ? $slide['numberrow'] : '1';
+$speed = isset($slide['speed']) ? $slide['speed'] : '300';
+$auto = isset($slide['auto']) ? $slide['auto'] : 'false';
+$show_image = isset($slide['showimage']) ? $slide['showimage'] : '';
+$image_width = isset($slide['widthimage']) ? $slide['widthimage'] : '100';
+$image_height = isset($slide['heightimage']) ? $slide['heightimage'] : '100';
+$show_title = isset($slide['showtitle']) ? $slide['showtitle'] : '';
+$show_author = isset($slide['showauthor']) ? $slide['showauthor'] : '';
+$show_time = isset($slide['showtime']) ? $slide['showtime'] : '';
+$show_shortcontent = isset($slide['showshortcontent']) ? $slide['showshortcontent'] : '';
+$show_readmore = isset($slide['showreadmore']) ? $slide['showreadmore'] : '';
+?>
+<?php $posts = $this->getPosts(); ?>
+<?php if ($posts = $this->getRecent()):  $i = 1;?>
+<?php if(!count($posts)) return; ?>
+<div class="blog-wrapper">
+	<div class="blog-content">
+			<?php echo '<div class="bx-title blog-title"><h2>' .Mage::getStoreConfig('blog/blog/title'). '</h2></div>';?>
+			<div class="blog-grid">
+			<?php if($numberrow > 1){ ?>
+				<?php foreach ($posts as $post): ?>
+					<?php if($i % $numberrow == 1) echo '<li class="item">'; ?>
+						<?php if($show_image) echo '<img width="'.$image_width.'" height="'.$image_height.'" src="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA). $post->getImage().'" />'; ?>
+						<?php if($show_title): ?> <a href="<?php echo $post->getAddress(); ?>" ><?php echo '<h3 class="title">'.$post->getTitle().'</h3>' ?></a> <?php endif; ?>
+						<?php $s = $post->getCreatedTime(); $date = strtotime($s); ?>
+						<?php if($show_author) echo '<p>By '.$post->getUser(); if($show_author && $show_time) echo ' - '; if($show_time) echo date("d M Y", $date).'</p>'; ?>
+						<?php if($show_shortcontent) echo $this->getContentBlogSidebar($post->getShortContent(),100);?>
+						<?php if($show_readmore): ?> <p><a href="<?php echo $post->getAddress(); ?>"><?php echo $this->__('Read More >') ?></a></p> <?php endif; ?>
+					<?php if($i % $numberrow == 0)echo '</li>'; $i++; ?>
+				<?php endforeach; ?>
+				<?php if($i % $numberrow != 1)echo '</li>'; ?>
+			<?php } else{ ?>
+				<?php foreach ($posts as $post): ?>
+					<div class="item <?php if(!$slider): ?>item col-md-4 col-sm-6 col-sms-6 col-smb-12 <?php endif; ?>">
+						<div class="item-inner">
+							<div class="box-img">
+							<?php if($show_image) echo '<img  width="'.$image_width.'" height="'.$image_height.'" alt="blog" src="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA). $post->getImage().'" />'; ?>
+							</div>
+							<div class="box-info">
+							<span class="arrows"></span>
+							<?php if($show_title): ?> <a class="title" href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle() ?></a> <?php endif; ?>
+							<?php $s = $post->getCreatedTime(); $date = strtotime($s); ?>
+							<?php if($show_author) echo '<p class="author"><i class="fa fa-pencil"></i> '.$post->getUser(); '</p>'; ?>
+							
+							<?php if($show_time) echo '<p class="timer"><i class="fa fa-calendar"></i>'; if($show_time) echo date("M, d, Y", $date).'</p>'; ?>
+							<?php if($show_shortcontent) echo '<div class="desc">'. $this->getContentBlogSidebar($post->getShortContent(),100) .'</div>';?>
+							<?php if($show_readmore): ?> <p class="read-more"><a href="<?php echo $post->getAddress(); ?>"><?php echo $this->__('View More') ?></a></p> <?php endif; ?>
+							</div>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			<?php } ?>
+			</div>
+		<?php if($slider): ?>
+		<script>
+			jQuery(document).ready(function($){
+			$('.blog-content .blog-grid').owlCarousel({
+				<?php if($slide['autoPlay']  == 0): ?>
+					autoplay: false, 
+					<?php else: ?>
+					autoplay: true,
+					<?php endif; ?>
+					autoplaySpeed: <?php echo $speed; ?>, 
+					nav: <?php echo ($slide['navigation'] == 1? "true": "false"); ?>, 
+					dots: <?php echo ($slide['pagination'] == 1? "true": "false"); ?>, 
+					loop: <?php echo ($slide['loop'] == 1? "true": "false") ?>,
+					autoplayHoverPause: <?php echo ($slide['stopOnHover'] == 1? "true": "false"); ?>,
+					responsive: {<?php echo $slide['responsive'] ?>},
+					margin: <?php echo $slide['margin'] ?>,
+				})
+			});
+		</script>
+		<?php endif; ?>
+	</div>
+</div>
+<?php else: ?>
+<div class="clearfix"></div>
+<?php endif; ?>

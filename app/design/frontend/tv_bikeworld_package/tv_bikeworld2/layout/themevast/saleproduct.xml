@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <cms_index_index>
+        <reference name="head">
+        <action method="addCss" ifconfig="saleproduct/general/enabled"><stylesheet>themevast/plugin/css/owl.carousel.css</stylesheet></action>
+        <action method="addJs" ifconfig="saleproduct/general/enabled"><script>themevast/jquery.min.js</script></action>
+        <action method="addJs" ifconfig="saleproduct/general/enabled"><script>themevast/plugin/owl.carousel.min.js</script></action>     
+        </reference>
+        <reference name="saleproducts">
+            <block type="saleproduct/saleproduct" name="saleproduct"  template="themevast/saleproduct/saleproduct.phtml">
+            </block>
+        </reference>
+    </cms_index_index>
+    <saleproduct_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="saleproduct/product_list" name="saleproduct_list" template="catalog/product/list.phtml">
+                <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                </block>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+            </block>
+        </reference>
+    </saleproduct_index_index>
+</layout> 
+

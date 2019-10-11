@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <cms_index_index>
+		<reference name="head">            <!-- <action method="addCss"><stylesheet>themevast/plugin/css/nivo-slider.css</stylesheet></action> -->
+			<action method="addJs" ifconfig="imageslider/general/enabled"><script>themevast/jquery.min.js</script></action>            
+			<action method="addJs" ifconfig="imageslider/general/enabled"><script>themevast/plugin/jquery.nivo.slider.js</script></action>
+        </reference>
+        <reference name="bannerslider">
+			<block type="cms/block" name="top-block" as="top-block">
+                <action method="setBlockId"><block_id>top-block</block_id></action>
+            </block>
+           <!--  
+		   <block type="cms/block" name="cms_banner_partners" as="cms_banner_partners">
+                <action method="setBlockId"><block_id>banner_partners</block_id></action>
+            </block>
+           <block type="imageslider/slider" before="-" name="imageslider" template="themevast/imageslider/imageslider.phtml"/> -->
+        </reference>
+
+    </cms_index_index>
+</layout>
+

@@ -1,0 +1,18 @@
+<?php $post = $this->getPost() ?>
+<div class="postBookmarks"><h4><?php echo Mage::helper('blog')->__('Bookmark with'); ?>:</h4>
+    <a href="http://digg.com/submit?phase=2&amp;url=<?php echo $post->getAddress(); ?>&amp;title=<?php echo $post->getTitle(); ?>&amp;bodytext=<?php echo $post->getTitle(); ?>&amp;topic=" class="bm">
+        <img src="<?php echo Mage::getDesign()->getSkinUrl('blog/images/communityIcons'); ?>/http-digg-com.gif" width="16" height="16" alt = "" />&nbsp;<?php echo $this->__('Digg.com'); ?></a>&nbsp;
+    <a href="http://www.stumbleupon.com/submit?url=<?php echo $post->getAddress(); ?>&amp;title=<?php echo $post->getTitle(); ?>&amp;newcomment=<?php echo $post->getTitle(); ?>" class="bm">
+        <img src="<?php echo Mage::getDesign()->getSkinUrl('blog/images/communityIcons'); ?>/http-stumbleupon-com.gif" width="16" height="16" alt = "" />&nbsp;<?php echo $this->__('Stumbleupon.com'); ?></a>&nbsp;
+    <a href="http://del.icio.us/post/?url=<?php echo $post->getAddress(); ?>&amp;title=<?php echo $post->getTitle(); ?>&amp;notes=<?php echo $post->getTitle(); ?>" class="bm">
+        <img src="<?php echo Mage::getDesign()->getSkinUrl('blog/images/communityIcons'); ?>/http-del-icio-us.gif" width="16" height="16" alt = "" />&nbsp;<?php echo $this->__('Del.icio.us'); ?></a>&nbsp;
+    <a href="http://www.facebook.com/sharer.php?u=<?php echo $post->getAddress(); ?>&amp;t=<?php echo $post->getTitle(); ?>" class="bm">
+        <img src="<?php echo Mage::getDesign()->getSkinUrl('blog/images/communityIcons'); ?>/http-www-facebook-com-.gif" width="16" height="16" alt = "" />&nbsp;<?php echo $this->__('Facebook'); ?></a>&nbsp;
+    <a href="http://reddit.com/submit?url=<?php echo $post->getAddress(); ?>&amp;title=<?php echo $post->getTitle(); ?>" class="bm">
+        <img src="<?php echo Mage::getDesign()->getSkinUrl('blog/images/communityIcons'); ?>/http-reddit-com.gif" width="16" height="16" alt = "" />&nbsp;<?php echo $this->__('Reddit.com'); ?></a>&nbsp;
+</div>
+<?php
+/*
+Below is a list of other bookmarking sites that you can use.
+
+simply copy and past the lines you want to above.

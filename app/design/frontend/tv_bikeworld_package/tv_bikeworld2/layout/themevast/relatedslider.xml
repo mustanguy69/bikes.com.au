@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="root">
+            <block type="relatedslider/page_html_head" name="themevast_relatedslider_head" as="themevast_relatedslider_head"/>
+        </reference>
+        <reference name="head">
+            <action method="addCss" ifconfig="relatedslider/general/enabled"><stylesheet>themevast/plugin/css/owl.carousel.css</stylesheet></action>
+            <action method="addJs" ifconfig="relatedslider/general/enabled"><script>themevast/jquery.min.js</script></action>
+            <action method="addJs" ifconfig="relatedslider/general/enabled"><script>themevast/plugin/owl.carousel.min.js</script></action>
+        </reference>
+    </default>
+    <catalog_product_view translate="label">		
+		<reference name="product.info">
+            <block type="catalog/product_list_related" name="themevast.relatedslider" as="related_slider" template="themevast/relatedslider/relatedslider.phtml"/>
+        </reference>
+    </catalog_product_view>
+    <review_product_list translate="label">		
+		<reference name="product.info">
+            <block type="catalog/product_list_related" name="themevast.relatedslider" as="related_slider" template="themevast/relatedslider/relatedslider.phtml"/>
+        </reference>
+    </review_product_list>
+</layout> 
+

@@ -1,0 +1,50 @@
+<?php
+	$freetextsearchHelper = Mage::helper('freetextsearch');
+	$catalogSearchHelper =  $this->helper('catalogsearch');
+	$resultNotice = $freetextsearchHelper->getSearchResultNotice();
+	
+?>
+<div class="searchformwrapper"> <!-- Added a form wrapper -->
+	<!-- <form id="freetextsearch_form" action="<?php echo $this->getUrl('freetextsearch/search/result') ?>" method="get"> --> <!-- Original Free Text Search -->
+	<form id="freetextsearch_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get"> <!-- This is using the default Magento Search, change <input> name to [keyword] to switch back to Free Text Search -->
+		<div class="form-search">
+			<label for="search"><?php echo $this->__('Search:') ?></label>
+			<input id="input_search" type="text" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="" class="input-text" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" placeholder="Search entire store here..." />
+			<button type="submit" title="<?php echo $this->__('Search') ?>" class="button"><span><span><?php echo $this->__('Search') ?></span></span><i class="fa fa-times"></i></button>
+			<div id="search_autocomplete" class="search-autocomplete"></div>
+			<script type="text/javascript">
+			//<![CDATA[
+				var searchForm = new Varien.searchForm('freetextsearch_form', 'input_search', '<?php echo $this->__('Search entire store here...') ?>');
+			//]]>
+			</script>
+		</div>
+	</form>
+	<?php if($freetextsearchHelper->enableQuickSearch()):?>
+	<div id="showResults" style="display:none;">
+		<a class="close-dropdown" href="javascript://" onclick="closeDropdown()" title="<?php echo $this->__('Close')?>" alt="<?php echo $this->__('Close')?>">X</a>
+		<div id="resultNotice">
+			<label id="resultLabel">Search result</label>
+		</div>	
+		<div id="listResults" style="display:none;">
+		</div>
+	</div>
+</div> <!-- Added a form wrapper -->
+<script type="text/javascript">
+	var quicksearch = new Quicksearch(
+        '<?php echo $this->getUrl('freetextsearch/search/quicksearch') ?>',
+		'<?php echo $resultNotice ?>',
+		'input_search'
+    );
+	var numberChar = <?php echo Mage::getStoreConfig('freetextsearch/quick_search_setting/number_character')?>;
+	Event.observe('input_search', 'keyup', function(event){
+		var searchBox = $('input_search');
+		if(searchBox.value.length >= numberChar){
+			quicksearch.search();
+		}	
+	});
+	function closeDropdown() {
+		var showResults = $('showResults');
+		showResults.style.display = "none";
+	}
+</script>
+<?php endif; ?>

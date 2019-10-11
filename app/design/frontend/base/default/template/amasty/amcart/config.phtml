@@ -1,0 +1,102 @@
+<?php 
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Cart
+ */  
+if(Mage::getStoreConfig('amcart/general/enable')): ?>
+    <?php
+    /** @var Amasty_Cart_Helper_Data $hlr */
+    $hlr = $this->helper("amcart");
+    //Visual Options
+    $backgroundColor        = $hlr->getBackgroundColor();
+    $headerBackgroundColor  = $hlr->getHeaderBackgroundColor();
+    $textColor              = $hlr->getTextColor();
+    $buttonTextColor        = $hlr->getButtonTextColor();
+    $leftButtonColor        = $hlr->getLeftButtonColor();
+    $rightButtonColor       = $hlr->getRightButtonColor();
+
+
+    $backgroundColorFrom = $hlr->colourBrightness($backgroundColor, 0.9);
+    $backgroundColorTo   = $hlr->colourBrightness($backgroundColor, -0.7);
+
+    $headerBackgroundColorFrom = $hlr->colourBrightness($headerBackgroundColor, 0.9);
+    $headerBackgroundColorTo   = $hlr->colourBrightness($headerBackgroundColor, -0.7);
+
+    /*left button*/
+    $buttonLeftColorFrom   = $hlr->colourBrightness($leftButtonColor, -0.8);
+    $buttonLeftColorTo     = $hlr->colourBrightness($leftButtonColor, 1);
+    $buttonLeftBorderColor = $hlr->colourBrightness($leftButtonColor, -0.8);
+
+    $buttonLeftColorActiveFrom = $hlr->colourBrightness($leftButtonColor, 1);
+
+    $buttonLeftColorHoverFrom = $hlr->colourBrightness($buttonLeftColorFrom, 0.9);
+
+    /*right button*/
+    $buttonRightColorFrom  = $hlr->colourBrightness($rightButtonColor, -0.8);
+    $buttonRightColorTo    = $hlr->colourBrightness($rightButtonColor, 1);
+    $buttonRightBorderColor = $hlr->colourBrightness($rightButtonColor, -0.8);
+
+    $buttonRightColorActiveFrom = $hlr->colourBrightness($rightButtonColor, 1);
+
+    $buttonRightColorHoverFrom = $hlr->colourBrightness($buttonRightColorFrom, 0.9);
+    ?>
+
+    <style>
+        #confirmButtons button,
+        #confirmButtons button > span {
+            color: <?php print $buttonTextColor?>;
+        }
+
+        #confirmBox,
+        #am-a-count.link {
+            color: <?php print $textColor?>;
+        }
+
+        div#confirmBox,
+        .am-related-title > .am-title {
+            background-color: <?php print $backgroundColor?>;
+        }
+
+        #confirmBox .amcart-title a{
+            color: <?php print $headerBackgroundColor?>;
+        }
+
+        #confirmButtons button.am-btn-left:active
+        {
+            background-color: <?php print $buttonLeftColorActiveFrom?>;
+        }
+
+        #confirmButtons button.am-btn-left:hover
+        {
+            background-color: <?php print $buttonLeftColorHoverFrom?>;
+        }
+
+        #confirmButtons button.am-btn-left
+        {
+            background-color: <?php print $leftButtonColor?>;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+        /**right*/
+        #confirmButtons button.am-btn-right:active
+        {
+            background-color: <?php print $buttonRightColorActiveFrom?>;
+        }
+
+        #confirmButtons button.am-btn-right:hover
+        {
+            background-color: <?php print $buttonRightColorHoverFrom?>;
+        }
+
+        #confirmButtons button.am-btn-right
+        {
+            background-color: <?php print $rightButtonColor?>;
+            -webkit-transition: all .3s ease;
+            transition: all .3s ease;
+        }
+    </style>
+    <script type="text/javascript">
+        var AmAjaxObj = new AmAjax(<?php echo Mage::helper('amcart')->jsParam($this)?>);
+    </script>
+ <?php endif; ?>

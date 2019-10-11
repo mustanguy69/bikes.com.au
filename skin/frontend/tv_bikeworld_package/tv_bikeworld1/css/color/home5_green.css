@@ -1,0 +1,51 @@
+.header-static-information .box .title .fa,
+a:hover,
+.quick-access:hover .title,
+.header-toplinks:hover .title,
+.header-toplinks .links li a:hover,
+.form-language a.level-0, .form-language a:hover,
+.form-currency a.level-0 span, .form-currency a:hover,
+.product-name a:hover{ color: #84a861; }
+
+
+button.button span span { border-bottom-color: #536F38; }
+button.btn-cart span span { border-color: #ddd; }
+
+
+#megamenu_extra .custom-menu-wrapper .menu-col:hover .menu-custom-img,
+.nav_megamenu div.megamenu#megamenu_home .level-top a,
+#back-top,
+.nav-vcontainer .vmegamenu-title h2,
+.view-list a,
+button.button span span,
+.cart-qty,
+button.btn-cart:hover span span,
+.onsaleslider-title h2,
+#header-special-offer .promotion .btn-promotion:hover,
+ul.cattabs li.active, ul.cattabs li:hover,
+.bx-wrapper .bx-controls-direction a:hover{ background-color: #84a861; }
+
+#header-special-offer .promotion .btn-promotion:hover,
+button.btn-cart span span:hover,
+
+.bx-wrapper .bx-controls-direction a:hover{  border-color:#84a861 !important; }
+.header-cart-mini .top-cart-content{ border-top-color: #84a861; }
+ul.cattabs li:after{
+    border-color: #84a861 transparent transparent transparent;    
+}
+
+.view-list a{
+    border-color: #536F38;
+}
+
+button.btn-cart span span { background: none; }
+
+.onsaleslider-title h2:after {
+      border-top: 5px solid #536F38;
+}
+.onsaleslider-title h2:before{
+      border: 21px solid #84a861;
+      border-left-color: transparent;
+     border-left-color: transparent;
+}
+

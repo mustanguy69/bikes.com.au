@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+	<adminhtml_newsletterpopup_popups_index>
+		<reference name="head">
+  			<action method="setTitle" translate="title" module="newsletterpopup"><title>Manage Popups / Newsletter Popup / Plumrocket / Magento Admin</title></action>
+  		</reference>
+		<reference name="content">
+			<block type="newsletterpopup/adminhtml_popups" name="newsletterpopup_popups"/>
+		</reference>
+	</adminhtml_newsletterpopup_popups_index>
+
+	<adminhtml_newsletterpopup_templates_index>
+		<reference name="head">
+  			<action method="setTitle" translate="title" module="newsletterpopup"><title>Manage Themes / Newsletter Popup / Plumrocket / Magento Admin</title></action>
+  		</reference>
+		<reference name="content">
+			<block type="newsletterpopup/adminhtml_templates" name="newsletterpopup_templates"/>
+		</reference>
+	</adminhtml_newsletterpopup_templates_index>
+
+	<newsletterpopup_main>
+		<reference name="head">
+            <action method="setCanLoadExtJs"><flag>1</flag></action>
+            <action method="setCanLoadRulesJs"><flag>1</flag></action>
+
+			<action method="addItem"><type>js</type><name>plumrocket/jquery-1.12.4.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/edit.js</name></action>
+
+			<action method="addItem"><type>skin_css</type><name>css/plumrocket/newsletterpopup/newsletterpopup.css</name></action>
+
+            <action method="setCanLoadExtJs"><flag>1</flag></action>
+            <action method="setCanLoadTinyMce"><flag>1</flag></action>
+            <action method="addJs"><script>mage/adminhtml/variables.js</script></action>
+            <action method="addJs"><script>mage/adminhtml/wysiwyg/widget.js</script></action>
+            <action method="addJs"><script>lib/flex.js</script></action>
+            <action method="addJs"><script>lib/FABridge.js</script></action>
+            <action method="addJs"><script>mage/adminhtml/flexuploader.js</script></action>
+            <action method="addJs"><script>mage/adminhtml/browser.js</script></action>
+            <action method="addJs"><script>prototype/window.js</script></action>
+            <action method="addJs"><script>prototype/prototype.js</script></action>
+            <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>lib/prototype/windows/themes/magento.css</name></action>
+
+            <!-- Code Mirror -->
+            <action method="addItem"><type>skin_css</type><name>js/plumrocket/newsletterpopup/codemirror/lib/codemirror.css</name></action>
+  			<action method="addItem"><type>skin_css</type><name>js/plumrocket/newsletterpopup/codemirror/addon/hint/show-hint.css</name></action>
+  			<action method="addItem"><type>skin_css</type><name>js/plumrocket/newsletterpopup/codemirror/addon/display/fullscreen.css</name></action>
+  			<action method="addItem"><type>skin_css</type><name>js/plumrocket/newsletterpopup/codemirror/theme/monokai.css</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/lib/codemirror.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/selection/active-line.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/edit/closebrackets.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/edit/closetag.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/edit/matchbrackets.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/edit/matchtags.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/mode/xml/xml.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/mode/javascript/javascript.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/mode/css/css.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/mode/htmlmixed/htmlmixed.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/hint/show-hint.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/hint/anyword-hint.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/hint/xml-hint.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/hint/html-hint.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/mode/overlay.js</name></action>
+  			<action method="addItem"><type>skin_js</type><name>js/plumrocket/newsletterpopup/codemirror/addon/display/fullscreen.js</name></action>
+        </reference>
+
+		<reference name="content">
+			<block type="newsletterpopup/adminhtml_popups_edit" name="newsletterpopup_edit"/>
+		</reference>
+
+        <reference name="left">
+            <block type="newsletterpopup/adminhtml_popups_edit_tabs" name="newsletterpopup_edit_tabs">
+				<block type="newsletterpopup/adminhtml_popups_edit_tabs_general" name="newsletterpopup_general">
+                    <block type="newsletterpopup/adminhtml_popups_edit_tabs_general_main" name="newsletterpopup_general_main"/>
+                    <block type="newsletterpopup/adminhtml_popups_edit_tabs_general_coupon" name="newsletterpopup_general_coupon"/>
+                    <block type="newsletterpopup/adminhtml_popups_edit_tabs_general_signupForm" name="newsletterpopup_general_signupForm"/>
+                    <block type="newsletterpopup/adminhtml_popups_edit_tabs_general_mailchimp" name="newsletterpopup_general_mailchimp"/>
+                </block>
+				<block type="newsletterpopup/adminhtml_popups_edit_tabs_display" name="newsletterpopup_display" />
+				<block type="newsletterpopup/adminhtml_popups_edit_tabs_labels" name="newsletterpopup_labels" />
+				<block type="newsletterpopup/adminhtml_popups_edit_tabs_template" name="newsletterpopup_template" />
+                <action method="addTab"><name>general_section</name><block>newsletterpopup_general</block></action>
+                <action method="addTab"><name>display_section</name><block>newsletterpopup_display</block></action>
+                <action method="addTab"><name>labels_section</name><block>newsletterpopup_labels</block></action>
+                <action method="addTab"><name>template_section</name><block>newsletterpopup_template</block></action>
+			</block>
+        </reference>
+	</newsletterpopup_main>
+
+	<adminhtml_newsletterpopup_popups_edit>
+		<update handle="newsletterpopup_main" />
+		<reference name="head">
+  			<action method="setTitle" translate="title" module="newsletterpopup"><title>Edit Popup / Newsletter Popup / Plumrocket / Magento Admin</title></action>
+  		</reference>
+	</adminhtml_newsletterpopup_popups_edit>
+
+	<adminhtml_newsletterpopup_popups_new>
+		<update handle="newsletterpopup_main" />
+		<reference name="head">
+  			<action method="setTitle" translate="title" module="newsletterpopup"><title>New Popup / Newsletter Popup / Plumrocket / Magento Admin</title></action>
+  		</reference>
+	</adminhtml_newsletterpopup_popups_new>
+
+	<adminhtml_newsletterpopup_templates_edit>
+		<update handle="newsletterpopup_main" />
+		<remove name="newsletterpopup_edit" />
+		<remove name="newsletterpopup_edit_tabs" />
+
+		<reference name="head">
+  			<action method="setTitle" translate="title" module="newsletterpopup"><title>Edit Theme / Newsletter Popup / Plumrocket / Magento Admin</title></action>
+  		</reference>
+
+  		<reference name="content">
+			<block type="newsletterpopup/adminhtml_templates_edit" name="newsletterpopup_templates_edit" />
+		</reference>
+
+  		<reference name="left">
+            <block type="newsletterpopup/adminhtml_templates_edit_tabs" name="newsletterpopup_templates_edit_tabs">
+				<block type="newsletterpopup/adminhtml_templates_edit_tabs_general" name="newsletterpopup_general"></block>
+                <action method="addTab"><name>general_section</name><block>newsletterpopup_general</block></action>
+			</block>
+        </reference>
+	</adminhtml_newsletterpopup_templates_edit>
+
+	<adminhtml_newsletterpopup_templates_new>
+		<update handle="adminhtml_newsletterpopup_templates_edit" />
+		<reference name="head">
+  			<action method="setTitle" translate="title" module="newsletterpopup"><title>New Theme / Newsletter Popup / Plumrocket / Magento Admin</title></action>
+  		</reference>
+	</adminhtml_newsletterpopup_templates_new>
+
+	<adminhtml_newsletterpopup_history_index>
+		<reference name="head">
+  			<action method="setTitle" translate="title" module="newsletterpopup"><title>History / Newsletter Popup / Plumrocket / Magento Admin</title></action>
+  		</reference>
+		<reference name="content">
+			<block type="newsletterpopup/adminhtml_history" name="newsletterpopup_history"/>
+		</reference>
+	</adminhtml_newsletterpopup_history_index>
+</layout>

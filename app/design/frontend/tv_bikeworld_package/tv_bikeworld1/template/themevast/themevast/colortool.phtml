@@ -1,0 +1,63 @@
+<div class="themes-demo-wrap">
+	<div class="theme-demo-option">
+		<!--<h2 class="themes-demo-title themes-demo-title1"><?php //echo $this->__('Home Layout') ?></h2>
+		<div class="cl-table">
+			<div class="cl-tr">
+				<?php //$store=Mage::app()->getStore()->getCode(); ?>
+				<select id="cl-tool" onchange="window.location.href=this.value">
+					<option value="<?php  //echo $this->getUrl().'?___store=en' ?>" <?php //if($store == 'en'): ?> selected <?php //endif ?>><?php //echo $this->__('Home Layout 1') ?></option>
+					<option value="<?php  //echo $this->getUrl().'?___store=fr' ?>" <?php //if($store == 'fr'): ?> selected <?php //endif ?>><?php //echo $this->__('Home Layout 2') ?></option>
+					<option value="<?php  //echo $this->getUrl().'?___store=ge' ?>" <?php //if($store == 'ge'): ?> selected <?php// endif ?>><?php //echo $this->__('Home Layout 3') ?></option>
+					<option value="<?php  //echo $this->getUrl().'?___store=it' ?>" <?php// if($store == 'it'): ?> selected <?php// endif ?>><?php //echo $this->__('Home Layout 4') ?></option>
+					<option value="<?php  //echo $this->getUrl().'?___store=es' ?>" <?php //if($store == 'es'): ?> selected <?php //endif ?>><?php //echo $this->__('Home Layout 5') ?></option>
+				</select>
+			</div>
+		</div>-->
+		<h2 class="themes-demo-title themes-demo-title2"><?php echo $this->__('Theme Color') ?></h2>
+		<div class="cl-table">
+			<div class="cl-tr">
+				<div class="cl-td cl-td-layout1"><a onclick="changeCSS('<?php echo $this->getSkinUrl("css/color/home5_red.css"); ?>')" href="javascript:void(0)<?php // echo $this->getUrl().'?___store=en' ?>" title="Red"><span></span><?php echo $this->__('Red') ?></a></div>
+				<div class="cl-td cl-td-layout2"><a onclick="changeCSS('<?php echo $this->getSkinUrl("css/color/home5_blue.css"); ?>')" href="javascript:void(0)<?php // echo $this->getUrl().'?___store=fr' ?>" title="Blue"><span></span><?php echo $this->__('Blue') ?></a></div>			
+				<div class="cl-td cl-td-layout3"><a onclick="changeCSS('<?php echo $this->getSkinUrl("css/color/home5_green.css"); ?>')" href="javascript:void(0)<?php // echo $this->getUrl().'?___store=ge' ?>" title="Green"><span></span><?php echo $this->__('Green') ?></a></div>
+			</div>
+		</div>
+		<div class="control inactive"><a href="javascript:void(0)"><i class="fa fa-cog fa-spin"></i></a></div>
+	</div>
+	
+</div>
+<script type="text/javascript">
+	jQuery(document).ready( function($){
+		$('.control').click(function(){
+			if($(this).hasClass('inactive')) {
+				$(this).removeClass('inactive');
+				$(this).addClass('active');
+				$('.themes-demo-wrap').animate({left:'0'}, 500);
+			} else {
+				$(this).addClass('inactive');
+				$('.themes-demo-wrap').animate({left:'-260px'}, 500);
+			}
+		});
+
+
+	});
+	function changeCSS(cssFile) {
+ 
+        var oldlink = document.getElementById("ntc");
+  if(oldlink){
+        var newlink = document.createElement("link");
+        newlink.setAttribute("rel", "stylesheet");
+        newlink.setAttribute("type", "text/css");
+        newlink.setAttribute("href", cssFile);
+  
+        document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+  newlink.setAttribute("id", "ntc");
+  }else{
+  var newlink = document.createElement("link");
+        newlink.setAttribute("rel", "stylesheet");
+        newlink.setAttribute("type", "text/css");
+        newlink.setAttribute("href", cssFile);
+  newlink.setAttribute("id", "ntc");
+  document.getElementsByTagName("head").item(0).appendChild(newlink); 
+  };
+      }
+</script>

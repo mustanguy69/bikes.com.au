@@ -1,0 +1,40 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Newsletterpopup
+ * @copyright   Copyright (c) 2017 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+ ?>
+
+<?php $activeFields = Mage::helper('newsletterpopup')->getPopupFormFieldsKeys($this->getPopup()->getId(), true); ?>
+<div class="field">
+	<label for="<?php echo $this->getFieldId(); ?>" class="required"><em>*</em><?php echo $this->getLabel();?></label>
+	<div class="input-box">
+		<?php echo $this->getLayout()->createBlock('directory/data')->getCountryHtmlSelect(null, 'country_id', $this->getFieldId(), $this->getLabel()) ?>
+		
+		<?php if(!in_array('region', $activeFields)): ?>
+			<div style="display:none;">
+				<input type="text" id="<?php echo $this->getFieldId('region'); ?>" />
+				<select id="<?php echo $this->getFieldId('region_id'); ?>"></select>
+			</div>
+		<?php endif; ?>
+	</div>
+</div>
+
+<script type="text/javascript">
+	//<![CDATA[
+	pjQuery_1_12_4(document).ready(function() {
+		spsps = new RegionUpdater('<?php echo $this->getFieldId(); ?>', '<?php echo $this->getFieldId("region"); ?>', '<?php echo $this->getFieldId("region_id"); ?>', <?php echo $this->helper('directory')->getRegionJson(); ?>, undefined, '<?php echo $this->getFieldId("postcode"); ?>');
+	});
+	//]]>
+</script>

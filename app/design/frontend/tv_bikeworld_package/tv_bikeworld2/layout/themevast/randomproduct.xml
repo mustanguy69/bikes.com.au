@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <cms_index_index>
+        <reference name="head">
+            <action method="addCss" ifconfig="randomproduct/general/enabled"><stylesheet>themevast/plugin/css/owl.carousel.css</stylesheet></action>
+			<action method="addJs" ifconfig="randomproduct/general/enabled"><script>themevast/jquery.min.js</script></action>
+			<action method="addJs" ifconfig="randomproduct/general/enabled"><script>themevast/plugin/owl.carousel.min.js</script></action>     
+		</reference>
+        <!--<reference name="content">
+            <block type="randomproduct/randomproduct" name="randomproduct" template="themevast/randomproduct/randomproduct.phtml" />
+        </reference>-->
+    </cms_index_index>
+</layout> 
+

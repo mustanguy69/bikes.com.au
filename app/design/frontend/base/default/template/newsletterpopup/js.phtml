@@ -1,0 +1,35 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Newsletterpopup
+ * @copyright   Copyright (c) 2017 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+ ?>
+
+<script type="text/javascript">
+setTimeout(function(){
+
+	newsletterPopup = new newsletterPopupClass({
+		enable_analytics: <?php echo (int)$this->isEnableAnalytics(); ?>,
+		area: '<?php echo $this->getPopupArea(); ?>',
+		cmsPage: '<?php echo Mage::getSingleton('cms/page')->getIdentifier(); ?>',
+		categoryId: <?php echo Mage::registry('current_category')? Mage::registry('current_category')->getId() : 0; ?>,
+		productId: <?php echo Mage::registry('current_product')? Mage::registry('current_product')->getId() : 0; ?>,
+		action_url: '<?php echo $this->getActionUrl(); ?>',
+		cancel_url: '<?php echo $this->getCancelUrl(); ?>',
+		block_url: '<?php echo $this->getBlockUrl(); ?>',
+		history_url: '<?php echo $this->getHistoryUrl(); ?>'
+	});
+}, 30000);
+
+</script>

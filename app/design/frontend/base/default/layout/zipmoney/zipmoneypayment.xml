@@ -1,0 +1,530 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <cms_index_index>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>zipmoney/css/style.css</stylesheet>
+            </action>
+            <action method="addItem"><type>skin_css</type><name>css/zipstyle.css</name></action>
+            <!--
+			<block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script async src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block> -->
+        </reference>
+        <reference name="top.menu">
+            <block type="zipmoneypayment/widget_top" name="zipmoneypayment.widget.top" as="zipmoneypayment.widget.top" translate="label" template="zipmoney/zipmoneypayment/widget/top.phtml">
+                <label>zipMoney Marketing Widget Top</label>
+            </block>
+        </reference>
+        <reference name="content">            
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+            <block type="zipmoneypayment/widget_top" name="zipmoneypayment.widget.content" as="zipmoneypayment.widget.content"
+                   translate="label" template="zipmoney/zipmoneypayment/widget/topresponsive.phtml">
+                <label>zipMoney Marketing Widget Top</label>
+            </block>
+        </reference>
+    </cms_index_index>
+
+    <checkout_cart_index>	
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>zipmoney/css/style.css</stylesheet>
+            </action>
+            <action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Noto+Sans</href></action>
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+            <action method="addJs" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active" ><script>zipmoney/iframeCheckout.js</script></action>
+            <block type="core/text" name="zipmoney-iframe-checkout">
+                <action method="setText" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active">
+                    <text helper="zipmoneypayment/getIframeLibUrl"/>
+                </action>
+            </block>
+			<!--
+            <block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script  async src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block>
+			-->
+        </reference>
+
+        <reference name="checkout.cart.methods">
+            <block type="zipmoneypayment/checkout_cart_tagline" before="checkout.cart.totals"  name="zipmoneypayment.cart.widget.tagline" />
+            <block type="zipmoneypayment/checkout_cart_widget"  after="checkout.cart.totals"  name="zipmoneypayment.cart.widget" />
+        </reference>
+
+        <reference name="top.menu">
+            <block type="zipmoneypayment/widget_top" name="zipmoneypayment.widget.top" as="zipmoneypayment.widget.top" translate="label" template="zipmoney/zipmoneypayment/widget/top.phtml">
+                <label>zipMoney Marketing Widget Top</label>
+            </block>
+        </reference>
+
+        <reference name="content">            
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+            <block type="zipmoneypayment/widget_top" name="zipmoneypayment.widget.content" as="zipmoneypayment.widget.content"
+                   translate="label" template="zipmoney/zipmoneypayment/widget/topresponsive.phtml">
+                <label>zipMoney Marketing Widget Top</label>
+            </block>
+        </reference>
+    </checkout_cart_index>
+
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>zipmoney/css/style.css</stylesheet>
+            </action>
+            <action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Noto+Sans</href></action>
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+            <action method="addJs" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active" ><script>zipmoney/iframeCheckout.js</script></action>
+            
+            <block type="core/text" name="zipmoney-iframe-checkout">
+                <action method="setText" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active">
+                    <text helper="zipmoneypayment/getIframeLibUrl"/>
+                </action>
+            </block>
+            <!-- <block type="core/text" name="jquery">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script defer async src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block>    -->
+        </reference>
+  
+        <reference name="product.info.extrahint">
+            <block type="zipmoneypayment/catalog_product_tagline" name="product.info.zipmoneypayment.tagline" />
+        </reference>
+        
+        <reference name="product.info.addtocart">
+            <block type="zipmoneypayment/catalog_product_widget" name="product.info.addtocart.zipmoneypayment.widget">
+                <action method="setIsInCatalogProduct">
+                    <value>1</value>
+                </action>
+            </block>
+        </reference>
+
+        <reference name="top.menu">
+            <block type="zipmoneypayment/widget_top" name="zipmoneypayment.widget.top" as="zipmoneypayment.widget.top" translate="label" template="zipmoney/zipmoneypayment/widget/top.phtml">
+                <label>zipMoney Marketing Widget Top</label>
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+            <block type="zipmoneypayment/widget_top" name="zipmoneypayment.widget.content" as="zipmoneypayment.widget.content"
+                   translate="label" template="zipmoney/zipmoneypayment/widget/topresponsive.phtml">
+                <label>zipMoney Marketing Widget Top</label>
+            </block>
+        </reference>
+    </catalog_product_view>
+
+
+    <!-- For Magetstore_Onestepcheckout //-->
+    <onestepcheckout_index_index_material_20columns>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+            <action method="addJs" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active" ><script>zipmoney/iframeCheckout.js</script></action>
+            <block type="core/text" name="zipmoney-iframe-checkout">
+                <action method="setText" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active">
+                    <text helper="zipmoneypayment/getIframeLibUrl"/>
+                </action>
+            </block>
+            <block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block>
+        </reference>
+        
+        <reference name="choose-payment-method">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="onestepcheckout_payment_method" >
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/magestore_onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+        </reference>
+    </onestepcheckout_index_index_material_20columns>
+
+    <!-- For Magetstore_Onestepcheckout //-->
+    <onestepcheckout_index_index_material_25columns>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+            <action method="addJs" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active" ><script>zipmoney/iframeCheckout.js</script></action>
+            <block type="core/text" name="zipmoney-iframe-checkout">
+                <action method="setText" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active">
+                    <text helper="zipmoneypayment/getIframeLibUrl"/>
+                </action>
+            </block>
+            <block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block>
+        </reference>
+        
+        <reference name="choose-payment-method">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="onestepcheckout_payment_method" >
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/magestore_onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+        </reference>
+    </onestepcheckout_index_index_material_25columns>
+    
+    <!-- For Magetstore_Onestepcheckout //-->
+    <onestepcheckout_index_index_material_30columns>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+            <action method="addJs" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active" ><script>zipmoney/iframeCheckout.js</script></action>
+            <block type="core/text" name="zipmoney-iframe-checkout">
+                <action method="setText" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active">
+                    <text helper="zipmoneypayment/getIframeLibUrl"/>
+                </action>
+            </block>
+            <block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block>
+        </reference>
+        
+        <reference name="choose-payment-method">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="onestepcheckout_payment_method" >
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/magestore_onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+
+        <reference name="content">
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+        </reference>
+    </onestepcheckout_index_index_material_30columns>
+    
+    <!-- For Magetstore_Onestepcheckout and others having the following layout handle //-->
+    <onestepcheckout_index_index>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+            <action method="addJs" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active" ><script>zipmoney/iframeCheckout.js</script></action>
+            <block type="core/text" name="zipmoney-iframe-checkout">
+                <action method="setText" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active">
+                    <text helper="zipmoneypayment/getIframeLibUrl"/>
+                </action>
+            </block>
+            <block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block>
+        </reference>
+        
+        <reference name="choose-payment-method">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+     
+        <reference name="content">
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+        </reference>
+
+        <reference name="onestepcheckout_payment_method">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/magestore_onestepcheckout/payment_method.phtml</template>
+            </action>                
+            <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
+        </reference>
+    </onestepcheckout_index_index>
+
+
+    <aw_onestepcheckout_index_index>
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+            <action method="addJs" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active" ><script>zipmoney/iframeCheckout.js</script></action>
+            <block type="core/text" name="zipmoney-iframe-checkout">
+                <action method="setText" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active">
+                    <text helper="zipmoneypayment/getIframeLibUrl"/>
+                </action>
+            </block> 
+            <block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block>
+        </reference>
+        <reference name="choose-payment-method">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="root_el" template="zipmoney/zipmoneypayment/widget/root_el.phtml"></block>
+        </reference>
+    </aw_onestepcheckout_index_index>
+
+
+    <opc_index_index>
+        <reference name="head">
+            <action method="addJs"><script>prototype/window.js</script></action>
+            <action method="addJs"><script>zipmoney/widgetmodal.js</script></action>
+            <action method="addItem"><type>js_css</type><name>zipmoney/popup/windowjs/windowjs.css</name></action>
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+            <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+            <action method="addJs" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active" ><script>zipmoney/iframeCheckout.js</script></action>
+            <block type="core/text" name="zipmoney-iframe-checkout">
+                <action method="setText" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active">
+                    <text helper="zipmoneypayment/getIframeLibUrl"/>
+                </action>
+            </block>
+            <block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block>
+        </reference>
+        <reference name="content">            
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+        </reference>
+    </opc_index_index>
+
+    <checkout_onepage_index>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>zipmoney/css/style.css</stylesheet>
+            </action>
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+            <action method="addJs"><script>zipmoney/iframeCheckout.js</script></action>
+            <block type="core/text" name="zipmoney-iframe-checkout">
+                <action method="setText" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active">
+                    <text helper="zipmoneypayment/getIframeLibUrl"/>
+                </action>
+            </block>
+            <block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block>
+        </reference> 
+        <reference name="content">            
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+            <block type="zipmoneypayment/catalog_product_widgetaddtocartspecific" name="zipmoney.payment.js" template="zipmoney/zipmoneypayment/payment-js.phtml"/>
+        </reference>
+    </checkout_onepage_index>
+   
+
+    <gomage_checkout_onepage_index>
+        <reference name="head">
+            <action method="addJs"><script>prototype/window.js</script></action>
+            <action method="addJs"><script>zipmoney/widgetmodal.js</script></action>
+            <action method="addItem"><type>js_css</type><name>zipmoney/popup/windowjs/windowjs.css</name></action>
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+            <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+            <action method="addJs" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active" ><script>zipmoney/iframeCheckout.js</script></action>
+            <block type="core/text" name="zipmoney-iframe-checkout">
+                <action method="setText" ifconfig="payment/zipmoney_express_checkout/iframe_checkout_active">
+                    <text helper="zipmoneypayment/getIframeLibUrl"/>
+                </action>
+            </block>
+        </reference>
+        <reference name="checkout.onepage.payment">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/gomage_checkout_method.phtml</template>
+            </action>
+        </reference>
+    </gomage_checkout_onepage_index>
+
+
+    <checkout_onepage_review>
+        <reference name="root">
+            <block type="zipmoneypayment/checkout_onepage_review_button" name="checkout.onepage.review.button"
+                   as="button" />
+        </reference>
+    </checkout_onepage_review>
+
+    <checkout_onepage_paymentmethod>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onepage/methods.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_paymentmethod>
+
+    <onestepcheckout_ajax_set_methods_separate>
+        <reference name="choose-payment-method">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+    </onestepcheckout_ajax_set_methods_separate>
+
+    <onestepcheckout_ajax_save_billing>
+        <reference name="choose-payment-method">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+    </onestepcheckout_ajax_save_billing>
+
+    <onestepcheckout_ajax_paymentrefresh>
+        <reference name="choose-payment-method">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/onestepcheckout/payment_method.phtml</template>
+            </action>
+        </reference>
+    </onestepcheckout_ajax_paymentrefresh>
+
+    <zipmoneypayment_standard_approved>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-right.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="zipmoneypayment/checkout_approved" template="zipmoney/zipmoneypayment/approved.phtml" />
+        </reference>
+    </zipmoneypayment_standard_approved>
+    <zipmoneypayment_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/empty.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" template="zipmoneypayment/payment.phtml" />
+        </reference>
+    </zipmoneypayment_index_index>
+    <zipmoneypayment_standard_error>
+        <reference name="content">
+            <block type="core/template" template="zipmoney/zipmoneypayment/error.phtml" />
+        </reference>
+    </zipmoneypayment_standard_error>
+    <zipmoneypayment_standard_redirect>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>zipmoney/js/jquery-1.9.0.min.js</name>
+            </action>  
+        </reference>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/empty.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" template="zipmoney/zipmoneypayment/payment.phtml" />
+        </reference>
+    </zipmoneypayment_standard_redirect>
+    <checkout_onepage_success>
+        <reference name="content">
+            <block type="checkout/onepage_success" name="checkout.success.zipmoney" template="zipmoney/zipmoneypayment/success.phtml"/>
+        </reference>
+    </checkout_onepage_success>
+    <zipmoneypayment_popup_product_promotion_01>   
+           <reference name="root">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/popup/product_promotion_01.phtml</template>
+            </action>
+        </reference>
+    </zipmoneypayment_popup_product_promotion_01>
+    <zipmoneypayment_popup_product_promotion_02>   
+           <reference name="root">
+            <action method="setTemplate">
+                <template>zipmoney/zipmoneypayment/popup/product_promotion_02.phtml</template>
+            </action>
+        </reference>
+    </zipmoneypayment_popup_product_promotion_02>
+
+    <zipmoneypayment_express_underreview>
+        <label>zipMoney Application Under Review</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="zipmoneypayment/express_underreview" name="zipmoneypayment.express.underreview"
+                   template="zipmoney/zipmoneypayment/express/underreview.phtml"/>
+        </reference>
+    </zipmoneypayment_express_underreview>
+
+    <zipmoneypayment_express_error>
+        <label>zipMoney Error</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="zipmoneypayment/express_error" name="zipmoneypayment.express.error"
+                   template="zipmoney/zipmoneypayment/express/error.phtml"/>
+        </reference>
+    </zipmoneypayment_express_error>
+
+    <catalog_category_default>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>zipmoney/css/style.css</stylesheet>
+            </action>
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action> 
+           
+		   <!-- <block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block> -->
+        </reference>
+        <reference name="top.menu">
+            <block type="zipmoneypayment/widget_top" name="zipmoneypayment.widget.top" as="zipmoneypayment.widget.top" translate="label" template="zipmoney/zipmoneypayment/widget/top.phtml">
+                <label>zipMoney Marketing Widget Top</label>
+            </block>
+        </reference>
+        <reference name="content">            
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+            <block type="zipmoneypayment/widget_top" name="zipmoneypayment.widget.content" as="zipmoneypayment.widget.content"
+                   translate="label" template="zipmoney/zipmoneypayment/widget/topresponsive.phtml">
+                <label>zipMoney Marketing Widget Top</label>
+            </block>
+        </reference>
+    </catalog_category_default>
+    <catalog_category_layered>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>zipmoney/css/style.css</stylesheet>
+            </action>
+            <action method="addItem"><type>js_css</type><name>zipmoney/css/style.css</name></action>
+           <!--
+		    <block type="core/text" name="zipmoney-widget-js">
+                <action method="setText" ifconfig="payment/zipmoneypayment/active">
+                    <text><![CDATA[<script src="//d3k1w8lx8mqizo.cloudfront.net/lib/js/zm-widget-js/dist/zipmoney-widgets-v1.min.js"></script>]]></text>
+                </action>
+            </block> -->
+        </reference>
+        <reference name="top.menu">
+            <block type="zipmoneypayment/widget_top" name="zipmoneypayment.widget.top" as="zipmoneypayment.widget.top" translate="label" template="zipmoney/zipmoneypayment/widget/top.phtml">
+                <label>zipMoney Marketing Widget Top</label>
+            </block>
+        </reference>
+        <reference name="content">            
+            <block type="zipmoneypayment/widget_rootEl" name="root_el"></block>
+            <block type="zipmoneypayment/widget_top" name="zipmoneypayment.widget.content" as="zipmoneypayment.widget.content"
+                   translate="label" template="zipmoney/zipmoneypayment/widget/topresponsive.phtml">
+                <label>zipMoney Marketing Widget Top</label>
+            </block>
+        </reference>
+    </catalog_category_layered>
+</layout> 

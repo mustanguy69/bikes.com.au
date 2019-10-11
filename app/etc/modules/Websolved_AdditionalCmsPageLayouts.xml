@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Websolved_AdditionalCmsPageLayouts>
+            <codePool>local</codePool>
+            <active>true</active>
+        </Websolved_AdditionalCmsPageLayouts>
+    </modules>
+</config>

@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<assigncategory_adminhtml_assigncategory_productgrid>
+       <block type="core/text_list" name="root" output="toHtml">
+           <block type="assigncategory/adminhtml_assigncategory_edit_tab_products" name="product.grid"/>
+           <block type="adminhtml/widget_grid_serializer" name="grid_serializer">
+               <reference name="grid_serializer">
+                   <action method="initSerializerBlock">
+                       <grid_block_name>product.grid</grid_block_name>
+                       <data_callback>getSelectedMyProducts</data_callback>
+                       <hidden_input_name>links[products]</hidden_input_name>
+                       <reload_param_name>products</reload_param_name>
+                   </action>
+                   <action method="addColumnInputName">
+                       <input_name>position</input_name>
+                   </action>
+               </reference>
+           </block>
+       </block>
+   </assigncategory_adminhtml_assigncategory_productgrid>
+	<assigncategory_adminhtml_assigncategory_productgridajax>
+			<!--update handle="assigncategory_adminhtml"/ -->
+	        <block type="core/text_list" name="root" output="toHtml">
+	            <block type="assigncategory/adminhtml_assigncategory_edit_tab_products" name="product.grid"/>
+	        </block>
+	</assigncategory_adminhtml_assigncategory_productgridajax>
+	<assigncategory_adminhtml_assigncategory_categories>
+		<!--update handle="assigncategory_adminhtml"/ -->
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="assigncategory/adminhtml_assigncategory_edit_tab_categories" name="assigncategory.edit.tab.categories"/>
+        </block>
+    </assigncategory_adminhtml_assigncategory_categories>
+    
+    <assigncategory_adminhtml_assigncategory_categoriesremove>
+		<!--update handle="assigncategory_adminhtml"/ -->
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="assigncategory/adminhtml_assigncategory_edit_tab_categoriesRemove" name="assigncategory.edit.tab.categoriesremove"/>
+        </block>
+    </assigncategory_adminhtml_assigncategory_categoriesremove>
+
+     <assigncategory_adminhtml_assigncategory_categoriesmove>
+    <!--update handle="assigncategory_adminhtml"/ -->
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="assigncategory/adminhtml_assigncategory_edit_tab_categoriesMove" name="assigncategory.edit.tab.categoriesmove"/>
+        </block>
+    </assigncategory_adminhtml_assigncategory_categoriesmove>
+    
+    <assigncategory_adminhtml_assigncategory_edit>
+    <reference name="head">
+        
+        <action method="addJs"><script>assigncategory/jquery-2.1.4.min.js</script></action>
+        <action method="addJs"><script>assigncategory/script.js</script></action>
+    </reference>
+    </assigncategory_adminhtml_assigncategory_edit>
+    
+</layout>

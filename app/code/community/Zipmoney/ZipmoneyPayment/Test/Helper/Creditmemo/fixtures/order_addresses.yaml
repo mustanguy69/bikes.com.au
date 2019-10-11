@@ -1,0 +1,201 @@
+tables:
+
+  sales/order_address:
+    -
+      address_id: 101
+      order_id: 1
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "shipping"
+      prefix: ""
+      middlename: ""
+      suffix: ""
+      shipping_method: "flatrate_flatrate"
+    -
+      address_id: 102
+      order_id: 1
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "billing"
+
+    -
+      address_id: 201
+      order_id: 2
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "shipping"
+      prefix: ""
+      middlename: ""
+      suffix: ""
+      shipping_method: "flatrate_flatrate"
+    -
+      address_id: 202
+      order_id: 2
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "billing"
+
+    -
+      address_id: 301
+      order_id: 3
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "shipping"
+      prefix: ""
+      middlename: ""
+      suffix: ""
+      shipping_method: "flatrate_flatrate"
+    -
+      address_id: 302
+      order_id: 3
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "billing"
+
+    -
+      address_id: 401
+      order_id: 4
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "shipping"
+      prefix: ""
+      middlename: ""
+      suffix: ""
+      shipping_method: "flatrate_flatrate"
+    -
+      address_id: 402
+      order_id: 4
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "billing"
+
+    -
+      address_id: 501
+      order_id: 5
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "shipping"
+      prefix: ""
+      middlename: ""
+      suffix: ""
+      shipping_method: "flatrate_flatrate"
+    -
+      address_id: 502
+      order_id: 5
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "billing"
+
+    -
+      address_id: 601
+      order_id: 6
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "shipping"
+      prefix: ""
+      middlename: ""
+      suffix: ""
+      shipping_method: "flatrate_flatrate"
+    -
+      address_id: 602
+      order_id: 6
+      fax: ""
+      region: "SA"
+      postcode: 5000
+      lastname: "Lname"
+      street: "162 Flinders Street"
+      city: "Adelaide"
+      email: "digital@aligent.com.au"
+      telephone: "0884619343"
+      country_id: "AU"
+      firstname: "Fname"
+      address_type: "billing"
+

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Plumrocket_Newsletterpopup>
+			<active>true</active>
+			<codePool>community</codePool>
+			<version>2.2.1</version>
+			<name>Newsletter Popup</name>
+			<wiki>http://wiki.plumrocket.com/wiki/Magento_Newsletter_Popup_v2.x_Extension</wiki>
+			<depends>
+				<Plumrocket_Base />
+			</depends>
+		</Plumrocket_Newsletterpopup>
+	</modules>
+</config>

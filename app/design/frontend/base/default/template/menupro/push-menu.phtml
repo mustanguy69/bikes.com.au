@@ -1,0 +1,45 @@
+<?php 
+$pushPath = $this->getSkinUrl('menupro/push/');
+$groupId = $this->getGroupId ();
+$responsiveStyle = explode("-", $this->getData('responsive_style'));
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $pushPath ?>css/component.css" />
+<script src="<?php echo $pushPath ?>js/modernizr.custom.js"></script>
+<script src="<?php echo $pushPath ?>js/jquery.dlmenu.js"></script>
+<script>
+	var pushMenu = jQuery.noConflict();
+	pushMenu(function($) {
+		$( '#dl-menu-<?php echo $groupId ?>' ).dlmenu({
+			animationClasses : { classin : 'dl-animate-in-<?php echo end($responsiveStyle) ?>', classout : 'dl-animate-out-<?php echo end($responsiveStyle) ?>' }
+		});
+	});
+</script>
+
+
+
+<div id="dl-menu-<?php echo $groupId ?>" class="dl-menuwrapper nav-megamenu">
+
+	<div style="z-index: 99999; display: none;">
+		<?php /* echo $this->getLayout()->createBlock('core/template')->setTemplate('freetextsearch/form.phtml')->toHtml(); */ ?>
+	</div>
+
+		<i class="fa fa-bars dl-trigger" style="font-size: 30px;color: #fff;display: block; float: left;margin-top: 30px;"></i>
+
+		<div class="search-below-768px" style="margin:31px 0 0 20px;">
+			<i class="fa fa-search"></i>
+		</div>
+
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact-header')->toHtml() ?>
+	<div class="header-cart-mini">
+		<div class="topcart-mini-container">
+			<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('themevast/ajaxcart/checkout/cart/topcart.phtml')->toHtml(); ?>
+		</div>
+	</div>
+	<!--<button class="dl-trigger">Open Menu</button>-->
+	<?php if ($this->helper('menupro')->isDevelopMode()) : ?>
+		<?php echo $this->getPushMenuHtml($groupId);  ?>
+	<?php else : ?>
+		<?php echo $this->getStaticHtml($groupId); ?>
+	<?php endif; ?>
+</div>
+

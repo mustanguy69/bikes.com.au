@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<magewear>
+    <resources>
+        <resource>
+            <title>Magewear Home page</title>
+            <identifier>homne_magewear</identifier>
+            <root_template>one_column</root_template>
+		<content><![CDATA[
+		<div class="home-content">{{block type="bestsellerslider/bestsellerslider" name="bestsellerslider" after="onsaleslider" template="themevast/bestsellerslider/bestsellerslider.phtml" }}{{block type="cms/block" block_id="home_banner_content1"}}{{block type="onsaleslider/onsaleslider" name="onsaleslider" before="-" template="themevast/onsaleslider/onsaleslider.phtml" }}{{block type="cms/block" block_id="home_banner_content2"}}{{block type="producttabs/producttabs" rows="2" name="producttabs" template="themevast/producttabs/producttabs.phtml" }}{{block type="cms/block" block_id="home_banner_content3"}}{{widget type="cattabs/widget_cattabs" title="Category Tabs" name="cat_tabs" cat_ids="3,80,5,6" template="themevast/cattabs/cattabs.phtml" limit="20" widthImage="210" heightImage="210"}}{{block type="blog/side" name="blog.slider" after="bestsellerslider" template="themevast/blog/blog_slider.phtml"}}</div>
+		]]></content>
+		<sort_order>1</sort_order>
+            <is_active>1</is_active>
+        </resource>
+    </resources>
+</magewear>

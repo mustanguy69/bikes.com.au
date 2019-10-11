@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<widgets>
+    <cattabs type="cattabs/widget_cattabs" translate="name description" module="cattabs">
+        <name>Category Tabs</name>
+        <description>Product By Category</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <title translate="label">               
+                <label>Title</label>
+                <type>text</type>
+                <value>Category Tabs</value>
+                <visible>1</visible>
+            </title>
+            <cat_ids translate="label comment">
+                <label>Select Category</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>multiselect</type>
+                <source_model>cattabs/config_category</source_model>
+            </cat_ids>
+            <template>
+                <label>Template</label>
+                <type>select</type> 
+                <required>1</required>
+                <visible>1</visible>
+                <values>
+                    <default translate="label comment">
+                        <value>themevast/cattabs/cattabs.phtml</value>
+                        <label>Default</label>
+                    </default>
+                </values>
+            </template>
+<!--             <slide translate="label description">
+                <label>Slide:</label>
+                <visible>1</visible>
+                <value>0</value>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <description>Slide products</description>
+            </slide>
+            <play_delay translate="label">
+                <label>Display Delay</label>
+                <type>text</type>
+                <value>500</value>
+                <required>1</required>
+                <visible>1</visible>
+            </play_delay>	 -->		
+            <limit translate="label">
+                <label>Limit Products</label>
+                <type>text</type>
+                <value>10</value>
+                <required>1</required>
+                <visible>1</visible>
+            </limit>
+			<widthImage translate="label">
+                <label>Width Image</label>
+                <type>text</type>
+                <value>135</value>
+                <required>1</required>
+                <visible>1</visible>
+            </widthImage>
+			<heightImage translate="label">
+                <label>Height Image</label>
+                <type>text</type>
+                <value>135</value>
+                <required>1</required>
+                <visible>1</visible>
+            </heightImage>
+        </parameters>
+    </cattabs>
+</widgets>

@@ -1,0 +1,124 @@
+.windowjs-nav,
+.windowjs-nav span
+{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	outline: none;
+	vertical-align: top;
+}
+
+
+#zipmoney_popup_window_zipmoney-widget-general .top, #zipmoney_popup_window_zipmoney-express-learn-more .top {
+    display: none;
+}
+
+#zipmoney_popup_window_zipmoney-widget-general {
+    width: 693px;
+    height: 500px;
+    border: none;
+}
+
+#zipmoney-widget-modal-previous {
+    outline: none;
+}
+
+#zipmoney-widget-modal-next {
+    outline: none;
+}
+
+.zipmoney_popup_window_title {
+    height: 2px;
+}
+
+.overlay_zipmoney_popup_window {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.windowjs-close, .windowjs-prev span, .windowjs-next span {
+	background-image: url('windowjs_sprite.png');
+}
+
+
+.windowjs-close {
+	position: absolute;
+	top: -21px;
+	right: -23px;
+	width: 36px;
+	height: 36px;
+	cursor: pointer;
+	z-index: 10600;
+}
+
+.windowjs-nav {
+	position: absolute;
+	top: 0;
+	width: 10%;
+	height: 100%;
+	cursor: pointer;
+	text-decoration: none;
+	background: transparent url('blank.gif'); /* helps IE */
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	z-index: 10500;
+}
+
+.windowjs-prev {
+	left: 0;
+}
+
+.windowjs-next {
+	right: 0;
+}
+
+.windowjs-nav span {
+	position: absolute;
+	top: 50%;
+	width: 36px;
+	height: 34px;
+	margin-top: -18px;
+	cursor: pointer;
+	z-index: 10500;
+	visibility: hidden;
+}
+
+.windowjs-prev span {
+	left: 10px;
+	background-position: 0 -36px;
+}
+
+.windowjs-next span {
+	right: 10px;
+	background-position: 0 -72px;
+}
+
+.windowjs-nav:hover span {
+    position: absolute;
+	visibility: visible;
+}
+
+.windowjs-nav:hover {
+    position: absolute;
+}
+
+.windowjs-nav:active {
+    position: absolute;
+    top: 1px;
+}
+.windowjs-close:active {
+    position: absolute;
+    top: -20px;
+}
+.windowjs-nav:hover {
+    position: absolute;
+}
+
+/*Retina graphics!*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	   only screen and (min--moz-device-pixel-ratio: 1.5),
+	   only screen and (min-device-pixel-ratio: 1.5){
+
+	.windowjs-close, .windowjs-prev span, .windowjs-next span {
+		background-image: url('windowjs_sprite@2x.png');
+		background-size: 44px 152px; /*The size of the normal image, half the size of the hi-res image*/
+	}
+}

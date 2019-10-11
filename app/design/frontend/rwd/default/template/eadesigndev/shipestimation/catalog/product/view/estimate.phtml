@@ -1,0 +1,162 @@
+<?php
+/**
+ * EaDesgin
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@eadesign.ro so we can send you a copy immediately.
+ *
+ * @category    Eadesigndev_Shipestimation
+ * @copyright   Copyright (c) 2008-2015 EaDesign by Eco Active S.R.L.
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+$_product = Mage::registry('current_product');
+$ifTrue=Mage::Helper('shipestimation')->ifItApplies();
+?>
+<?php if ($ifTrue): ?>
+    <?php $shippingblock = $this->getLayout()->createBlock('checkout/cart_shipping'); ?>
+    <div class="form-estimate window" id="calctransport">
+        <a href="#" class="close" onclick="closeMe()">X</a>
+        <h4><?php echo Mage::helper('checkout')->__('Estimate Shipping and Tax') ?></h4>
+
+        <div class="adress">
+            <div class="input-boxes">
+                <input type="hidden" id="estimate_country" name="estimate[country_id]" value="RO"/>
+
+                <div class="country-input">
+                    <label for="country" class="required"><em>*</em><?php echo Mage::helper('checkout')->__('Country') ?></label>
+
+                    <div class="input-box">
+                        <?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect($this->getEstimateCountryId()) ?>
+                    </div>
+                </div>
+                <li class="state-input">
+                    <label
+                        for="region_id"<?php if ($shippingblock->isStateProvinceRequired()) echo ' class="required"' ?>><?php if ($shippingblock->isStateProvinceRequired()) echo '<em>*</em>' ?><?php echo Mage::helper('checkout')->__('State/Province') ?></label>
+
+                    <div class="input-box">
+                        <select id="region_id" name="region_id" title="<?php echo $this->__('State/Province') ?>"
+                                style="display:none;"<?php echo($shippingblock->isStateProvinceRequired() ? ' class="validate-select"' : '') ?>>
+                            <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                        </select>
+
+                        <input type="text" id="region" name="region"
+                               value="<?php echo $shippingblock->escapeHtml($shippingblock->getEstimateRegion()) ?>"
+                               title="<?php echo $this->__('State/Province') ?>" class="input-text"
+                               style="display:none;"/>
+                    </div>
+                </li>
+            </div>
+            <div class="city">
+                <label
+                    for="city_id"<?php if ($shippingblock->isCityRequired()) echo ' class="required"' ?>><?php if ($shippingblock->isCityRequired()) echo '<em>*</em>' ?><?php echo Mage::helper('checkout')->__('City') ?></label>
+
+                <div class="input-box">
+                    <input
+                        class="input-text validate-city<?php if ($shippingblock->isCityRequired()): ?> required-entry<?php endif; ?>"
+                        type="text" id="city_id" name="estimate_city"
+                        value="<?php echo $shippingblock->escapeHtml($shippingblock->isCityRequired()) ?>"/>
+                </div>
+            </div>
+            <div class="zip-code">
+                <label
+                    for="postcode"<?php if ($shippingblock->isZipCodeRequired()) echo ' class="required"' ?>><?php if ($shippingblock->isZipCodeRequired()) echo '<em>*</em>' ?><?php echo Mage::helper('checkout')->__('Zip/Postal Code') ?></label>
+
+                <div class="input-box">
+                    <input
+                        class="input-text validate-postcode<?php if ($shippingblock->isZipCodeRequired()): ?> required-entry<?php endif; ?>"
+                        type="text" id="postcode" name="estimate_postcode"
+                        value="<?php echo $shippingblock->escapeHtml($shippingblock->getEstimatePostcode()) ?>"/>
+                </div>
+            </div>
+            <div class="buttons-set">
+                <button type="button" title="<?php echo $this->__('Get a Quote') ?>" onclick="calculateCost()"
+                        class="button"><span><span><?php echo Mage::helper('checkout')->__('Get a Quote') ?></span></span></button>
+            </div>
+        </div>
+
+        <div class="estimate-cost">
+                <span class="cost-tr">
+                <span class="car-cost"></span>
+                <span class="cost-title"></span>
+                <span id="shipestimate-values"></span>
+                    </span>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        //<![CDATA[
+        function openwindow() {
+            Dialog.info($('calctransport').innerHTML,
+                {
+                    width: 400,
+                    height: 250,
+                    okLabel: "close",
+                    showProgress: true
+                }
+            );
+            $('region_id').setAttribute('defaultValue', "<?php echo $shippingblock->getEstimateRegionId() ?>");
+            new RegionUpdater('country', 'region', 'region_id', <?php echo $shippingblock->helper('directory')->getRegionJson() ?>);
+
+            return;
+        }
+
+        function closeMe() {
+            Dialog.okCallback();
+            return;
+        }
+
+        function calculateCost() {
+
+            var action = "<?php echo $this->getUrl('shipestimation/index/quotation'); ?>";
+
+            var country = $('country').value;
+            var regionId = $('region_id').value;
+            var cityId = $('city_id').value;
+            var zip = $('postcode').value;
+
+            <?php if($_product):?>
+            var productId = <?php echo $_product->getId(); ?>;
+            <?php endif;?>
+
+
+            new Ajax.Request(action,
+                {
+                    method: 'GET',
+                    onSuccess: function (data) {
+                        //console.log(data);
+                        if (data.responseText == 'nu') {
+                            $$('.cost-tr').each(function (ele) {
+                                ele.setStyle({display: 'none'})
+                            });
+                        } else {
+                            console.log('test');
+                            $$('.cost-tr').each(function (ele) {
+                                ele.setStyle({display: 'block'})
+                            });
+                        }
+                        $('shipestimate-values').replace('<span id="shipestimate-values">' + data.responseText + '</span>');
+                    },
+                    onFailure: '',
+                    parameters: {
+                        country_id: country,
+                        region_id: regionId,
+                        city_id: cityId,
+                        zip_id: zip,
+                        productId: productId
+                    }
+                }
+            );
+        }
+        //]]>
+    </script>
+<?php endif ?>

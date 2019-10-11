@@ -1,0 +1,31 @@
+<?php
+$product = $this->getProduct();
+$shippingMethods = $this->getAvailableShippingMethods();
+$shippingMethodsCount = count($shippingMethods);
+if($shippingMethodsCount > 0) :
+?>
+<ul class="delivery-info">
+    <?php
+    foreach ($shippingMethods as $shippingMethod) :?>
+    <?php $class = ''?>
+    <?php $suffix = ''?>
+        <?php if ($shippingMethod['value'] == 'flatrate') {
+            $class = 'pickup-item';
+            if($shippingMethodsCount == 1)
+                $suffix = $this->__(' only');
+        } else if ($shippingMethod['value'] == 'eparcel') {
+            $class = 'delivery-item';
+        } ?>
+        <li class="<?php echo $class ?>">
+            <h2><?php echo $shippingMethod['label'].$suffix; ?></h2>
+            <?php if ($this->isProductClickAndCollect() && $class == 'pickup-item') : ?>
+                <?php echo $this->getChildHtml('product.store.location') ?>
+            <?php endif; ?>
+        </li>
+    <?php endforeach; ?>
+</ul>
+<?php endif;?>
+
+<?php if (is_object($product) && $product->getGender() && false): ?>
+    <div><?php echo $product->getAttributeText('gender') ?></div>
+<?php endif; ?>

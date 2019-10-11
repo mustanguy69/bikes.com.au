@@ -1,0 +1,47 @@
+-
+  - 1       # store id
+  - 101     # quote id
+  - 1       # customer id
+  - product # checkout_source
+  - false
+  - ''
+
+-
+  - 1       # store id
+  - 101     # quote id
+  - null    # customer id
+  - product # checkout_source
+  - false
+  - ''
+
+-
+  - 1       # store id
+  - 101     # quote id
+  - 1       # customer id
+  - cart    # checkout_source
+  - false
+  - ''
+
+-
+  - 1       # store id
+  - 102     # quote id
+  - null    # customer id
+  - checkout  # checkout_source
+  - true
+  - 'Cannot find the quote. The quote is empty.'
+
+-
+  - 1       # store id
+  - 103     # quote id
+  - 1       # customer id
+  - cart    # checkout_source
+  - true
+  - 'Cannot find the quote. The quote is empty.'
+
+-
+  - 1       # store id
+  - 110     # quote id
+  - 1       # customer id
+  - cart    # checkout_source
+  - false
+  - ''

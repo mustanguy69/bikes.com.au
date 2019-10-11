@@ -1,0 +1,103 @@
+tables:
+  shipping/tablerate:
+    -
+      pk: 1
+      website_id: 1
+      dest_country_id: 'AU'
+      dest_region_id: 0
+      dest_zip: '*'
+      condition_name: 'package_weight'
+      condition_value: 0.0001
+      price: 10.0500
+      cost: 0.0000
+    -
+      pk: 2
+      website_id: 1
+      dest_country_id: 'AU'
+      dest_region_id: 0
+      dest_zip: '*'
+      condition_name: 'package_weight'
+      condition_value: 1.0000
+      price: 15.0500
+      cost: 0.0000
+    -
+      pk: 3
+      website_id: 1
+      dest_country_id: 'AU'
+      dest_region_id: 0
+      dest_zip: '*'
+      condition_name: 'package_weight'
+      condition_value: 2.0000
+      price: 18.0500
+      cost: 0.0000
+    -
+      pk: 4
+      website_id: 1
+      dest_country_id: 'AU'
+      dest_region_id: 0
+      dest_zip: '*'
+      condition_name: 'package_weight'
+      condition_value: 3.0000
+      price: 21.0500
+      cost: 0.0000
+    -
+      pk: 5
+      website_id: 1
+      dest_country_id: 'AU'
+      dest_region_id: 0
+      dest_zip: '*'
+      condition_name: 'package_weight'
+      condition_value: 5.0000
+      price: 25.0500
+      cost: 0.0000
+
+    -
+      pk: 11
+      website_id: 99
+      dest_country_id: 'AU'
+      dest_region_id: 0
+      dest_zip: '*'
+      condition_name: 'package_weight'
+      condition_value: 0.0001
+      price: 10.0500
+      cost: 0.0000
+    -
+      pk: 12
+      website_id: 99
+      dest_country_id: 'AU'
+      dest_region_id: 0
+      dest_zip: '*'
+      condition_name: 'package_weight'
+      condition_value: 1.0000
+      price: 15.0500
+      cost: 0.0000
+    -
+      pk: 13
+      website_id: 99
+      dest_country_id: 'AU'
+      dest_region_id: 0
+      dest_zip: '*'
+      condition_name: 'package_weight'
+      condition_value: 2.0000
+      price: 18.0500
+      cost: 0.0000
+    -
+      pk: 14
+      website_id: 99
+      dest_country_id: 'AU'
+      dest_region_id: 0
+      dest_zip: '*'
+      condition_name: 'package_weight'
+      condition_value: 3.0000
+      price: 21.0500
+      cost: 0.0000
+    -
+      pk: 15
+      website_id: 99
+      dest_country_id: 'AU'
+      dest_region_id: 0
+      dest_zip: '*'
+      condition_name: 'package_weight'
+      condition_value: 5.0000
+      price: 25.0500
+      cost: 0.0000

@@ -1,0 +1,13 @@
+eav:
+  customer:
+    - entity_id: 1
+      website_id: 1
+      store_id: 1
+      attribute_set_id: 0
+      group_id: 1
+      email: unittest@aligent.com.au
+      firstname: Fname
+      lastname: Lname
+      gender: 1
+      dob: '1974-05-29 00:00:00'
+      prefix: Mr

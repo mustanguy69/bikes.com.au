@@ -1,0 +1,162 @@
+tables:
+
+  sales/order_payment:
+    -
+      entity_id: 101
+      parent_id: 1
+      base_shipping_amount: 5.0000
+      shipping_amount: 5.0000
+      base_amount_ordered: 15.0000
+      amount_ordered: 15.0000
+      base_amount_paid: 15.0000
+      amount_paid: 15.0000
+      base_amount_authorized: 0.0000
+      amount_authorized: 0.0000
+      last_trans_id: testTxnId1
+      is_zipmoney_express: 1
+      cc_exp_year: 0
+      cc_exp_month: 0
+      cc_ss_start_year: 0
+      cc_ss_start_month: 0
+      method: zipmoneypayment
+
+    -
+      entity_id: 201
+      parent_id: 2
+      base_shipping_amount: 5.0000
+      shipping_amount: 5.0000
+      base_amount_ordered: 15.0000
+      amount_ordered: 15.0000
+      base_amount_paid: 15.0000
+      amount_paid: 15.0000
+      base_amount_authorized: 15.0000
+      amount_authorized: 15.0000
+      last_trans_id: testTxnId2
+      is_zipmoney_express: 1
+      cc_exp_year: 0
+      cc_exp_month: 0
+      cc_ss_start_year: 0
+      cc_ss_start_month: 0
+      method: zipmoneypayment
+
+    -
+      entity_id: 301
+      parent_id: 3
+      base_shipping_amount: 5.0000
+      shipping_amount: 5.0000
+      base_amount_ordered: 75.0000
+      amount_ordered: 75.0000
+      base_amount_paid: 75.0000
+      amount_paid: 75.0000
+      base_amount_authorized: 0.0000
+      amount_authorized: 0.0000
+      last_trans_id: testTxnId3
+      is_zipmoney_express: 1
+      cc_exp_year: 0
+      cc_exp_month: 0
+      cc_ss_start_year: 0
+      cc_ss_start_month: 0
+      method: zipmoneypayment
+
+    -
+      entity_id: 401
+      parent_id: 4
+      base_shipping_amount: 5.0000
+      shipping_amount: 5.0000
+      base_amount_ordered: 135.0000
+      amount_ordered: 135.0000
+      base_amount_paid: 135.0000
+      amount_paid: 135.0000
+      base_amount_authorized: 135.0000
+      amount_authorized: 135.0000
+      last_trans_id: testTxnId10
+      is_zipmoney_express: 1
+      cc_exp_year: 0
+      cc_exp_month: 0
+      cc_ss_start_year: 0
+      cc_ss_start_month: 0
+      method: someOtherPayment
+
+    -
+      entity_id: 501
+      parent_id: 5
+      base_shipping_amount: 5.0000
+      shipping_amount: 5.0000
+      base_amount_ordered: 105.0000
+      amount_ordered: 105.0000
+      base_amount_paid: 105.0000
+      amount_paid: 105.0000
+      base_amount_authorized: 105.0000
+      amount_authorized: 105.0000
+      last_trans_id: testTxnId11
+      is_zipmoney_express: 1
+      cc_exp_year: 0
+      cc_exp_month: 0
+      cc_ss_start_year: 0
+      cc_ss_start_month: 0
+      method: zipmoneypayment
+
+    -
+      entity_id: 601
+      parent_id: 6
+      base_shipping_amount: 5.0000
+      shipping_amount: 5.0000
+      base_amount_ordered: 105.0000
+      amount_ordered: 105.0000
+      base_amount_paid: 0.0000
+      amount_paid: 0.0000
+      base_amount_authorized: 105.0000
+      amount_authorized: 105.0000
+      last_trans_id: testTxnId11
+      is_zipmoney_express: 1
+      cc_exp_year: 0
+      cc_exp_month: 0
+      cc_ss_start_year: 0
+      cc_ss_start_month: 0
+      method: zipmoneypayment
+
+
+
+  sales/payment_transaction:
+
+    - transaction_id: 1011
+      order_id: 1
+      payment_id: 101
+      txn_id: 10111
+      txn_type: capture
+      is_closed: 0
+
+    - transaction_id: 2011
+      order_id: 2
+      payment_id: 201
+      txn_id: 20111
+      txn_type: capture
+      is_closed: 0
+
+    - transaction_id: 3011
+      order_id: 3
+      payment_id: 301
+      txn_id: 30111
+      txn_type: capture
+      is_closed: 0
+
+    - transaction_id: 4011
+      order_id: 4
+      payment_id: 401
+      txn_id: 40111
+      txn_type: capture
+      is_closed: 0
+
+    - transaction_id: 5011
+      order_id: 5
+      payment_id: 501
+      txn_id: 50111
+      txn_type: capture
+      is_closed: 0
+
+    - transaction_id: 6011
+      order_id: 6
+      payment_id: 601
+      txn_id: 60111
+      txn_type: authorization
+      is_closed: 0

@@ -1,0 +1,73 @@
+<?php 
+if(!$this->getConfig('enabled')) return;
+$slider = $this->getSlider();
+if(!count($slider)) return;				
+$media = Mage::getBaseUrl('media');	
+$caption = $this->getConfig('caption');
+?>
+<div class="banner-wrapper">
+	<div class="container">
+	<div class="banner-slideshow">
+		<div class="flexslider tv-nivoslider image-effect">
+			<div class="ajax_loading"><i class="fa fa-spinner fa-spin"></i></div>
+			<div id="tv-inivoslider" class="sliders">
+			<?php
+				$i = 1;
+				foreach($slider as $slide) {
+					$img = $media .$slide['image']; ?>
+					<div class="nivo-item">
+						<img style="display: none;" src="<?php echo $img?>"  title="#caption<?php echo $i; ?>" alt="image" />
+						<?php if($caption) { ?>
+							<div id="caption<?php echo $i; ?>" class="caption-item" style="display: none;">
+								<div class="<?php echo $slide['effect']?>">
+									<div class="title"><?php echo $this->__($slide['title']) ?></div>
+									<div class="description"><?php echo $this->__($slide['description']) ?></div>
+									<?php if( $slide['link'] ) { ?>
+										<div class="readmore">
+											<a href="<?php echo $slide['link']?>" title="<?php echo $this->__('View Now') ?>"><?php echo $this->__('View Now') ?></a>	
+										</div>
+									<?php } ?>
+								</div>
+							</div>	
+						<?php } ?>									
+					</div>
+					<?php $i++; ?>
+					<?php
+				} // end foreach
+			?>
+			</div>
+		</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	jQuery( document ).ready(function($) {
+		(function(selector){
+			var $content = $(selector);
+			var pauseTime=<?php echo $this->getConfig('pauseTime') ?>, 
+				animSpeed=<?php echo $this->getConfig('animSpeed') ?>;
+				$content.nivoSlider({
+				slices: 15,
+				boxCols: 8,
+				boxRows: 4,
+				startSlide: 0,
+				controlNavThumbs: false,
+				pauseOnHover: true,
+				manualAdvance: false,
+				prevText: 'Prev',
+				nextText: 'Next',
+				effect: '<?php echo $this->getConfig('effect') ?>',
+				animSpeed: animSpeed,
+				pauseTime: pauseTime,
+				controlNav: <?php echo $this->getConfig('controlNav') ?>,
+				directionNav: <?php echo $this->getConfig('directionNav') ?>,
+				afterLoad: function (){pieBar(pauseTime,animSpeed)},
+				beforeChange: function (){checkRemovePieBar(pauseTime,animSpeed)},
+				afterChange: function (){pieBar(pauseTime,animSpeed)}
+			});
+
+		})('#tv-inivoslider');
+	});
+	</script>
+</div>
+
+

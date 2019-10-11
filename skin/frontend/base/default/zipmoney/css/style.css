@@ -1,0 +1,29 @@
+#zipmoney-widget-general-addtocart, #zipmoney-widget-specific-addtocart {
+    clear: left;
+    margin: 0;
+    text-align: left;
+    padding-top: 10px;
+}
+.zipmoney-express-cart-product {
+    padding-top: 10px;
+}
+
+#zipmoney-express-product .zipmoney-express-cart-product-learn-more {
+    float: none;
+}
+
+.zip-order-success-message {
+	border: 1px solid #3d6611; 	
+	background-color: #eff5ea;
+	background-image: url(../images/i_msg-success.gif);
+	color: #3d6611;
+	padding: 10px; 
+}
+
+.zip-hover:hover{
+    cursor: pointer;
+}
+
+.zm-landing-container {
+    width: 900px !important;
+}

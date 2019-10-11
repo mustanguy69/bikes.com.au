@@ -1,0 +1,45 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Cart
+ */
+?>
+<?php /** @var Amasty_Cart_Block_Catalog_Product_List_Related $this */
+if ($this->getItems()->getSize()): ?>
+    <div class="am-related-title">
+        <span class="am-title"><?php echo $this->__('Related Products')?></span>
+    </div>
+    <div class="block block-related" id="am-block-related">
+        <div class="block-content">
+            <?php foreach ($this->getItems() as $item) :?>
+                <div class="product">
+                    <a href="<?php echo $item->getProductUrl() ?>"
+                       title="<?php echo $this->htmlEscape($item->getName()) ?>"
+                       class="product-image">
+                        <img
+                            src="<?php echo $this->helper('catalog/image')->init($item, 'thumbnail')
+                                ->resize(199, 122); ?>"
+                            width="199" height="122"
+                            alt="<?php echo $this->htmlEscape($item->getName()) ?>"
+                        />
+                    </a>
+                    <p class="product-name">
+                        <a href="<?php echo $item->getProductUrl() ?>">
+                            <?php echo $this->htmlEscape($item->getName()) ?>
+                        </a>
+                    </p>
+
+                    <span><?php echo $this->__('Price:') ?></span>
+                    <?php echo $this->getPriceHtml($item, true, '-related'); ?>
+                    <?php if ($item->isSaleable()): ?>
+                        <button type="button" title="<?php echo $this->__('Add to cart') ?>" class="button add-tocart">
+                            <?php echo $this->__('Add to cart') ?></button>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><?php echo $this->__('Out of stock') ?></p>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+<?php endif ?>

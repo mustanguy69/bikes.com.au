@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <cms_index_index>
+        <reference name="head">
+            <action method="addCss" ifconfig="mostviewed/general/enabled"><stylesheet>themevast/plugin/css/owl.carousel.css</stylesheet></action>
+			<action method="addJs" ifconfig="mostviewed/general/enabled"><script>themevast/jquery.min.js</script></action>
+			<action method="addJs" ifconfig="mostviewed/general/enabled"><script>themevast/plugin/owl.carousel.min.js</script></action>     
+		</reference>
+        <reference name="mostviewed_products">
+            <block type="mostviewed/mostviewed" name="mostviewed" after="daily.deal" template="themevast/mostviewed/mostviewed.phtml" />
+        </reference>
+    </cms_index_index>
+</layout> 
+

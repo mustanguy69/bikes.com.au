@@ -1,0 +1,89 @@
+<?php
+$groupId = $this->getGroupId ();
+$groupInfo = Mage::getModel('menupro/groupmenu')->load($groupId)->getData();
+
+/*$MCPHTML = $this->getPushnewResponsiveHtml($groupId, $groupInfo['responsive']);
+$MCPHTML = $this->getMenuHtml($groupId);
+$MCPHTML = $this->getPushResponsiveHtml($groupId, $groupInfo['responsive']);*/
+
+$MCPHTML = $MCPRHTML = "";
+if ($this->helper('menupro')->isDevelopMode()) {
+
+
+
+	/*if ($this->isGroupResponsive($groupInfo['responsive'])) {
+		if ($groupInfo['responsive'] == "mcp-push-cover" || $groupInfo['responsive'] == "mcp-push-overlap") {
+			$MCPRHTML = $this->getPushnewResponsiveHtml($groupId, $groupInfo['responsive']);
+		} else {
+			$MCPRHTML = $this->getPushResponsiveHtml($groupId, $groupInfo['responsive']);
+		}
+		$note = $this->__("<h5 style='padding: 10px; font-size: 12px; font-weight: normal; margin: 5px 0px; line-height: 15px; text-transform: none; font-style: italic; color: rgb(248, 153, 56); background: none repeat scroll 0% 0% rgb(255, 255, 255);'>Enable Developer Mode for showing both status for customizing CSS. Turn off Developer Mode when you have done.</h5>");
+		$MCPHTML = $note;
+		$MCPHTML .= $MCPRHTML;
+		$MCPHTML .= "<br>";
+		$MCPHTML .= $this->getMenuHtml($groupId);
+	} else {
+		$MCPHTML = $this->getMenuHtml($groupId);
+	}*/
+
+
+	if ($this->isGroupResponsive($groupInfo['responsive'])) {
+
+		//echo "inside responsive</br>";
+
+		if ($this->detectDevice() != "desktop") {
+			if ($groupInfo['responsive'] == "mcp-push-cover" || $groupInfo['responsive'] == "mcp-push-overlap") {
+				$MCPHTML = $this->getPushnewResponsiveHtml($groupId, $groupInfo['responsive']);
+			} else {
+				$MCPHTML = $this->getPushResponsiveHtml($groupId, $groupInfo['responsive']);
+			}
+			//echo "</br>not desktop</br>";
+		} else {
+			//echo "</br>desktop</br>";
+			$MCPHTML = $this->getMenuHtml($groupId);
+
+			echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact-header')->toHtml();
+			echo "<div class='header-cart-mini'>
+				<div class='topcart-mini-container'>";
+				echo $this->getLayout()->createBlock('core/template')->setTemplate('themevast/ajaxcart/checkout/cart/topcart.phtml')->toHtml();
+				echo "</div>
+			</div>";
+
+		}
+	} else {
+		//echo "out of responsive E-xampp1-htdocs-bikes-app-design-frontend-base-default-template-menupro-menupro.phtml";
+		$MCPHTML = $this->getMenuHtml($groupId);
+	}
+
+
+
+} else {
+	if ($this->isGroupResponsive($groupInfo['responsive'])) {
+
+		//echo "inside responsive</br>";
+
+		if ($this->detectDevice() != "desktop") {
+			if ($groupInfo['responsive'] == "mcp-push-cover" || $groupInfo['responsive'] == "mcp-push-overlap") {
+				$MCPHTML = $this->getPushnewResponsiveHtml($groupId, $groupInfo['responsive']);
+			} else {
+				$MCPHTML = $this->getPushResponsiveHtml($groupId, $groupInfo['responsive']);
+			}
+
+			//echo "</br>not desktop</br>";
+
+		} else {
+
+			//echo "</br>desktop</br>";
+			//echo $groupId . "</br>";
+			$MCPHTML = $this->getStaticHtml($groupId);
+			//echo $MCPHTML;
+			//print_r($MCPHTML);
+		}
+	} else {
+		//echo "out of responsive E-xampp1-htdocs-bikes-app-design-frontend-base-default-template-menupro-menupro.phtml";
+		$MCPHTML = $this->getStaticHtml($groupId);
+	}
+}
+echo "<div class='mst mcp-wrapper'>";
+echo $MCPHTML;
+echo "</div>";

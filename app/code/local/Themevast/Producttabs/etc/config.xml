@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Themevast_Producttabs>
+            <version>0.1.0</version>
+        </Themevast_Producttabs>
+    </modules>
+    <frontend>
+        <routers>
+            <producttabs>
+                <use>standard</use>
+                <args>
+                    <module>Themevast_Producttabs</module>
+                    <frontName>producttabs</frontName>
+                </args>
+            </producttabs>
+        </routers>
+        <layout>
+            <updates>
+                <producttabs>
+                    <file>themevast/producttabs.xml</file>
+                </producttabs>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+            <producttabs>
+                <use>admin</use>
+                <args>
+                    <module>Themevast_Producttabs</module>
+                    <frontName>producttabs</frontName>
+                </args>
+            </producttabs>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <productslide before="Mage_Adminhtml">Themevast_Producttabs_Adminhtml</productslide>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <themevast translate="title" module="producttabs">
+                <title>Themevast</title>
+                <sort_order>71</sort_order>               
+                <children>
+                    <producttabs translate="title" module="producttabs">
+                        <title>Product Tabs</title>
+                        <sort_order>0</sort_order>
+                        <children><!--
+                            <featuredproduct translate="title">
+                                <title>Manage Featured Products</title>
+                                <sort_order>1</sort_order>
+                                <action>adminhtml/featured/index</action>
+                            </featuredproduct>-->
+                            <configuration>
+                                <title>Configuration</title>
+                                <sort_order>2</sort_order>
+                                <action>adminhtml/system_config/edit/section/producttabs</action>
+                            </configuration>
+                        </children>
+                    </producttabs>
+                </children>
+            </themevast>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <Themevast_Producttabs>
+                            <title>Producttabs Module</title>
+                            <sort_order>10</sort_order>
+                        </Themevast_Producttabs>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <producttabs>
+                    <file>producttabs.xml</file>
+                </producttabs>
+            </updates>
+        </layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <producttabs>
+                <class>Themevast_Producttabs_Model</class>
+                <resourceModel>producttabs_resource</resourceModel>
+            </producttabs>
+            <producttabs_resource>
+                <class>Themevast_Producttabs_Model_Resource</class>
+            </producttabs_resource>
+        </models>
+        <resources>
+            <producttabs_setup>
+                <setup>
+                    <module>Themevast_Producttabs</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </producttabs_setup>
+            <producttabs_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </producttabs_write>
+            <producttabs_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </producttabs_read>
+        </resources>
+        <blocks>
+            <producttabs>
+                <class>Themevast_Producttabs_Block</class>
+            </producttabs>
+        </blocks>
+        <helpers>
+            <producttabs>
+                <class>Themevast_Producttabs_Helper</class>
+            </producttabs>
+        </helpers>
+    </global>
+    <default>
+        <producttabs>
+            <general>
+                <enabled>1</enabled>
+                <jquery>1</jquery>
+                <title></title>
+                <auto>0</auto>
+                <speed>600</speed>
+                <rows>1</rows>
+                <loop>1</loop>   
+                <responsive>0:{items:1},600:{items:3},1000:{items:4}</responsive>
+                <margin>30</margin>
+                <sort_name>asc</sort_name>
+            </general>
+
+            <featured_product>
+                <title>Featured Products</title>
+                <heading_block>Featured Products</heading_block>
+                <enable_featuredproduct>1</enable_featuredproduct>
+            </featured_product>
+
+            <product_show>
+                <product_type>random,newproduct,saleproduct</product_type>
+                <product_number>10</product_number>
+                <product_action>compare,cart,wishlist</product_action>
+               <!--  <items_column>4</items_column> -->
+            </product_show>
+        </producttabs>
+    </default>
+</config>
+

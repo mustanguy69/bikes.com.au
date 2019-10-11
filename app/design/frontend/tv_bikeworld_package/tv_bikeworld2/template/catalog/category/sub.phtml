@@ -1,0 +1,52 @@
+<?php
+$category = Mage::getSingleton('catalog/layer')->getCurrentCategory();
+$categories = $category->getCollection()
+    ->setOrder('name', 'ASC')
+    ->addAttributeToSelect(array('name'))
+    ->addAttributeToFilter('is_active', 1)
+    ->addIdFilter($category->getChildren());
+?>
+<ul class="subcategories">
+    <?php foreach ($categories as $category): ?>
+        <li>
+            <a href="<?php echo $category->getUrl() ?>">
+                <span><?php echo $category->getName() ?></span>
+                <?php  $current_category = Mage::getModel('catalog/category')->load($category->getId());
+                       $collection = Mage::getModel('catalog/product')
+                            ->getCollection()
+                            ->addCategoryFilter($current_category)
+                            ->addAttributeToSelect('*')
+                            ->addAttributeToFilter('status', array('eq' => 1))
+                            ->addAttributeToFilter('visibility',4)
+                            ->load();?>
+                <span>(<?php echo $collection->count(); ?>)</span>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>
+<script>
+  jQuery (document).ready(function() {
+    var $ = jQuery;
+    var rowsToDisplay = 1;
+    var containerOffset = $('.subcategories').offset().top;
+    var items = $('.subcategories').children();
+    var itemHeight = $(items[0]).outerHeight(true);
+    var visibleHeight = itemHeight * rowsToDisplay;
+    var hiddenItems = items.filter(function () {
+      return $(this).offset().top - containerOffset >= visibleHeight;
+    });
+    hiddenItems.hide();
+
+    var button = $('<div class="subcategories-btn"><button>Show more</button></div>');
+
+    var state = false;
+
+    button.click(function(event) {
+      state ? hiddenItems.hide() : hiddenItems.show();
+      state ? button.html('<button>Show more</button>') : button.html('<button>Show less</button>');
+      state = !state;
+    });
+
+    $('.subcategories').append(button);
+  });
+</script>

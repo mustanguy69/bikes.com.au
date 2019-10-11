@@ -1,0 +1,127 @@
+<?php
+if (!empty($magicscroll) && !empty($magicscrollOptions)) {
+    $magicscrollOptions = " data-options=\"{$magicscrollOptions}\"";
+} else {
+    $magicscrollOptions = '';
+}
+?>
+<!-- Begin magiczoom -->
+<div class="MagicToolboxContainer selectorsBottom minWidth">
+    <div class="MainContainer">
+    <?php if (count($thumbs) > 1) { ?>
+        <a href="#" class="mt-arrow prev"></a>
+        <a href="#" class="mt-arrow next"></a>
+    <?php } ?>
+    <?php echo $main; ?>
+    </div>
+<?php
+
+if (is_array($thumbs)) {
+    $thumbs = array_unique($thumbs);
+}
+
+if (count($thumbs) > 1) {
+    ?>
+    <div class="MagicToolboxSelectorsContainer">
+        <div id="MagicToolboxSelectors<?php echo $pid ?>" class="<?php echo $magicscroll ?>"<?php echo $magicscrollOptions ?>>
+        <?php echo join("\n\t", $thumbs); ?>
+        </div>
+    </div>
+    <?php
+}
+?>
+</div>
+<!-- End magiczoom -->
+
+<style type="text/css">
+.MainContainer { position: relative; }
+.MainContainer .mt-arrow {
+    text-decoration: none;
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);
+    -webkit-transform:translateY(-50%);
+    z-index:100000;
+    font: 900 18px/32px 'magictoolbox-thin' !important;
+    background:rgba(255,255,255,0.6);
+    color:rgba(0,0,0,0.3);
+    width: 32px;
+    height: 32px;
+}
+.MainContainer .mt-arrow.prev { left: 0px; }
+.MainContainer .mt-arrow.next { right: 0px; }
+.MainContainer .mt-arrow.prev:before { content: "\a002"; }
+.MainContainer .mt-arrow.next:before { content: "\a003"; }
+</style>
+
+
+<script type="text/javascript">
+
+function mtOnDomReady(fnc) {
+    if (typeof(jQuery) == 'undefined') {
+        setTimeout(function() {
+            mtOnDomReady(fnc);
+        }, 250);
+        return;
+    }
+    jQuery(document).ready(fnc);
+}
+
+mtOnDomReady(function() {
+
+    jQuery('.mt-arrow').on('click touchstart',function(e){
+        var $elm, $this = jQuery('a.active-selector'), $itemId , $numItems = <?php echo count($thumbs); ?>;
+
+        
+        if (jQuery('.mcs-item').length) {
+
+            if (jQuery($this).length) {
+                $itemId = jQuery($this).closest('.mcs-item').data('item')
+            } else {
+                $itemId = 0;
+            }
+
+            if (jQuery(this).hasClass('next')) {
+                $itemId++;
+                if ($itemId == $numItems) {
+                    $itemId = 0;
+                }
+            } else {
+                $itemId--;
+                if ($itemId < 0) {
+                    $itemId = $numItems - 1;
+                }
+            }
+            $elm = jQuery('.mcs-item[data-item="' + $itemId + '"]').first().find('a');
+        } else {
+            if (jQuery(this).hasClass('next')) {
+                $elm = $this.next();
+                if ($elm.length == 0) {
+                    $elm = jQuery('.MagicToolboxSelectorsContainer a').first();
+                }
+            } else {
+                $elm = $this.prev();
+                if ($elm.length == 0) {
+                    $elm = jQuery('.MagicToolboxSelectorsContainer a').last();
+                }
+            }            
+        }
+
+        jQuery('.magic-slide').removeClass('mt-active');
+        jQuery('.magic-slide[data-magic-slide="'+$elm.attr('data-magic-slide-id')+'"]').addClass('mt-active');
+
+        jQuery('.MagicToolboxSelectorsContainer a').removeClass('active-selector')
+        $elm.addClass('active-selector')
+
+        MagicZoom.update(
+            jQuery('.MagicZoom').attr('id'),
+            $elm.attr('href'),
+            $elm.attr('data-image')
+        );
+
+        e.preventDefault();
+
+    })
+
+});
+</script>

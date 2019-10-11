@@ -1,0 +1,59 @@
+<?php
+$className = Mage::getConfig()->getBlockClassName('megamenu/megamenu');
+            $block = new $className();  
+ $_menu = $block->renderCategoriesMenuHtml(0,'level-top') ?>
+
+<nav class="nav-container">
+        <?php if($_menu): ?>
+            <div class="nav-mobilemenu-container visible-xs visible-sm">
+                <div class="navbar">
+                    <div id="navbar-inner" class="navbar-inner navbar-inactive">
+                            <div class="menu-mobile">
+                                <a class="btn-navbar navbar-toggle">
+                                        <i class="fa fa-bars"></i>
+                                </a>
+                                <!-- <span class="brand navbar-brand"><?php echo $this->__('Menu') ?></span> -->
+                            </div>
+                            <ul id="nav-mobilemenu" class="mobilemenu nav-collapse collapse">
+                                    <?php echo $_menu ?>
+                                    <li class="blog level0 level-top"><a href="<?php echo $this->getUrl('blog')?>" class="level0" title="blog"><span><?php echo $this->__('Blog')?></span></a></li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        <?php endif ?>
+        <div class="search-below-768px">
+            <i class="fa fa-search"></i>
+        </div>
+        <div class="nav-megamenu">
+            <div class="container-inner">
+                <ul class="megamenu visible-lg visible-md"> 
+                    <?php $megamenu =  $this->getLayout()->createBlock('megamenu/megamenu'); ?>       
+                    <?php echo $megamenu->drawMegamenuHome(); ?>
+                    <?php if(Mage::getStoreConfig('megamenu/general/showall')==1):?>
+                    <?php echo $megamenu->drawMegamenuAll();?>
+                    <?php else:?>
+                    <?php echo $megamenu->drawMegamenuMain(); ?>                    										<?php endif;?>
+                    <?php echo $megamenu->drawMegamenuExtra(); ?>
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('megamenu_link')->toHtml() ?>
+                    <?php //echo $megamenu->drawMegamenuLink(); ?>
+                </ul>
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact-header')->toHtml() ?>
+                <div class="header-cart-mini">
+                    <div class="topcart-mini-container">
+                        <?php echo $this->getChildHtml('top_cart_mini') ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script type="text/javascript">
+    var MEGAMENU_EFFECT = <?php echo (int)Mage::getStoreConfig('megamenu/general/effect')?>;
+    // jQuery(window).scroll(function () {
+    //   if (jQuery(this).scrollTop() > 200) {
+    //    jQuery('nav').addClass("fix-nav");
+    //   } else {
+    //    jQuery('nav').removeClass("fix-nav");
+    //   }
+    // });
+    </script>
+</nav>

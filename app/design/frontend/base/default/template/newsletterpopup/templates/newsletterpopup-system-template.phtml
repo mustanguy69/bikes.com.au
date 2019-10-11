@@ -1,0 +1,46 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Newsletterpopup
+ * @copyright   Copyright (c) 2017 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php $popup = $this->getPopup() ?>
+
+<div class="newspopup-message-success" style="display: none;">
+	<span class="newspopup-message-icon"></span>
+	<div class="newspopup-message-content"><?php echo $popup->getData('text_success') ?></div>
+	<button class="newspopup-message-close"><?php echo $this->__('Ok'); ?></button>
+</div>
+
+<div class="newspopup-animated-form newspopup-up-form cf <?php echo $this->getAnimation();?> newspopup-theme">
+
+	<div class="newspopup-messages-holder">
+		<div class="newspopup-messages-holder-tr"></div>
+	</div>
+
+	<div class="hld-pop newspopup_clear">
+		<?php echo $this->getPopupTemplate() ?>
+	</div>
+</div>
+
+<style type="text/css">
+	<?php echo $this->getPopupStyle() ?>
+</style>
+
+<script type="text/javascript">
+	//<![CDATA[
+	Translator.add('Close','<?php echo $this->jsQuoteEscape($this->__('Close')) ?>');
+	//]]>
+</script>

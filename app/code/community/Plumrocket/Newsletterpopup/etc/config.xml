@@ -1,0 +1,477 @@
+<?xml version="1.0"?>
+<config>
+
+	<modules>
+		<Plumrocket_Newsletterpopup>
+			<version>2.2.1</version>
+		</Plumrocket_Newsletterpopup>
+	</modules>
+
+	<global>
+		<helpers>
+			<newsletterpopup>
+				<class>Plumrocket_Newsletterpopup_Helper</class>
+			</newsletterpopup>
+		</helpers>
+
+		<blocks>
+			<newsletterpopup>
+				<class>Plumrocket_Newsletterpopup_Block</class>
+			</newsletterpopup>
+
+            <adminhtml>
+                <rewrite>
+                    <newsletter_subscriber_grid>Plumrocket_Newsletterpopup_Block_Adminhtml_Newsletter_Subscriber_Grid</newsletter_subscriber_grid>
+                </rewrite>
+            </adminhtml>
+		</blocks>
+
+		<models>
+			<newsletterpopup>
+				<class>Plumrocket_Newsletterpopup_Model</class>
+				<resourceModel>newsletterpopup_mysql4</resourceModel>
+			</newsletterpopup>
+
+			<newsletterpopup_mysql4>
+				<class>Plumrocket_Newsletterpopup_Model_Mysql4</class>
+				<entities>
+					<popup>
+						<table>newsletterpopup_popups</table>
+					</popup>
+					<template>
+						<table>newsletterpopup_templates</table>
+					</template>
+					<history>
+						<table>newsletterpopup_history</table>
+					</history>
+					<history_action>
+						<table>newsletterpopup_history_action</table>
+					</history_action>
+					<mailchimpList>
+						<table>newsletterpopup_mailchimp_list</table>
+					</mailchimpList>
+					<formField>
+						<table>newsletterpopup_form_fields</table>
+					</formField>
+				</entities>
+			</newsletterpopup_mysql4>
+
+			<newsletter>
+				<rewrite>
+					<subscriber>Plumrocket_Newsletterpopup_Model_Subscriber</subscriber>
+				</rewrite>
+			</newsletter>
+
+			<newsletter_resource>
+				<rewrite>
+					<subscriber_collection>Plumrocket_Newsletterpopup_Model_Mysql4_Newsletter_Subscriber_Collection</subscriber_collection>
+				</rewrite>
+			</newsletter_resource>
+		</models>
+
+		<resources>
+			<newsletterpopup_setup>
+				<setup>
+					<module>Plumrocket_Newsletterpopup</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</newsletterpopup_setup>
+			<newsletterpopup_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</newsletterpopup_write>
+			<newsletterpopup_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</newsletterpopup_read>
+		</resources>
+
+		<translate>
+            <modules>
+                <Plumrocket_Newsletterpopup>
+                    <files>
+                        <default>Plumrocket_Newsletterpopup.csv</default>
+                    </files>
+                </Plumrocket_Newsletterpopup>
+            </modules>
+        </translate>
+
+        <template>
+            <email>
+                <newsletterpopup_general_email_template translate="label" module="newsletterpopup">
+                    <label>Newsletter Popup Autoresponder Email</label>
+                    <file>newsletterpopup_responder_email.html</file>
+                    <type>html</type>
+                </newsletterpopup_general_email_template>
+            </email>
+        </template>
+
+        <events>
+			<sales_order_save_after>
+				<observers>
+					<newsletterpopup>
+						<class>newsletterpopup/observer</class>
+						<method>saveOrder</method>
+					</newsletterpopup>
+				</observers>
+			</sales_order_save_after>
+
+            <admin_system_config_section_save_after>
+                <observers>
+                    <newsletterpopup>
+                        <type>singleton</type>
+                        <class>newsletterpopup/observer</class>
+                        <method>adminSystemConfigChangedSection</method>
+                    </newsletterpopup>
+                </observers>
+            </admin_system_config_section_save_after>
+
+            <customer_login>
+                <observers>
+                    <newsletterpopup>
+                        <type>singleton</type>
+                        <class>newsletterpopup/observer</class>
+                        <method>customerLogin</method>
+                    </newsletterpopup>
+                </observers>
+            </customer_login>
+
+            <core_collection_abstract_load_before>
+                <observers>
+                    <newsletterpopup_core_collection_abstract_load_before>
+                        <type>singleton</type>
+                        <class>newsletterpopup/observer</class>
+                        <method>coreCollectionAbstractLoadBefore</method>
+                    </newsletterpopup_core_collection_abstract_load_before>
+                </observers>
+            </core_collection_abstract_load_before>
+
+        </events>
+   </global>
+
+   <frontend>
+		<routers>
+			<newsletterpopup>
+				<use>standard</use>
+				<args>
+					<module>Plumrocket_Newsletterpopup</module>
+					<frontName>newsletterpopup</frontName>
+				</args>
+			</newsletterpopup>
+		</routers>
+		<layout>
+			<updates>
+				<newsletterpopup>
+					<file>newsletterpopup.xml</file>
+				</newsletterpopup>
+			</updates>
+		</layout>
+
+		<translate>
+			<modules>
+				<Plumrocket_Newsletterpopup>
+					<files>
+						<default>Plumrocket_Newsletterpopup.csv</default>
+					</files>
+				</Plumrocket_Newsletterpopup>
+			</modules>
+		</translate>
+<!--
+		<cache>
+			<requests>
+				<newsletterpopup>
+					<index>
+						<block>enterprise_pagecache/processor_default</block>
+						<preview>enterprise_pagecache/processor_default</preview>
+					</index>
+				</newsletterpopup>
+			</requests>
+		</cache>
+-->
+	</frontend>
+
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<Plumrocket_Newsletterpopup_Adminhtml after="Mage_Adminhtml">Plumrocket_Newsletterpopup_Adminhtml</Plumrocket_Newsletterpopup_Adminhtml>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+
+	<adminhtml>
+		<layout>
+			<updates>
+				<newsletterpopup>
+					<file>newsletterpopup.xml</file>
+				</newsletterpopup>
+			</updates>
+		</layout>
+
+		<translate>
+			<modules>
+				<Plumrocket_Newsletterpopup>
+					<files>
+						<default>Plumrocket_Newsletterpopup.csv</default>
+					</files>
+				</Plumrocket_Newsletterpopup>
+			</modules>
+		</translate>
+
+		<events>
+            <core_layout_block_create_after>
+                <observers>
+                    <newsletterpopup_core_layout_block_create_after>
+                        <type>singleton</type>
+                        <class>newsletterpopup/observer</class>
+                        <method>coreLayoutBlockCreateAfter</method>
+                    </newsletterpopup_core_layout_block_create_after>
+                </observers>
+            </core_layout_block_create_after>
+        </events>
+	</adminhtml>
+
+	<crontab>
+		<jobs>
+			<plumrocket_newsletterpopup_clear_history>
+				<schedule><cron_expr>0/15 * * * *</cron_expr></schedule>
+				<run><model>newsletterpopup/cron::clearOldHistory</model></run>
+				<!-- <count>25</count> -->
+			</plumrocket_newsletterpopup_clear_history>
+		</jobs>
+	</crontab>
+
+	<default>
+		<newsletterpopup>
+			<general>
+				<enable>0</enable>
+                <enable_analytics>0</enable_analytics>
+                <enable_history>1</enable_history>
+                <erase_history>30</erase_history>
+                <cookies_usage>1</cookies_usage>
+			</general>
+            <mailchimp>
+                <enable>0</enable>
+                <send_email>0</send_email>
+            </mailchimp>
+            <size>
+            	<desktop>eg,992</desktop>
+                <tablet>eg,768</tablet>
+                <mobile>l,768</mobile>
+            </size>
+            <disposable_emails>
+            	<disable>1</disable>
+            	<domains><![CDATA[
+10minutemail.com
+2-ch.space
+33mail.com
+6paq.com
+DingBone.com
+FudgeRub.com
+LookUgly.com
+SmellFear.com
+a45.in
+abyssmail.com
+anappthat.com
+anonymbox.com
+anonymousemail.me
+anotherdomaincyka.tk
+armyspy.com
+asdasd.ru
+axe.axeprim.eu
+azazazatashkent.tk
+box.yadavnaresh.com.np
+bspamfree.org
+bund.us
+bundes-li.ga
+cachedot.net
+ckaazaza.tk
+crazymailing.com
+cuvox.de
+dasdasdascyka.tk
+dayrep.com
+deadaddress.com
+discard.email
+discardmail.com
+discardmail.de
+disposable.pingfu.net
+disposableinbox.com
+dispostable.com
+dropmail.me
+dudmail.com
+e4ward.com
+easytrashmail.com
+ebano.campano.cl
+ee2.pl
+eelmail.com
+einrot.com
+email-fake.com
+email.hideme.be
+eml.pp.ua
+en.getairmail.com
+eqeqeqeqe.tk
+eyepaste.com
+fake-email.pp.ua
+fakeinbox.com
+fakemailgenerator.com
+fiifke.de
+fleckens.hu
+freeletter.me
+freemail.ms
+freundin.ru
+gaf.oseanografi.id
+get.pp.ua
+getairmail.com
+gishpuppy.com
+googdad.tk
+grandmasmail.com
+grr.la
+guerrillamail.biz
+guerrillamail.com
+guerrillamail.de
+guerrillamail.net
+guerrillamail.org
+guerrillamailblock.com
+gustr.com
+hartbot.de
+hideme.be
+hmamail.com
+hulapla.de
+inboxdesign.me
+inboxstore.me
+incognitomail.org
+inmynetwork.cf
+inmynetwork.ga
+inmynetwork.gq
+inmynetwork.ml
+inmynetwork.tk
+jetable.org
+jobbikszimpatizans.hu
+jourrapide.com
+kurzepost.de
+labetteraverouge.at
+lazyinbox.com
+loadby.us
+loh.pp.ua
+lolitka.cf
+lolitka.ga
+lolitka.gq
+lolito.tk
+mailcatch.com
+maildrop.cc
+mailexpire.com
+mailforspam.com
+mailinator.com
+mailinator.net
+mailnesia.com
+mailnull.com
+meltmail.com
+mfsa.ru
+mintemail.com
+mmmmail.com
+moakt.com
+msgos.com
+mt2015.com
+mt2016.com
+my.vondata.com.ar
+mynetwork.cf
+mytempemail.com
+mytrashmail.com
+no-spam.ws
+objectmail.com
+odnorazovoe.ru
+pfui.ru
+poh.pp.ua
+postonline.me
+proxymail.eu
+q314.net
+rcpt.at
+regspaces.tk
+rhyta.com
+s0ny.net
+safetypost.de
+schafmail.de
+sdfghyj.tk
+send-email.org
+sharklasers.com
+shitmail.me
+showslow.de
+spam.la
+spam.su
+spam4.me
+spambog.com
+spambog.de
+spambog.ru
+spambox.us
+spamex.com
+spamfree24.org
+spamgourmet.com
+spamobox.com
+spamstack.net
+squizzy.de
+superrito.com
+sweetxxx.de
+tafmail.com
+techgroup.me
+teewars.org
+teleworm.us
+temp-mail.org
+temp-mail.ru
+tempemail.net
+tempinbox.com
+tempmailer.com
+tempsky.com
+thismail.ru
+thrma.com
+throwawaymail.com
+tmail.ws
+trash-mail.at
+trashmail.at
+trashmail.com
+trashmail.me
+trashmail.net
+trbvm.com
+ts-by-tashkent.cf
+ts-by-tashkent.ga
+ts-by-tashkent.gq
+ts-by-tashkent.ml
+ts-by-tashkent.tk
+vaasfc4.tk
+vickaentb.cf
+vickaentb.ga
+vickaentb.gq
+vickaentb.ml
+vickaentb.tk
+vihost.ml
+vihost.tk
+vmani.com
+wasdfgh.cf
+wasdfgh.ga
+wasdfgh.gq
+wasdfgh.ml
+wasdfgh.tk
+webuser.in
+wegwerfmail.de
+wegwerfmail.net
+wegwerfmail.org
+wfgdfhj.tk
+wh4f.org
+wickmail.net
+wimsg.com
+xy9ce.tk
+yapped.net
+yopmail.com
+zaktouni.fr
+zeta-telecom.com]]></domains>
+            </disposable_emails>
+		</newsletterpopup>
+	</default>
+
+</config>
