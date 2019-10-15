@@ -67,6 +67,9 @@ Default layout, loads most of the pages
                 <action method="addCss"><stylesheet>css/font-awesome.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/animate.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
+                <!--To remove after 2 weeks-->
+                <action method="addCss"><stylesheet>css/popup.css</stylesheet></action>
+                <!--To remove after 2 weeks-->
                 <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 9</if></action>
                 <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
@@ -75,6 +78,9 @@ Default layout, loads most of the pages
                 <action method="addItem"><type>skin_js</type><name>js/menu.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/open-close.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/account-menu.js</name></action>
+                <!--To remove after 2 weeks-->
+                <action method="addItem"><type>skin_js</type><name>js/popup.js</name></action>
+                <!--To remove after 2 weeks-->
                 <action method="addItem"><type>skin_js</type><name>js/lib/enquire.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/modernizr.custom.min.js</name></action>
                 <action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
