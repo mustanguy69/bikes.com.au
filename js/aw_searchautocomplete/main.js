@@ -125,16 +125,14 @@ AWSearchautocomplete.prototype = {
 
     onAutocompleterKeyPress: function(event) {
         var e = window.event || event;
-        var yolo = null;
-        // if (e.keyCode == Event.KEY_RETURN){
-        //     var el = this.updateChoicesContainer.select('.selected').first();
-        //     if (el && !el.hasClassName('aw-sas-empty')) {
-        //         el.click();
-        //         Event.stop(e);
-        //     } else {
-        //         this.targetElement.up('form').submit();
-        //     }
-        // }
+        if (e.keyCode == Event.KEY_RETURN){
+            var el = this.updateChoicesContainer.select('.selected').first();
+            // if (el && !el.hasClassName('aw-sas-empty')) {
+            //     console.log('empty');
+            //     el.click();
+            //     Event.stop(e);
+            // }
+        }
     },
 
     onAutocompleterRequestComplete: function(request) {
@@ -155,12 +153,19 @@ AWSearchautocomplete.prototype = {
 
     onRowElementClick: function(element) {
         var url = element.select('input').first().getValue();
+        var button = element.select('button');
+        var e = window.event || event;
         if (this.openInNewWindow) {
             window.open(url, '_blank');
         } else {
             // do not use setLocation() because it is being overridden by ACP
             // setLocation(url);
-            window.location.href = url;
+            // Avoid clicking on the first link, submit search form on enter key press
+            if (e.keyCode != Event.KEY_RETURN) {
+                window.location.href = url;
+            } else {
+                button.click();
+            }
         }
         Event.stop(event);
     }
