@@ -26,17 +26,17 @@
  */
 -->
 <layout version="0.1.0">
-<!--
-Default layout, loads most of the pages
--->
+    <!--
+    Default layout, loads most of the pages
+    -->
 
     <default translate="label" module="page">
         <label>All Pages</label>
         <block type="page/html" name="root" output="toHtml" template="page/3columns.phtml">
 
             <block type="page/html_head" name="head" as="head">
-				<action method="addJs"><script>prototype/prototype.js</script></action>
-				<action method="addJs"><script>lib/ccard.js</script></action>
+                <action method="addJs"><script>prototype/prototype.js</script></action>
+                <action method="addJs"><script>lib/ccard.js</script></action>
                 <action method="addJs"><script>prototype/validation.js</script></action>
                 <action method="addJs"><script>scriptaculous/builder.js</script></action>
                 <action method="addJs"><script>scriptaculous/effects.js</script></action>
@@ -50,23 +50,26 @@ Default layout, loads most of the pages
                 <action method="addJs"><script>mage/cookies.js</script></action>
 
                 <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
-                
+
                 <action method="addJs"><script>themevast/jquery.min.js</script></action>
                 <action method="addJs"><script>themevast/noconflict.js</script></action>
                 <action method="addJs"><script>themevast/plugin/jquery.fancybox.pack.js</script></action>
                 <action method="addJs"><script>themevast/plugin/jquery-migrate-1.0.0.js</script></action>
-				<action method="addItem"><type>skin_js</type><name>bootstrap/js/bootstrap.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>bootstrap/js/bootstrap.min.js</name></action>
                 <action method="addCss"><stylesheet>bootstrap/css/bootstrap.min.css</stylesheet></action>
                 <!--  <action method="addJs"><script>bootstrap/bootstrap.min.js</script></action>
                <action method="addJs"><script>themevast/bootstrap/bootstrap-tooltip.js</script></action>
                 <action method="addItem"><type>js</type><name>themevast/accordion-menu.js</name></action> -->
                 <action method="addItem"><type>js</type><name>themevast/themevast.js</name></action>
-            	<action method="addItem"><type>skin_js</type><name>js/jquery.lazy.min.js</name></action>
-            	<action method="addItem"><type>skin_js</type><name>js/jquery.lazy.plugins.min.js</name></action>
-				
+                <action method="addItem"><type>skin_js</type><name>js/jquery.lazy.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/jquery.lazy.plugins.min.js</name></action>
+
                 <action method="addCss"><stylesheet>css/font-awesome.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/animate.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/styles.css</stylesheet></action>
+                <!--To remove after 2 weeks-->
+                <action method="addCss"><stylesheet>css/popup.css</stylesheet></action>
+                <!--To remove after 2 weeks-->
                 <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 9</if></action>
                 <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
@@ -75,13 +78,16 @@ Default layout, loads most of the pages
                 <action method="addItem"><type>skin_js</type><name>js/menu.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/open-close.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/account-menu.js</name></action>
+                <!--To remove after 2 weeks-->
+                <action method="addItem"><type>skin_js</type><name>js/popup.js</name></action>
+                <!--To remove after 2 weeks-->
                 <action method="addItem"><type>skin_js</type><name>js/lib/enquire.js</name></action>
                 <action method="addItem"><type>skin_js</type><name>js/lib/modernizr.custom.min.js</name></action>
                 <action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
                 <action method="addItem"><type>js</type><name>themevast/html5shiv.js</name><params/><if>lt IE 9</if></action>
                 <action method="addItem"><type>js</type><name>themevast/respond.min.js</name><params/><if>lt IE 9</if></action>
                 <action method="addItem"><type>skin_js</type><name>js/ie6.js</name><params/><if>lt IE 7</if></action>
-            	<action method="addItem"><type>skin_js</type><name>js/custom.js</name></action>				
+                <action method="addItem"><type>skin_js</type><name>js/custom.js</name></action>
             </block>
 
             <block type="core/text_list" name="after_body_start" as="after_body_start" translate="label">
@@ -106,7 +112,7 @@ Default layout, loads most of the pages
             </block>
 
             <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
-            
+
             <block type="core/text_list" name="brand_logo" as="brand_logo" translate="label" />
             <block type="core/text_list" name="top_banner_static" as="top_banner_static" translate="label" />
             <block type="core/text_list" name="bannerslider" as="bannerslider" translate="label" />
@@ -177,7 +183,7 @@ Default layout, loads most of the pages
         </block>
     </print>
 
-     <!-- Custom page layout handles -->
+    <!-- Custom page layout handles -->
     <page_empty translate="label">
         <label>All Empty Layout Pages</label>
         <reference name="root">
