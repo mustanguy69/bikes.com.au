@@ -428,12 +428,12 @@ class Amasty_Cart_AjaxController extends Mage_Core_Controller_Front_Action
             'title' => $this->__('Information'),
             'b1_name' => $this->__('View Cart'),
             'b2_name' => $this->__('Continue Shopping'),
-            'b3_name' => $this->__('Go to checkout'),
+            //'b3_name' => $this->__('Go to checkout'),
             'count' => $count,
             'b1_action' => $this->getButtonTwoAction(),
             'b2_action' => $this->getButtonOneAction($params),
-            'b3_action' => $this->getButtonThirdAction(),
-            'checkout_button' => $this->getCheckoutButton(),
+            //'b3_action' => $this->getButtonThirdAction(),
+            //'checkout_button' => $this->getCheckoutButton(),
             'is_add_to_cart' => '1',
             'timer' => $this->getTimerText()
         );

@@ -332,16 +332,16 @@ AmAjax.prototype =
                                                 eval(response.b2_action);
                                             }
                                         },
-                                        '3'    : {
-                                            'name'  :  response.b3_name,
-                                            'class' : 'am-btn-right-3',
-                                            'action': function() {
-                                                if (response.b3_action.indexOf('document.location') > -1 && window.parent.location != window.location) {
-                                                    response.b3_action = response.b3_action.replace('document.location', 'window.parent.location');
-                                                }
-                                                eval(response.b3_action);
-                                            }
-                                        }
+                                        // '3'    : {
+                                        //     'name'  :  response.b3_name,
+                                        //     'class' : 'am-btn-right-3',
+                                        //     'action': function() {
+                                        //         if (response.b3_action.indexOf('document.location') > -1 && window.parent.location != window.location) {
+                                        //             response.b3_action = response.b3_action.replace('document.location', 'window.parent.location');
+                                        //         }
+                                        //         eval(response.b3_action);
+                                        //     }
+                                        // }
                                     }
                                 });
 
