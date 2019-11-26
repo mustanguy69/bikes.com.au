@@ -11723,57 +11723,34 @@ p.welcome-msg {
   font-weight: bold;
 }
 
-.truck-free img {
-  margin-left: 25px;
-  margin-top: 8%;
+.truck-free-desktop img {
+  width: 80%;
+  margin: 15px auto;
+  display: block;
 }
 
 @media  screen and (max-width: 1600px) {
-  .truck-free img {
+  .truck-free-desktop img {
     margin-top: 14%;
   }
 }
 
+.truck-free-mobile {
+  display: none;
+}
+
 @media  screen and (max-width: 990px) {
-  .truck-free {
-    position: absolute;
+  .truck-free-desktop {
+    display: none;
   }
-  .truck-free img {
+
+  .truck-free-mobile {
+    display: block;
+  }
+  .truck-free-mobile img {
     width: 50%;
-    text-align: center;
-    margin: 0 auto;
+    margin: 15px auto;
     display: block;
-    padding-left: 25px;
-  }
-}
-
-@media  screen and (min-width: 466px) and (max-width: 768px) {
-  #search_mini_form {
-    margin-top: 40px;
-  }
-  .truck-free img {
-    width: 40%;
-    text-align: center;
-    margin: 0 auto;
-    display: block;
-    padding-left: 57px;
-    padding-top: 160px;
-  }
-}
-
-@media  screen and (max-width: 376px) {
-  .truck-free img {
-    width: 65%;
-    text-align: center;
-    margin: 0 auto;
-    display: block;
-    padding-left: 0px;
-  }
-}
-
-@media  screen and (max-width: 425px) {
-  .truck-free img {
-    width: 53%;
   }
 }
 
@@ -14515,7 +14492,11 @@ A.awblog_current_comment {
 @media (min-width: 992px) and (max-width: 1200px) {
   /* line 26, ../sass/template/_responsive.scss */
   .header a.logo {
-    padding-top: 8px;
+    padding-top: 28px;
+  }
+
+  .truck-free-desktop img {
+    margin-top: 31%;
   }
 
   /* line 29, ../sass/template/_responsive.scss */
@@ -14542,7 +14523,7 @@ A.awblog_current_comment {
 
   /* line 54, ../sass/template/_responsive.scss */
   .form-search input.input-text {
-    width: 60%;
+    width: 40%;
   }
 
   /* line 57, ../sass/template/_responsive.scss */
@@ -15138,7 +15119,7 @@ and (orientation : landscape) {
     display: none;
   }
   .page-header-content .form-search {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    background: rgba(255, 255, 255, 1) none repeat scroll 0 0;
     border: 2px solid #e5e5e5;
     margin: 0;
     position: relative;
@@ -15146,6 +15127,8 @@ and (orientation : landscape) {
   }
 
 }
+
+
 
 .yoursaving {
   position: relative;
