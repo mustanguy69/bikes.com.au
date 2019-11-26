@@ -11615,7 +11615,7 @@ p.welcome-msg {
 }
 /* line 41, ../sass/template/modules/_categorysearch.scss */
 .form-search input.input-text {
-  width: 65%;
+  width: 55%;
   border: none;
   font-size: 16px;  /* was 14px; */
   font-family: Oswald; /* added */
@@ -11722,6 +11722,61 @@ p.welcome-msg {
 .search-keyword .title {
   font-weight: bold;
 }
+
+.truck-free img {
+  margin-left: 25px;
+  margin-top: 8%;
+}
+
+@media  screen and (max-width: 1600px) {
+  .truck-free img {
+    margin-top: 14%;
+  }
+}
+
+@media  screen and (max-width: 990px) {
+  .truck-free {
+    position: absolute;
+  }
+  .truck-free img {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    padding-left: 25px;
+  }
+}
+
+@media  screen and (min-width: 466px) and (max-width: 768px) {
+  #search_mini_form {
+    margin-top: 40px;
+  }
+  .truck-free img {
+    width: 40%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    padding-left: 57px;
+    padding-top: 160px;
+  }
+}
+
+@media  screen and (max-width: 376px) {
+  .truck-free img {
+    width: 65%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    padding-left: 0px;
+  }
+}
+
+@media  screen and (max-width: 425px) {
+  .truck-free img {
+    width: 53%;
+  }
+}
+
 
 /*----------------------------------------------- Banner Slider -----------------------------------------------*/
 /* Direction Nav */

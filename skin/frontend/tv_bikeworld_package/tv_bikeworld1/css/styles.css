@@ -10867,7 +10867,7 @@ div.megamenu ul.level0 li.level1:hover ul.level1 {
 }
 /* line 41, ../sass/template/modules/_categorysearch.scss */
 .form-search input.input-text {
-  width: 65%;
+  width: 55%;
   border: none;
   font-size: 14px;
   color: #ccc;
@@ -10982,6 +10982,8 @@ div.megamenu ul.level0 li.level1:hover ul.level1 {
 .search-keyword .title {
   font-weight: bold;
 }
+
+
 
 /*----------------------------------------------- Banner Slider -----------------------------------------------*/
 /* Direction Nav */
