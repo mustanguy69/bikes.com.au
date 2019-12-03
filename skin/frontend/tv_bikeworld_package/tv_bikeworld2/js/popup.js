@@ -6,8 +6,7 @@ jQuery(document).ready(function(){
         '<div class="maps" style="text-align: center;"><span style="font-size: x-medium;"><strong>- PERTH 15TH DEC</strong></span></div>\n' +
         '<div class="maps" style="text-align: center;"><span style="font-size: x-medium;"><strong>- BRISBANE 16TH DEC</strong></span></div>\n' +
         '<div class="maps" style="text-align: center;"><span style="font-size: x-medium;"><strong>- MELBOURNE / ADELAIDE / SYDNEY 19TH DEC</strong></span></div>\n' +
-        '<div class="maps" style="text-align: center;"><span style="font-size: x-medium;"><strong>- REGIONAL AREAS - ADD AT LEAST 1 WEEK TO CAPITAL CITY DATES FOR DELIVERY BEFORE CHRISTMAS.</strong></span></div>\n' +
-        '<div class="maps" style="text-align: center;"><span style="font-size: small;"><strong><img alt="" src="'+ document.location.href +'/skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/hero_melbourne_cup.png" /></strong></span></div>';
+        '<div class="maps" style="text-align: center;"><span style="font-size: x-medium;"><strong>- REGIONAL AREAS - ADD AT LEAST 1 WEEK TO CAPITAL CITY DATES FOR DELIVERY BEFORE CHRISTMAS.</strong></span></div>\n';
     jQuery( window ).load(function() {
         jQuery('.cms-home2 .wrapper').prepend(popup);
         jQuery('.popup-content').append(content);

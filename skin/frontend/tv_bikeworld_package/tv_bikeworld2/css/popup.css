@@ -11,9 +11,11 @@
 .popup-content {
     margin: auto;
     min-height:350px;
-    background-color: white;
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://images.pexels.com/photos/717988/pexels-photo-717988.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    background-size: cover;
     min-width: 315px;
     padding: 0;
+    color: white;
 }
 
 .popup-content .maps {
