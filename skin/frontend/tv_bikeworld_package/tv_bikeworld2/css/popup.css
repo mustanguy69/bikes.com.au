@@ -10,12 +10,29 @@
 
 .popup-content {
     margin: auto;
-    min-height:350px;
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://images.pexels.com/photos/717988/pexels-photo-717988.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+    min-height:400px;
+    background: url('https://ak1.picdn.net/shutterstock/videos/7965961/thumb/5.jpg');
     background-size: cover;
     min-width: 315px;
     padding: 0;
     color: white;
+}
+
+@media screen and (max-width: 426px){
+    .popup-content {
+        background-position: 60%;
+        padding-bottom: 30px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .col-xl-5 {
+        width: 40%;
+    }
+}
+
+.popup-content .col-sm-9 {
+    padding-left: 21px;
 }
 
 .popup-content .maps {
@@ -35,3 +52,4 @@
     color: #E4DB1F;
     cursor: pointer;
 }
+
