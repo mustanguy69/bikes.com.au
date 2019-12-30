@@ -11,7 +11,7 @@
 .popup-content {
     margin: auto;
     min-height:400px;
-    background-image: url("/bikes.com.au/skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/popup-scott.jpg");
+    background-image: url("../images/popup-scott.jpg");
     background-size: cover;
     min-width: 315px;
     padding: 0;
