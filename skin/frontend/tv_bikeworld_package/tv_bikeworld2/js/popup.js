@@ -4,7 +4,7 @@ jQuery(document).ready(function(){
         '<div class="maps">&nbsp;</div>\n' +
         '<div class="maps" ><span style="font-size: 43px;">ALL <br> <strong>SUMMER <br> LONG</strong></span><br><br><br></div></div>\n' +
         '<div class="col-sm-12" style="margin-left:0;background-color: rgba(249, 246, 9,0.9);padding-top: 15px;padding-bottom: 8px">\n' +
-        '<div class="maps"><span style="font-size: 1.7vw; color: red;padding-left: 15px; font-weight: bold" class="text-yellow">MASSIVE SAVINGS ON ALL SCOTT & FOCUS BIKES .</span></div>'+
+        '<div class="maps"><span style="font-size: 1.7vw; color: red;padding-left: 15px; font-weight: bold" class="text-yellow">MASSIVE SAVINGS ON ALL SCOTT & FOCUS BIKES</span></div>'+
         '</div>';
 
     jQuery( window ).load(function() {
