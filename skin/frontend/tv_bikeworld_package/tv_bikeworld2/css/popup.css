@@ -5,12 +5,12 @@
     z-index: 9999999999;
     top: 0;
     background-color: rgba(0,0,0,0.7);
-    display: grid;
+    display: flex;
 }
 
 .popup-content {
     margin: auto;
-    min-height:400px;
+    height:400px;
     background-image: url("../images/popup-scott.jpg");
     background-size: cover;
     min-width: 315px;
@@ -79,4 +79,3 @@
     color: #E4DB1F;
     cursor: pointer;
 }
-
