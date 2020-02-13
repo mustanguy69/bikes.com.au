@@ -14,8 +14,7 @@ class Bubble_Autocomplete_ProductController extends Mage_Core_Controller_Front_A
     {
         $cacheId = 'bubble_autocomplete_' . Mage::app()->getStore()->getId();
         if (false === ($data = Mage::app()->loadCache($cacheId))) {
-            $collection = Mage::getModel('catalog/product')->getCollection();
-
+            $collection = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('thumbnail');
             Mage::dispatchEvent('bubble_autocomplete_product_collection_init', array('collection' => $collection));
 
             $data = json_encode($collection->getData());
