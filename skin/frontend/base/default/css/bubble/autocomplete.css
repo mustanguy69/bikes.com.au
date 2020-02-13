@@ -100,3 +100,30 @@ input.tt-hint {
   border: 0;
   display: block;
 }
+
+@media screen and (max-width: 992px) {
+  .form-search #cat {
+    display: none;
+  }
+
+  span.twitter-typeahead {
+    float: right;
+    width: 100%;
+  }
+
+  .form-search button.button {
+    height: 47px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  span.twitter-typeahead {
+    width: 41%;
+  }
+}
+
+@media screen and (min-width:1025px) and (max-width: 1440px) {
+  span.twitter-typeahead {
+    width: 60%;
+  }
+}
