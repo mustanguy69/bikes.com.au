@@ -36,6 +36,7 @@ AWSearchautocomplete.prototype = {
 
     initAutocomplete : function(){
         var me = this;
+        console.log(me);
         me.autocompleter = new Ajax.Autocompleter(
             me.targetElement,
             me.updateChoicesElement,

@@ -1,11 +1,11 @@
 <?php
-    $block = Mage::app()->getLayout()->createBlock('categorysearch/form'); 
+    $block = Mage::app()->getLayout()->createBlock('categorysearch/form');
 ?>
 <?php $helper = $this->helper('categorysearch'); ?>
 
 <form id="search_mini_form" action="<?php echo $this->helper('catalogsearch')->getResultUrl() ?>" method="get">
     <div class="form-search">
-        <select class="ddslick"  id="<?php echo $helper->getCategoryParamName() ?>" name="<?php echo $helper->getCategoryParamName() ?>">
+        <select class="ddslick" id="<?php echo $helper->getCategoryParamName() ?>" name="<?php echo $helper->getCategoryParamName() ?>">
             <option value=""><?php echo $this->__('All Categories') ?></option>
             <?php foreach ($block->getSearchableCategories() as $mainCategory): ?>
                 <option value="<?php echo $mainCategory->getEntityId() ?>"><?php echo $mainCategory->getName() ?></option>
