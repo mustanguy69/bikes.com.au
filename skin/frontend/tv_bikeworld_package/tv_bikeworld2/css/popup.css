@@ -10,14 +10,33 @@
 
 .popup-content {
     margin: auto;
-    height:400px;
-    background-image: url("../images/popup-scott.jpg");
-    background-size: cover;
-    min-width: 315px;
     padding: 0;
-    color: white;
     position: relative;
     cursor: pointer;
+}
+
+.header-1 {
+  text-align: center;
+  width:100%;
+  background-color: #F9F609;
+  color: #6A449D;
+  padding:10px !important;
+}
+
+.header-1 h1 {
+  font-size: 30px;
+}
+
+.header-2 {
+  text-align: center;
+  width:100%;
+  background-color: #6A449D;
+  color: white;
+  padding:10px !important;
+}
+
+.header-2 h2 {
+  font-size: 20px;
 }
 
 .popup-content > * {
@@ -25,57 +44,50 @@
     position: relative;
 }
 
-.popup-content::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-@media screen and (max-width: 426px){
-    .popup-content {
-        background-position: 60%;
-        padding-bottom: 30px;
-    }
-}
-
-@media screen and (max-width: 670px){
-    .text-yellow {
-        font-size: 15px !important;
-    }
-}
-
-@media (min-width: 1600px) {
-    .col-xl-5 {
-        width: 40%;
-    }
-}
-
-.popup-content .col-sm-9 {
-    padding-left: 21px;
-    margin-left: 10px;
-}
-
-.popup-content .maps {
-    margin-bottom: 8px;
-}
-
-.
-
-.popup-content img {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 200px;
-}
-
 .close-popup {
-    float: right;
     margin-top: -20px;
     margin-right: -15px;
-    color: #E4DB1F;
+    color: white;
     cursor: pointer;
+    position: absolute;
+    right: 0;
+    z-index: 9999999;
+}
+
+.popup-content .col-sm-12 {
+  padding:0;
+  margin:0;
+}
+
+.popup-content .body {
+  width: 100%;
+}
+
+.popup-content .body .col-sm-4 img {
+    margin: 0 auto;
+    display: block;
+
+}
+
+.popup-content .body .col-sm-4 {
+  background-color: #F9F609;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.popup-content .body-img img {
+  display: block;
+}
+
+.popup-content  .popup-footer {
+  text-align: center;
+  width:100%;
+  color: #F9F609;
+  background-color: #6A449D;
+}
+
+.popup-content  .popup-footer h1 {
+  font-size: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }

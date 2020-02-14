@@ -1,10 +1,16 @@
 jQuery(document).ready(function(){
-    var popup = "<div class='popup-overlay col-sm-12'><div class='popup-content col-sm-11 col-md-7 col-lg-6 col-xl-6'><i class='fa fa-times-circle-o fa-3x close-popup'></i> </div> </div>";
-    var content = '<div class="col-sm-9">\n' +
-        '<div class="maps">&nbsp;</div>\n' +
-        '<div class="maps" ><span style="font-size: 43px;">ALL <br> <strong>SUMMER <br> LONG</strong></span><br><br><br></div></div>\n' +
-        '<div class="col-sm-12" style="margin-left:0;background-color: rgba(249, 246, 9,0.9);padding-top: 15px;padding-bottom: 8px">\n' +
-        '<div class="maps"><span style="font-size: 1.7vw; color: red;padding-left: 15px; font-weight: bold" class="text-yellow">MASSIVE SAVINGS ON ALL SCOTT & FOCUS BIKES</span></div>'+
+    var popup = "<div class='popup-overlay col-sm-12'><div class='popup-content col-sm-10 col-md-6 col-lg-5 col-xl-4'><i class='fa fa-times-circle-o fa-3x close-popup'></i> </div> </div>";
+    var content = '<div class="col-sm-12">\n' +
+        '<div class="header-1 col-sm-12"><h1>E-BIKE SUPER STORE</h1></div>\n' +
+        '<div class="header-2 col-sm-12"><h2>OVER 25 DIFFERENT MODELS IN STOCK</h2></div>\n' +
+        '<div class="col-sm-12 body">'+
+          '<div class="col-sm-4 col-xs-4"><img src="/skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/shimano.png"/></div>'+
+          '<div class="col-sm-4 col-xs-4"><img src="skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/bosch.png"/></div>'+
+          '<div class="col-sm-4 col-xs-4"><img src="/skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/bafang.png"/></div>'+
+        '</div>' +
+        '<div class="col-sm-12 body-img"><img src="/skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/popup-img.jpg"/></div>'+
+        '<div class="col-sm-12 popup-footer"><h1>COME SEE US FOR A TEST RIDE TODAY !</h1></div>\n' +
+        '</div>' +
         '</div>';
 
     jQuery( window ).load(function() {
@@ -16,7 +22,7 @@ jQuery(document).ready(function(){
         jQuery('.popup-content').on('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
-            window.location.href = "https://www.bikes.com.au/clearance-sale/focus_scott/";
+            //window.location.href = "https://www.bikes.com.au/clearance-sale/focus_scott/";
         });
     });
 });
