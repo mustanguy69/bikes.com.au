@@ -20,11 +20,14 @@
   width:100%;
   background-color: #F9F609;
   color: #6A449D;
-  padding:10px !important;
+  padding:5px !important;
+
 }
 
 .header-1 h1 {
-  font-size: 30px;
+  font-size: 27px;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
 
 .header-2 {
@@ -32,7 +35,7 @@
   width:100%;
   background-color: #6A449D;
   color: white;
-  padding:10px !important;
+  padding:15px !important;
 }
 
 .header-2 h2 {
@@ -66,13 +69,13 @@
 .popup-content .body .col-sm-4 img {
     margin: 0 auto;
     display: block;
-
+    width:50%;
 }
 
 .popup-content .body .col-sm-4 {
   background-color: #F9F609;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 .popup-content .body-img img {

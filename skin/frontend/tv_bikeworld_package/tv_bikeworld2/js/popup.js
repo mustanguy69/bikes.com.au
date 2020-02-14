@@ -5,7 +5,7 @@ jQuery(document).ready(function(){
         '<div class="header-2 col-sm-12"><h2>OVER 25 DIFFERENT MODELS IN STOCK</h2></div>\n' +
         '<div class="col-sm-12 body">'+
           '<div class="col-sm-4 col-xs-4"><img src="/skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/shimano.png"/></div>'+
-          '<div class="col-sm-4 col-xs-4"><img src="skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/bosch.png"/></div>'+
+          '<div class="col-sm-4 col-xs-4"><img src="/skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/bosch.png"/></div>'+
           '<div class="col-sm-4 col-xs-4"><img src="/skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/bafang.png"/></div>'+
         '</div>' +
         '<div class="col-sm-12 body-img"><img src="/skin/frontend/tv_bikeworld_package/tv_bikeworld2/images/popup-img.jpg"/></div>'+
@@ -22,7 +22,7 @@ jQuery(document).ready(function(){
         jQuery('.popup-content').on('click', function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
-            //window.location.href = "https://www.bikes.com.au/clearance-sale/focus_scott/";
+            window.location.href = "https://www.bikes.com.au/electric-bike/";
         });
     });
 });
