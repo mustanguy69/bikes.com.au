@@ -1,5 +1,4 @@
 span.twitter-typeahead {
-    float: right;
     width: 70%;
 }
 
@@ -107,7 +106,6 @@ input.tt-hint {
   }
 
   span.twitter-typeahead {
-    float: right;
     width: 100%;
   }
 
