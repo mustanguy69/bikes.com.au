@@ -114,17 +114,25 @@ input.tt-hint {
   }
 }
 
-@media screen and (min-width: 992px) and (max-width: 1024px) {
+@media screen and (min-width: 992px) and (max-width: 1269px) {
   span.twitter-typeahead {
     width: 41%;
   }
 }
 
-@media screen and (min-width:1025px) and (max-width: 1829px) {
+@media screen and (min-width:1270px) and (max-width: 1389px) {
+  span.twitter-typeahead {
+    width: 55%;
+  }
+}
+
+@media screen and (min-width:1390px) and (max-width: 1829px) {
   span.twitter-typeahead {
     width: 60%;
   }
 }
+
+
 
 @media screen and (min-width:1830) {
   span.twitter-typeahead {
