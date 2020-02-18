@@ -9779,19 +9779,19 @@ p.welcome-msg {
     left: 0;
     z-index: 1;
   }
-  .nav-container #menu-group-1 .menu-holder .menu-creator-pro li .grid-column .grid-container3 {
+  .nav-container #menu-group-1 .menu-holder .menu-creator-pro .last-menu {
     position: fixed;
     top: 0;
     opacity: 1;
     width: 0;
     height: 100%;
-    left: 300px;
+    left: 100%;
     display: block;
     overflow-x:hidden;
     overflow-y:auto;
     transition-duration: 1s;
   }
-  .nav-container #menu-group-1 .menu-holder .menu-creator-pro li .grid-column .grid-container3.active {
+  .nav-container #menu-group-1 .menu-holder .menu-creator-pro li .last-menu.active {
     z-index: 99999;
     left: 0px;
     width: 100%;
