@@ -9745,6 +9745,7 @@ p.welcome-msg {
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro .grid-container3 {
     width: auto;
     float: none;
+
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro .mobile {
     display: block;
@@ -9780,20 +9781,28 @@ p.welcome-msg {
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li .grid-column .grid-container3 {
     position: fixed;
-    left: -100%;
     top: 0;
-    opacity: 0;
-    width: 100%;
+    opacity: 1;
+    width: 0;
     height: 100%;
+    margin-left: 100%;
     display: none;
     overflow-x:hidden;
     overflow-y:auto;
+    -webkit-transition:margin 1s, left 1s, width 1s;
+    -o-transition:margin 1s, left 1s, width 1s;
+    transition:margin 1s, left 1s, width 1s;
+    -webkit-transform:none !important;
+    -ms-transform:none !important;
+    transform:none !important;
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li .grid-column .grid-container3.active {
-    left: 0;
-    z-index: 1;
+    z-index: 99999;
     display: block;
     opacity: 1;
+    visibility: visible;
+    margin-left: -100%;
+    width: 100%
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li.level0 a {
     height: auto !important;
