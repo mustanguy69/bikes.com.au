@@ -9792,10 +9792,12 @@ p.welcome-msg {
     transition-duration: 1s;
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro .last-menu.active {
-    z-index: 99999;
-    margin-left: -100%;
-    width: 100%;
+    z-index: 1;
+    margin-left: 0;
+    width: 320px;
     float:left;
+    left:0;
+
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li.level0 a {
     height: auto !important;
