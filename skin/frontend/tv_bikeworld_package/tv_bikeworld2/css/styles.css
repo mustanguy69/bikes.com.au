@@ -9719,7 +9719,7 @@ p.welcome-msg {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     transform: translateX(0); }
-  .nav-container #menu-group-1 .menu-holder .menu-creator-pro{
+  .nav-container #menu-group-1 .menu-holder .menu-creator-pro {
     overflow-x:hidden;
     overflow-y:auto;
     width:100%;
@@ -9751,7 +9751,7 @@ p.welcome-msg {
     top:0;
     opacity:1;
     min-width: 0;
-    width:0 !important;
+    width:0;
     height:100%;
     overflow-x:hidden;
     overflow-y:auto;
@@ -9763,15 +9763,16 @@ p.welcome-msg {
     transform:none !important;
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li > div.active {
-    width:100% !important;
+    width:100%;
     left: 0;
-    z-index: 1; }
+    z-index: 1;
+  }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li .grid-column > div {
     position: fixed;
     left: 100%;
     top: 0;
     opacity: 1;
-    width: 0 !important;
+    width: 0;
     height: 100%;
     display: block;
     overflow-x:hidden;
@@ -9784,7 +9785,7 @@ p.welcome-msg {
     -ms-transform: none !important;
     transform: none !important;}
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li .grid-column > div.active {
-    width:100% !important;
+    width:100%;
     left: 0;
     z-index: 1; }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li.level0 a {
@@ -9792,7 +9793,9 @@ p.welcome-msg {
     font: 18px/24px "Oswald", sans-serif !important;
     padding: 10px 20px !important; }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro .parent .mcp-icon {
-    display: none; } }
+    display: none;
+  } 
+  }
 @media (max-width: 992px) {
   /* div.header a.logo {
     margin: 5px 145px 5px 55px;
