@@ -9795,6 +9795,7 @@ p.welcome-msg {
     z-index: 99999;
     margin-left: -100%;
     width: 100%;
+    float:left;
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li.level0 a {
     height: auto !important;
