@@ -9801,7 +9801,6 @@ p.welcome-msg {
     z-index: 99999999;
     margin-left: 0;
     width: 320px;
-    float:left;
     left:0;
     -webkit-transform: translate3d(0px, 0px, 1px);
     /* -ms-transform:none !important;
@@ -9809,6 +9808,12 @@ p.welcome-msg {
     -webkit-transform: translate3d(0, 0, 0);
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000; */
+  }
+
+  .nav-container #menu-group-1 .menu-holder .menu-creator-pro .last-menu.active ul, .nav-container #menu-group-1 .menu-holder .menu-creator-pro .last-menu.active ul li {
+    -webkit-transform: translate3d(0px, 0px, 1px);
+    position: relative;
+    z-index: 99999;
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li.level0 a {
     height: auto !important;
