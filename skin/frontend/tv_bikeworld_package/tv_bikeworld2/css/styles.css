@@ -9734,9 +9734,10 @@ p.welcome-msg {
     -webkit-transition:margin 1s, left 1s;
     -o-transition:margin 1s, left 1s;
     transition:margin 1s, left 1s;
-    -webkit-transform: none !important;
+    /* -webkit-transform: none !important; */
     -ms-transform: none !important;
     transform: none !important;
+    -webkit-transform: translate3d(0, 0, 0);
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro.active {
     margin-left: 0%;
@@ -9770,9 +9771,10 @@ p.welcome-msg {
     -webkit-transition:margin 1s, left 1s, width 1s;
     -o-transition:margin 1s, left 1s, width 1s;
     transition:margin 1s, left 1s, width 1s;
-    -webkit-transform:none !important;
+    /* -webkit-transform:none !important; */
     -ms-transform:none !important;
     transform:none !important;
+    -webkit-transform: translate3d(0, 0, 0);
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li > div.active {
     width:100%;
@@ -9789,25 +9791,22 @@ p.welcome-msg {
     display: block;
     overflow-x:hidden;
     overflow-y:auto;
-    /* transition-duration: 1s;
+    transition-duration: 1s;
+    -ms-transform:none !important;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    z-index: 99999999;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  .nav-container #menu-group-1 .menu-holder .menu-creator-pro .last-menu.active {
+    margin-left: 0;
+    width: 320px;
+    left:0;
     -ms-transform:none !important;
     transform:none !important;
     -webkit-transform: translate3d(0, 0, 0);
     -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000; */
-    -webkit-transform: translate3d(0px, 0px, 1px);
-  }
-  .nav-container #menu-group-1 .menu-holder .menu-creator-pro .last-menu.active {
-    z-index: 99999999;
-    margin-left: 0;
-    width: 320px;
-    left:0;
-    -webkit-transform: translate3d(0px, 0px, 1px);
-    /* -ms-transform:none !important;
-    transform:none !important;
-    -webkit-transform: translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000; */
+    -webkit-perspective: 1000;
   }
 
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro .last-menu.active ul, .nav-container #menu-group-1 .menu-holder .menu-creator-pro .last-menu.active ul li {
