@@ -9790,6 +9790,9 @@ p.welcome-msg {
     overflow-x:hidden;
     overflow-y:auto;
     transition-duration: 1s;
+    -webkit-transform:none !important;
+    -ms-transform:none !important;
+    transform:none !important;
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro .last-menu.active {
     z-index: 99999999;
@@ -9797,7 +9800,9 @@ p.welcome-msg {
     width: 320px;
     float:left;
     left:0;
-
+    -webkit-transform:none !important;
+    -ms-transform:none !important;
+    transform:none !important;
   }
   .nav-container #menu-group-1 .menu-holder .menu-creator-pro li.level0 a {
     height: auto !important;
