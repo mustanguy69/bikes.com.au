@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Adminhtml
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2020 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -464,7 +464,7 @@ class Mage_Adminhtml_Block_Widget_Grid extends Mage_Adminhtml_Block_Widget
     {
         if ($this->getCollection()) {
             $field = ( $column->getFilterIndex() ) ? $column->getFilterIndex() : $column->getIndex();
-            if ($column->getFilterConditionCallback()) {
+            if ($column->getFilterConditionCallback() && $column->getFilterConditionCallback()[0] instanceof self) {
                 call_user_func($column->getFilterConditionCallback(), $this->getCollection(), $column);
             } else {
                 $cond = $column->getFilter()->getCondition();
@@ -473,6 +473,23 @@ class Mage_Adminhtml_Block_Widget_Grid extends Mage_Adminhtml_Block_Widget
                 }
             }
         }
+        return $this;
+    }
+
+    /**
+     * Add link model filter from grid column to collection
+     *
+     * @param Mage_Catalog_Model_Resource_Product_Link_Product_Collection $collection
+     * @param Mage_Adminhtml_Block_Widget_Grid_Column $column
+     *
+     * @return Mage_Adminhtml_Block_Widget_Grid
+     */
+    protected function _addLinkModelFilterCallback($collection, $column)
+    {
+        $field = ($column->getFilterIndex()) ? $column->getFilterIndex() : $column->getIndex();
+        $condition = $column->getFilter()->getCondition();
+        $collection->addLinkModelFieldToFilter($field, $condition);
+
         return $this;
     }
 

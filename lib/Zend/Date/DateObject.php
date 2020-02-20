@@ -146,7 +146,7 @@ abstract class Zend_Date_DateObject {
     protected function mktime($hour, $minute, $second, $month, $day, $year, $gmt = false)
     {
         // complete date but in 32bit timestamp - use PHP internal
-        if (($year > 1901) and ($year < 2038)) {
+        if ((1901 < $year) and ($year < 2038)) {
 
             $oldzone = @date_default_timezone_get();
             // Timezone also includes DST settings, therefor substracting the GMT offset is not enough
@@ -231,7 +231,6 @@ abstract class Zend_Date_DateObject {
                     $date += 365;
                     if ($leapyear === true)
                         $date++;
-                       
                 } else {
 
                     for ($mcount = 11; $mcount > ($month - 1); $mcount--) {
@@ -239,7 +238,6 @@ abstract class Zend_Date_DateObject {
                         if (($leapyear === true) and ($mcount == 2)) {
                             $date++;
                         }
-                   
 
                     }
                 }
@@ -320,7 +318,7 @@ abstract class Zend_Date_DateObject {
             // standard). However, this is not desired, so replacing 
             // all occurrences of "o" not preceded by a backslash 
             // with "Y"
-            $format = preg_replace('/(?<!\\\\)o\b/', 'Y', $format);
+            $format = preg_replace('/(?<!\\\\)o/', 'Y', $format);
             $result = ($gmt) ? @gmdate($format, $timestamp) : @date($format, $timestamp);
             date_default_timezone_set($oldzone);
             return $result;

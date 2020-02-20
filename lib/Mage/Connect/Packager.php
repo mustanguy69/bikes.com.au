@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Connect
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2020 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -290,7 +290,7 @@ class Mage_Connect_Packager
      */
     public function getLocalModifiedFiles($chanName, $package, $cacheObj, $configObj)
     {
-        $p = $cacheObj->getPackageObject($chanName, $package);
+        $p = $cachObj->getPackageObject($chanName, $package);
         $hashContents = $p->getHashContents();
         $listModified = array();
         foreach ($hashContents as $file=>$hash) {
@@ -458,7 +458,7 @@ class Mage_Connect_Packager
                 foreach($dependencies as $row) {
                     foreach($flds as $key) {
                         $varName = "p".ucfirst($key);
-                        ${$varName} = $row[$key];
+                        $$varName = $row[$key];
                     }
                     $method = __FUNCTION__;
                     $keyInner = $pChannel . "/" . $pName;
@@ -511,7 +511,7 @@ class Mage_Connect_Packager
             if(!$releases || !count($releases)) {
                 throw new Exception("No releases for: '{$package}', skipping");
             }
-            $state = $config->preffered_state ? $config->preffered_state : 'devel';
+            $state = $config->preffered_state ? $confg->preffered_state : 'devel';
             $version = $cache->detectVersionFromRestArray($releases, $versionMin, $versionMax, $state);
             if(!$version) {
                 throw new Exception("Version for '{$package}' was not detected");
@@ -540,7 +540,7 @@ class Mage_Connect_Packager
                 foreach($dependencies as $row) {
                     foreach($flds as $key) {
                         $varName = "p".ucfirst($key);
-                        ${$varName} = $row[$key];
+                        $$varName = $row[$key];
                     }
                     $method = __FUNCTION__;
                     $keyInner = $pChannel . "/" . $pName;
@@ -564,13 +564,13 @@ class Mage_Connect_Packager
 
                         $names = array("pMin","pMax","hasMin","hasMax");
                         for($i=0, $c=count($names); $i<$c; $i++) {
-                            if(!isset(${$names[$i]})) {
+                            if(!isset($$names[$i])) {
                                 continue;
                             }
-                            if(false !== ${$names[$i]}) {
+                            if(false !== $$names[$i]) {
                                 continue;
                             }
-                            ${$names[$i]} = $i % 2 == 0 ? "0" : "999999999";
+                            $$names[$i] = $i % 2 == 0 ? "0" : "999999999";
                         }
 
                         if(!$cache->hasVersionRangeIntersect($pMin,$pMax, $hasMin, $hasMax)) {

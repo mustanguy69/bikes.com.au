@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Core
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2020 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -41,6 +41,9 @@
  * @method Mage_Core_Model_Email_Queue setMessageParameters(array $value)
  * @method Mage_Core_Model_Email_Queue setProcessedAt(string $value)
  * @method array getMessageParameters()
+ *
+ * @category    Mage
+ * @package     Mage_Core
  */
 class Mage_Core_Model_Email_Queue extends Mage_Core_Model_Abstract
 {

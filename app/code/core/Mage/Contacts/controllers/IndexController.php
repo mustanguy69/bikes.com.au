@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Contacts
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2020 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -51,8 +51,8 @@ class Mage_Contacts_IndexController extends Mage_Core_Controller_Front_Action
     public function indexAction()
     {
         $this->loadLayout();
-        
-        $this->getLayout()->getBlock('contactForm')->setFormAction( Mage::getUrl('*/*/post', array('_secure' => $this->getRequest()->isSecure())) );
+        $this->getLayout()->getBlock('contactForm')
+            ->setFormAction( Mage::getUrl('*/*/post', array('_secure' => $this->getRequest()->isSecure())) );
 
         $this->_initLayoutMessages('customer/session');
         $this->_initLayoutMessages('catalog/session');

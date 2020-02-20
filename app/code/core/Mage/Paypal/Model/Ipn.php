@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Paypal
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2020 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -35,20 +35,6 @@ class Mage_Paypal_Model_Ipn
      * @var string
      */
     const DEFAULT_LOG_FILE = 'paypal_unknown_ipn.log';
-
-    /**
-     * Default postback endpoint URL.
-     *
-     * @var string
-     */
-    const DEFAULT_POSTBACK_URL = 'https://ipnpb.paypal.com/cgi-bin/webscr';
-
-    /**
-     * Sandbox postback endpoint URL.
-     *
-     * @var string
-     */
-    const SANDBOX_POSTBACK_URL = 'https://ipnpb.sandbox.paypal.com/cgi-bin/webscr';
 
     /**
      * Store order instance
@@ -143,18 +129,18 @@ class Mage_Paypal_Model_Ipn
      * Post back to PayPal to check whether this request is a valid one
      *
      * @param Zend_Http_Client_Adapter_Interface $httpAdapter
+     * @throws Exception
      */
     protected function _postBack(Zend_Http_Client_Adapter_Interface $httpAdapter)
     {
-        $url = $this->_getPostbackUrl();
-
         $postbackQuery = http_build_query($this->_request) . '&cmd=_notify-validate';
-        $this->_debugData['postback_to'] = $url;
+        $postbackUrl = $this->_config->getPostbackUrl();
+        $this->_debugData['postback_to'] = $postbackUrl;
 
         $httpAdapter->setConfig(array('verifypeer' => $this->_config->verifyPeer));
         $httpAdapter->write(
             Zend_Http_Client::POST,
-            $url,
+            $postbackUrl,
             '1.1',
             array('Connection: close'),
             $postbackQuery
@@ -188,16 +174,6 @@ class Mage_Paypal_Model_Ipn
             $this->_debugData['postback_result'] = $postbackResult;
             throw new Exception('PayPal IPN postback failure. See ' . self::DEFAULT_LOG_FILE . ' for details.');
         }
-    }
-
-    /**
-     * Get postback endpoint URL.
-     *
-     * @return string
-     */
-    protected function _getPostbackUrl()
-    {
-        return $this->_config->sandboxFlag ? self::SANDBOX_POSTBACK_URL : self::DEFAULT_POSTBACK_URL;
     }
 
     /**

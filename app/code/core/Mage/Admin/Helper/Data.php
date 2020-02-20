@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Admin
- * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2020 Magento, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -57,15 +57,5 @@ class Mage_Admin_Helper_Data extends Mage_Core_Helper_Abstract
     public function getResetPasswordLinkExpirationPeriod()
     {
         return (int) Mage::getConfig()->getNode(self::XML_PATH_ADMIN_RESET_PASSWORD_LINK_EXPIRATION_PERIOD);
-    }
-
-    /**
-     *  Get disallowed names for block
-     *
-     * @return bool
-     */
-    public function getDisallowedBlockNames()
-    {
-        return Mage::getResourceModel('admin/block')->getDisallowedBlockNames();
     }
 }
