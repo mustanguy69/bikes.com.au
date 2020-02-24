@@ -11728,6 +11728,7 @@ p.welcome-msg {
   background: #fff;
   border: 1px solid #eee;
   padding: 10px;
+  display: none;
 }
 /* line 119, ../sass/template/modules/_categorysearch.scss */
 .form-search .search-autocomplete ul li {
