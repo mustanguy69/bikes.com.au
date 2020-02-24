@@ -256,6 +256,7 @@
                 },
                 set: function(key, val, ttl) {
                     if (_.isNumber(ttl)) {
+                        var ttl = 3600000;
                         ls.setItem(this._ttlKey(key), encode(now() + ttl));
                     } else {
                         ls.removeItem(this._ttlKey(key));
