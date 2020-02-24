@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Atwix_Redisflush>
+            <version>1.0.0</version>
+        </Atwix_Redisflush>
+    </modules>
+    <global>
+        <models>
+            <atwix_redisflush>
+                <class>Atwix_Redisflush_Model</class>
+            </atwix_redisflush>
+        </models>
+    </global>
+    <crontab>
+        <jobs>
+            <atwix_redisflush>
+                <schedule>
+                    <cron_expr>0 2 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>atwix_redisflush/cron::flushRedisCache</model>
+                </run>
+            </atwix_redisflush>
+        </jobs>
+    </crontab>
+</config>
