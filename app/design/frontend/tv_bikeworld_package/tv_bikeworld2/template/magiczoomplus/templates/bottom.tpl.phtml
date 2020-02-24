@@ -41,7 +41,7 @@ if (count($thumbs) > 1) {
     top:50%;
     transform:translateY(-50%);
     -webkit-transform:translateY(-50%);
-    z-index:100000;
+    z-index: 999;
     font: 900 18px/32px 'magictoolbox-thin' !important;
     background:rgba(255,255,255,0.6);
     color:rgba(0,0,0,0.3);
@@ -72,7 +72,7 @@ mtOnDomReady(function() {
     jQuery('.mt-arrow').on('click touchstart',function(e){
         var $elm, $this = jQuery('a.active-selector'), $itemId , $numItems = <?php echo count($thumbs); ?>;
 
-        
+
         if (jQuery('.mcs-item').length) {
 
             if (jQuery($this).length) {
@@ -104,7 +104,7 @@ mtOnDomReady(function() {
                 if ($elm.length == 0) {
                     $elm = jQuery('.MagicToolboxSelectorsContainer a').last();
                 }
-            }            
+            }
         }
 
         jQuery('.magic-slide').removeClass('mt-active');

@@ -86,24 +86,20 @@ jQuery('#search').bind('typeahead:selected', function(obj, product, name) {
 
 function formatSuggestionPrice(product, priceFormat) {
     var price = '';
+
     switch (product.type_id) {
         case 'grouped':
         case 'configurable':
         case 'bundle':
-            price = '<p class="minimal-price">' +
-                        '<span class="price-label"><?php echo $this->__('Starting at:') ?>&nbsp;</span>' +
-                        '<span class="price">' + formatCurrency(product.min_price, priceFormat, false) + '</span>' +
-                    '</p>';
-            break;
         default:
-            if (parseFloat(product.final_price) < parseFloat(product.price)) {
+            if (parseFloat(product.special_price) < parseFloat(product.price)) {
                 price += '<p class="old-price">' +
                              '<span class="price-label"><?php echo $this->__('Regular Price:') ?>&nbsp;</span>' +
                              '<span class="price">' + formatCurrency(product.price, priceFormat, false) + '</span>' +
                          '</p>' +
                          '<p class="special-price">' +
-                             '<span class="price">' +
-                                 formatCurrency(product.price, priceFormat, false) +
+                             '<span class="price" style="margin-left:5px">  ' +
+                                 formatCurrency(product.special_price, priceFormat, false) +
                              '</span>' +
                          '</p>';
             } else {

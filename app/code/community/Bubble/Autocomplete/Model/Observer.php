@@ -26,6 +26,7 @@ class Bubble_Autocomplete_Model_Observer
         $collection = $observer->getEvent()->getCollection();
         $collection->addAttributeToFilter('name', array('notnull' => true))
             ->addAttributeToFilter('image', array('notnull' => true))
+            ->addAttributeToSelect('special_price')
             ->addAttributeToFilter('url_path', array('notnull' => true))
             ->addStoreFilter()
             ->addPriceData()

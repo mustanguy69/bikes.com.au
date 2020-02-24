@@ -6,7 +6,7 @@
         <?php } ?>
         <?php echo $mainHTML; ?>
         </div>
-    
+
 <?php
 if (count($selectorsArray)) {
 ?>
@@ -48,7 +48,7 @@ require([
 
     $('.mt-arrow').on('click touchstart',function(e){
         var $elm, $this = $('a.active-selector'), $itemId = $($this).closest('.mcs-item').data('item'), $numItems = <?php echo count($selectorsArray); ?>;
-        
+
         if ($('.mcs-item').length) {
             if ($(this).hasClass('next')) {
                 $itemId++;
@@ -73,7 +73,7 @@ require([
                 if ($elm.length == 0) {
                     $elm = $('.MagicToolboxSelectorsContainer a').last();
                 };
-            };       
+            };
         };
 
         $('.magic-slide').removeClass('mt-active');
@@ -86,4 +86,4 @@ require([
 
     })
 });
-</script>    
+</script>
