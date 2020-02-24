@@ -2,8 +2,8 @@
 <layout version="0.1.0">
     <default>
         <reference name="head">
-            <action method="addJs"><script>themevast/jquery.min.js</script></action>         
-            <action method="addJs"><script>themevast/noconflict.js</script></action>    
+            <action method="addJs"><script>themevast/jquery.min.js</script></action>
+            <action method="addJs"><script>themevast/noconflict.js</script></action>
             <action method="addJs"><script>themevast/plugin/jquery.ddslick.min.js</script></action>
         </reference>
         <reference name="top.search">
@@ -12,5 +12,5 @@
             </action>
         </reference>
     </default>
-</layout> 
+</layout>
 
