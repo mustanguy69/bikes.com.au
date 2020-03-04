@@ -8,9 +8,9 @@ class Studio19_Variants_IndexController extends Mage_Core_Controller_Front_Actio
 {
     const ACTION_TYPE_ENTITY = 'entity';
     const ACTION_TYPE_COLLECTION  = 'collection';
-    
+
     public function indexAction()
-    {   
+    {
         $store = $this->_getStore();
 
         // Parameters for debugging:
@@ -36,13 +36,13 @@ class Studio19_Variants_IndexController extends Mage_Core_Controller_Front_Actio
             $top = 500;
         if (!$skip)
             $skip = 0;
-        
+
         // Fetch only configurable and simple products, assuming other product types will not be rented.
         // Bundled products may be supported, but only where the quantity is not user provided.
         $collection = Mage::getResourceModel('catalog/product_collection')
             ->addStoreFilter($store->getId())
             ->addPriceData($this->_getCustomerGroupId(), $store->getWebsiteId())
-            ->addAttributeToSelect(array_merge($attributes, array('name', 'description', 'short_description', 'manufacturer_value', 'image', 'small_image')))
+            ->addAttributeToSelect(array_merge($attributes, array('name', 'description', 'short_description', 'brands_value', 'image', 'small_image')))
             ->addAttributeToFilter('visibility', array('neq' => Mage_Catalog_Model_Product_Visibility::VISIBILITY_NOT_VISIBLE))
             ->addAttributeToFilter('status', array('eq' => Mage_Catalog_Model_Product_Status::STATUS_ENABLED))
             ->addAttributeToFilter('type_id', array('in' => array(
@@ -50,7 +50,7 @@ class Studio19_Variants_IndexController extends Mage_Core_Controller_Front_Actio
                 Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE)));
 
         $select = $collection->getSelect();
-        
+
         // Filter out simple products which are linked to a configurable/bundled product; these will be included as variants of the
         // parent product.
         if ($excludeLinked)
@@ -58,8 +58,9 @@ class Studio19_Variants_IndexController extends Mage_Core_Controller_Front_Actio
             $select
                 ->joinLeft(array('link_table' => 'catalog_product_super_link'), 'link_table.product_id = e.entity_id', array('product_id'))
                 ->where('link_table.product_id IS NULL');
+
         }
-        
+        $select->where('final_price >= 2500');
         $select->limit($top, $skip);
         $products = $collection->load();
 
@@ -75,7 +76,7 @@ class Studio19_Variants_IndexController extends Mage_Core_Controller_Front_Actio
                     'link' => $productData['url'],
                     'image_link' => $productData['image_url'],
                     'description' => $productData['description'] ? $productData['description'] : $productData['short_description'],
-                    'brand' => $productData['manufacturer_value'],
+                    'brand' => $productData['brands_value'],
                     'price' => Mage::helper('core')->currency($productData['final_price_with_tax'], true, false),
                     'categories' => $productData['categories'],
                     'variants' => $productData['variants'],
@@ -203,12 +204,12 @@ class Studio19_Variants_IndexController extends Mage_Core_Controller_Front_Actio
             $basePrice = $product->getFinalPrice();
             $pricesByAttributeValues = array();
             $attributeCodes = array();
-            
+
             // Cache access to the prices for each attribute value.
             foreach ($attributes as $attribute) {
                 array_push($attributeCodes, $attribute->getProductAttribute()->getAttributeCode());
                 $prices = $attribute->getPrices();
-                
+
                 foreach ($prices as $price) {
                     $pricesByAttributeValues[$price['value_index']] = array('name' => $price['label']);
 
@@ -218,7 +219,7 @@ class Studio19_Variants_IndexController extends Mage_Core_Controller_Front_Actio
                         $pricesByAttributeValues[$price['value_index']]['price'] = (float)$price['pricing_value'];
                 }
             }
-            
+
             $subProducts = $product->getTypeInstance(true)
                 ->getUsedProductCollection($product)
                 ->addAttributeToSelect(array_merge($attributeCodes, array('name', 'description', 'image')))
@@ -237,7 +238,7 @@ class Studio19_Variants_IndexController extends Mage_Core_Controller_Front_Actio
                         'id' => intval($variantData[$code]),
                         'name' => $pricesByAttributeValues[$variantData[$code]]['name']
                     );
-                    
+
                     if (isset($pricesByAttributeValues[$variantData[$code]]))
                         $totalPrice += $pricesByAttributeValues[$variantData[$code]]['price'];
                 }
