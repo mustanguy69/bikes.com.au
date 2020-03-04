@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Module configuration
+ *
+ * @author Andrew
+ */
+-->
+<config>
+    <modules>
+        <Studio19_Variants>
+            <version>1.0.1</version>
+        </Studio19_Variants>
+    </modules>
+    <frontend>
+        <routers>
+            <studio19_variants>
+                <use>standard</use>
+                <args>
+                    <module>Studio19_Variants</module>
+                    <frontName>studio19-variants</frontName>
+                </args>
+            </studio19_variants>
+        </routers>
+    </frontend>
+</config>

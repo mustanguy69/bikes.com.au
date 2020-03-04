@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Module initial config
+ *
+ * @author Magento
+ */
+-->
+<config>
+    <modules>
+        <Studio19_Variants>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Studio19_Variants>
+    </modules>
+</config>
