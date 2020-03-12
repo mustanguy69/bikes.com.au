@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <bikeexchange translate="label" module="bikeexchange_ws">
+            <label>BikeExchange Web Services</label>
+            <sort_order>100</sort_order>
+        </bikeexchange>
+    </tabs>
+    <sections>
+        <bikeexchange translate="label" module="bikeexchange_ws">
+            <label>Configuration</label>
+            <tab>bikeexchange</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+            <groups>
+                <bikeexchange-ws translate="label" module="bikeexchange_ws">
+                    <label>Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <bikeexchange_apikey translate="label">
+                            <label>Api Key: </label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bikeexchange_apikey>
+                        <bikeexchange_endpoint translate="label">
+                            <label>Api Endpoint: </label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </bikeexchange_endpoint>
+                    </fields>
+                </bikeexchange-ws>
+            </groups>
+        </bikeexchange>
+    </sections>
+</config>

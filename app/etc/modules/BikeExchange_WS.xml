@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <BikeExchange_WS>
+            <active>true</active>
+            <codePool>local</codePool>
+        </BikeExchange_WS>
+    </modules>
+</config>
