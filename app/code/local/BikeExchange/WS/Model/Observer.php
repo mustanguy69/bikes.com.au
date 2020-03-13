@@ -60,7 +60,9 @@ class BikeExchange_WS_Model_Observer
                 if (!isset($addAdvertDecoded['errors'])) {
                     // Persisit ID from bikeexchange return
                     $product->setData('bikeexchange_id', $addAdvertDecoded['data']['id']);
-                    $product->save();
+                    $product->getResource()->saveAttribute($product, 'bikeexchange_id');
+
+                    Mage::getSingleton('core/session')->addSuccess('BikeExchange : Product Saved');
                 } else {
                     Mage::getSingleton('core/session')->addError('BikeExchange : An error has occurred, product not saved');
                 }
@@ -71,13 +73,21 @@ class BikeExchange_WS_Model_Observer
                 $delete = $helper->bikeExchangeApiCall('client/adverts/'.$product->getBikeexchangeId(), 'DELETE');
                 $deleteDecoded = json_decode($delete, true);
                 $product->setData('bikeexchange_id', '');
+                $product->setData('bikeexchange_status', false);
                 $product->save();
                 if (!isset($deleteDecoded['errors'])) {
                     Mage::getSingleton('core/session')->addSuccess('BikeExchange : Product deleted');
-                } else {
-                    Mage::getSingleton('core/session')->addError('BikeExchange : An error has occurred, wrong id or wrong config');
                 }
             }
+        }
+    }
+
+    public function catalog_product_load_after($observer) {
+        $event = $observer->getEvent();
+        $product = $event->getProduct();
+
+        if ($product->getBikeexchangeId() !== null) {
+            $product->lockAttribute('bikeexchange_id');
         }
     }
 }

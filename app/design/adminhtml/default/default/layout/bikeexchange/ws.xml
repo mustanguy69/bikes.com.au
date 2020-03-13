@@ -4,5 +4,31 @@
         <reference name="content">
             <block type="core/template" name="bikeexchange.ws" template="bikeexchange/ws.phtml" before="-" />
         </reference>
+
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+        </reference>
     </bikeexchange_adminhtml_index_index>
+
+    <bikeexchange_adminhtml_index_popup>
+        <reference name="content">
+            <block type="core/template" name="bikeexchange.popup" template="bikeexchange/popup.phtml" before="-" />
+        </reference>
+
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>prototype/windows/themes/default.css</name>
+            </action>
+            <action method="addCss">
+                <name>lib/prototype/windows/themes/magento.css</name>
+            </action>
+        </reference>
+    </bikeexchange_adminhtml_index_popup>
 </layout>

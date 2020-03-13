@@ -1,7 +1,7 @@
 <?php
 
 
-class BikeExchange_WS_Block_Adminhtml_Items_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class BikeExchange_WS_Block_Adminhtml_Popup_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
 
     public function __construct()
@@ -10,17 +10,21 @@ class BikeExchange_WS_Block_Adminhtml_Items_Grid extends Mage_Adminhtml_Block_Wi
 
     }
 
-
     protected function _prepareCollection()
     {
 
         $collection = Mage::getModel('catalog/product')->getResourceCollection()
             ->addAttributeToSelect('name')
-            ->addAttributeToSelect('bikeexchange_status')
             ->addAttributeToSelect('bikeexchange_id')
             ->addAttributeToSelect('thumbnail')
-            ->addAttributeToFilter('bikeexchange_status',  1)
-            ->addAttributeToFilter('bikeexchange_id',  ['neq' => null]);
+            ->addAttributeToFilter(
+                array(
+                    array('attribute'=> 'bikeexchange_id','null' => true),
+                    array('attribute'=> 'bikeexchange_id','eq' => ''),
+                    array('attribute'=> 'bikeexchange_id','eq' => 'NO FIELD')
+                ),
+                '',
+                'left');
 
         $collection->setCurPage(1);
 
@@ -47,16 +51,11 @@ class BikeExchange_WS_Block_Adminhtml_Items_Grid extends Mage_Adminhtml_Block_Wi
                 'type'  => 'number',
                 'index' => 'entity_id',
             ));
-        $this->addColumn('bikeexchange_id',
-            array(
-                'header'=> 'BikeExchange ID',
-                'index' => 'bikeexchange_id',
-            ));
         $this->addColumn('name',
             array(
                 'header'=> 'Product Name',
                 'index' => 'name',
-        ));
+            ));
 
 
         return parent::_prepareColumns();
@@ -65,11 +64,11 @@ class BikeExchange_WS_Block_Adminhtml_Items_Grid extends Mage_Adminhtml_Block_Wi
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('bikeexchange_status');
-        $this->getMassactionBlock()->setFormFieldName('bikeexchange_delete_select');
+        $this->getMassactionBlock()->setFormFieldName('bikeexchange_add_select');
 
-        $this->getMassactionBlock()->addItem('delete', array(
-            'label'=> 'Delete',
-            'url'  => $this->getUrl('*/*/massDelete', array('' => '')),        // public function massDeleteAction() in Mage_Adminhtml_Tax_RateController
+        $this->getMassactionBlock()->addItem('add', array(
+            'label'=> 'Add',
+            'url'  => $this->getUrl('*/*/massAdd', array('' => '')),
             'confirm' => 'Are you sure?'
         ));
 

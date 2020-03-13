@@ -63,6 +63,16 @@
                     </bikeexchange_ws>
                 </observers>
             </catalog_product_save_after>
+
+            <catalog_product_load_after>
+                <observers>
+                    <bikeexchange_ws>
+                        <type>singleton</type>
+                        <class>bikeexchange_ws/observer</class>
+                        <method>catalog_product_load_after</method>
+                    </bikeexchange_ws>
+                </observers>
+            </catalog_product_load_after>
         </events>
     </global>
 

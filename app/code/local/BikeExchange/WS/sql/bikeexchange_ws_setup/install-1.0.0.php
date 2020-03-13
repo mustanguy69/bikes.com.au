@@ -46,3 +46,15 @@ $installer->addAttribute('catalog_product', 'bikeexchange_id', array(
     'apply_to'          => 'simple,configurable',
     'is_configurable'   => false
 ));
+
+$attrData = array(
+    'bikeexchange_status'=> 'false',
+    'bikeexchange_id'=> '',
+);
+$storeId = 0;
+$productIds = Mage::getModel('catalog/product')->getCollection()->getAllIds();
+Mage::getModel("catalog/product_action")->updateAttributes(
+    $productIds,
+    $attrData,
+    $storeId
+);

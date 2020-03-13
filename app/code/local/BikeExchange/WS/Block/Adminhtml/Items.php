@@ -12,7 +12,14 @@ class BikeExchange_WS_Block_Adminhtml_Items extends Mage_Adminhtml_Block_Widget_
         $this->_controller = 'adminhtml_items';
 
         $this->_headerText = Mage::helper('adminhtml')->__('BikeExchange Items');
-
+        $data = array(
+            'label' =>  'Add New',
+            'onclick'   => 'javascript:openMyPopup()',
+            'class'     =>  'new'
+        );
+        $this->addButton ('add_new', $data, 0, 100,  'header');
         parent::__construct();
+
+        $this->_removeButton('add');
     }
 }
