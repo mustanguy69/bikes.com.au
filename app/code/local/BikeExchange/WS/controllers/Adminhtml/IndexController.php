@@ -9,6 +9,13 @@ class BikeExchange_WS_Adminhtml_IndexController extends Mage_Adminhtml_Controlle
         $this->renderLayout();
     }
 
+    public function variantsAction()
+    {
+        $this->loadLayout();
+        $this->_addContent($this->getLayout()->createBlock('bikeexchange_ws/adminhtml_variants'));
+        $this->renderLayout();
+    }
+
     public function popupAction()
     {
         $this->loadLayout();

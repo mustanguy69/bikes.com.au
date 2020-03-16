@@ -9,6 +9,20 @@
                     <title>BikeExchange</title>
                     <action>bikeexchange/adminhtml_index/index</action>
                     <sort_order>1000</sort_order>
+                    <children>
+                        <bikeexchange-list translate="title" module="catalog">
+                            <title>List</title>
+                            <action>bikeexchange/adminhtml_index/index</action>
+                        </bikeexchange-list>
+                        <bikeexchange-taxons translate="title" module="catalog">
+                            <title>Manage Taxons</title>
+                            <action>bikeexchange/adminhtml_taxons/index</action>
+                        </bikeexchange-taxons>
+                        <bikeexchange-variants translate="title" module="catalog">
+                            <title>Manage Colours / Sizes</title>
+                            <action>bikeexchange/adminhtml_index/variants</action>
+                        </bikeexchange-variants>
+                    </children>
                 </bikeexchange>
             </children>
         </catalog>
@@ -34,4 +48,13 @@
             </admin>
         </resources>
     </acl>
+    <routers>
+        <adminhtml>
+            <args>
+                <modules>
+                    <bikeexchange_ws_taxons after="Mage_Adminhtml">BikeExchange_WS_Taxons_Adminhtml</bikeexchange_ws_taxons>
+                </modules>
+            </args>
+        </adminhtml>
+    </routers>
 </config>

@@ -58,3 +58,56 @@ Mage::getModel("catalog/product_action")->updateAttributes(
     $attrData,
     $storeId
 );
+
+$this->startSetup();
+$table = new Varien_Db_Ddl_Table();
+$table->setName($this->getTable('bikeexchange_ws/taxons'));
+$table->addColumn(
+    'entity_id',
+    Varien_Db_Ddl_Table::TYPE_INTEGER,
+    10,
+    array(
+        'auto_increment' => true,
+        'unsigned' => true,
+        'nullable'=> false,
+        'primary' => true
+    )
+);
+$table->addColumn(
+    'category_id',
+    Varien_Db_Ddl_Table::TYPE_INTEGER,
+    100,
+    array(
+        'nullable' => false,
+    )
+);
+$table->addColumn(
+    'category_name',
+    Varien_Db_Ddl_Table::TYPE_VARCHAR,
+    255,
+    array(
+        'nullable' => false,
+    )
+);
+$table->addColumn(
+    'taxon_name',
+    Varien_Db_Ddl_Table::TYPE_VARCHAR,
+    255,
+    array(
+        'nullable' => false,
+    )
+);
+$table->addColumn(
+    'taxon_slug',
+    Varien_Db_Ddl_Table::TYPE_VARCHAR,
+    255,
+    array(
+        'nullable' => false,
+    )
+);
+
+$table->setOption('type', 'InnoDB');
+$table->setOption('charset', 'utf8');
+$this->getConnection()->createTable($table);
+
+$this->endSetup();

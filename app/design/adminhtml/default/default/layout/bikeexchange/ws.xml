@@ -31,4 +31,22 @@
             </action>
         </reference>
     </bikeexchange_adminhtml_index_popup>
+
+    <bikeexchange_adminhtml_taxons_index>
+        <reference name="content">
+            <block type="bikeexchange_ws/adminhtml_taxons" name="taxons" template="bikeexchange/taxons.phtml" />
+        </reference>
+    </bikeexchange_adminhtml_taxons_index>
+
+    <bikeexchange_adminhtml_taxons_edit>
+        <reference name="content">
+            <block type="bikeexchange_ws/adminhtml_taxons_edit" name="taxons.edit" />
+        </reference>
+    </bikeexchange_adminhtml_taxons_edit>
+
+    <bikeexchange_adminhtml_index_variants>
+        <reference name="content">
+            <block type="core/template" name="bikeexchange.variants" template="bikeexchange/variants.phtml" />
+        </reference>
+    </bikeexchange_adminhtml_index_variants>
 </layout>

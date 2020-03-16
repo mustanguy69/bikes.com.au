@@ -15,9 +15,9 @@
             <bikeexchange_ws_resource>
                 <class>BikeExchange_WS_Model_Resource</class>
                 <entities>
-                    <product>
-                        <table>bikeexchange_ws</table>
-                    </product>
+                    <taxons>
+                        <table>bikeexchange_ws_taxons</table>
+                    </taxons>
                 </entities>
             </bikeexchange_ws_resource>
         </models>
@@ -78,6 +78,13 @@
 
     <admin>
         <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <BikeExchange_WS before="Mage_Adminhtml">BikeExchange_WS_Adminhtml</BikeExchange_WS>
+                    </modules>
+                </args>
+            </adminhtml>
             <bikeexchange>
                 <use>admin</use>
                 <args>
